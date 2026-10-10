@@ -19,289 +19,239 @@ export const InventoryTable: React.FC<InventoryTableProps> = ({
 }) => {
   if (products.length === 0) {
     return (
-      <div className="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-8 sm:p-12 text-center text-zinc-400">
-        <p className="font-serif text-base text-zinc-300">No sarees match your current search or category filter.</p>
-        <span className="text-xs text-zinc-500 mt-1 block">Try clearing the search query or changing the category filter.</span>
+      <div className="rounded-2xl border border-[#e5dfd3] bg-white p-8 sm:p-12 text-center text-[#8a7a6b]">
+        <p className="font-serif text-base text-[#4c0d17]">No sarees match your current search or category filter.</p>
+        <span className="text-xs mt-1 block font-sans">Try clearing the search query or changing the category filter.</span>
       </div>
     );
   }
 
   return (
     <div className="space-y-4">
-      {/* ======================================================== */}
-      {/* 1. MOBILE RESPONSIVE CARD LIST (Visible on < 640px) */}
-      {/* ======================================================== */}
-      <div className="sm:hidden space-y-3">
-        {products.map((product) => {
-          const inStock = product.stockCount > 0;
-          return (
-            <div
-              key={product.id}
-              className="rounded-2xl border border-zinc-800 bg-zinc-950/80 p-3.5 space-y-3 shadow-lg"
-            >
-              <div className="flex items-start gap-3">
-                {/* Saree Image Thumbnail with Multi-Angle Indicator */}
-                <div className="relative h-16 w-16 rounded-xl overflow-hidden bg-black shrink-0 border border-zinc-800">
-                  <img
-                    src={product.images[0] || 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=400&q=80'}
-                    alt={product.name}
-                    className="h-full w-full object-cover"
-                  />
-                  {product.images.length > 1 && (
-                    <span className="absolute bottom-1 right-1 rounded bg-black/85 px-1 py-0.2 text-[8px] font-mono font-bold text-dasara-gold border border-dasara-gold/40 flex items-center gap-0.5">
-                      <Camera className="h-2 w-2" />
-                      {product.images.length}
-                    </span>
-                  )}
-                </div>
-
-                {/* Details */}
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-start justify-between gap-1">
-                    <h4 className="font-semibold text-white text-xs truncate leading-snug">
-                      {product.name}
-                    </h4>
-                    {/* Star Showstopper Toggle */}
-                    <button
-                      type="button"
-                      onClick={() => onToggleShowstopper(product.id, product.isFeaturedShowstopper)}
-                      className={`p-1 rounded-lg transition shrink-0 cursor-pointer ${
-                        product.isFeaturedShowstopper
-                          ? 'bg-dasara-maroon text-dasara-gold border border-dasara-gold/50'
-                          : 'text-zinc-600 hover:text-zinc-400'
-                      }`}
-                      title="Toggle Star in Unique Pieces"
-                    >
-                      <Star className={`h-4 w-4 ${product.isFeaturedShowstopper ? 'fill-dasara-gold' : ''}`} />
-                    </button>
-                  </div>
-
-                  <div className="flex items-center gap-2 mt-0.5">
-                    <span className="font-mono text-[10px] text-zinc-400">SKU: {product.sku}</span>
-                    <span className="text-[10px] text-dasara-goldLight font-medium truncate">• {product.category}</span>
-                  </div>
-
-                  <div className="flex items-baseline gap-2 mt-1">
-                    <span className="font-mono font-bold text-sm text-dasara-gold">
-                      ₹{product.price.toLocaleString('en-IN')}
-                    </span>
-                    {product.originalPrice > product.price && (
-                      <span className="text-[10px] text-zinc-500 line-through">
-                        ₹{product.originalPrice.toLocaleString('en-IN')}
-                      </span>
-                    )}
-                    {product.discountPercent > 0 && (
-                      <span className="text-[9px] font-bold text-emerald-400">
-                        ({product.discountPercent}% OFF)
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              {/* Bottom Card Controls: Stock Pill + Edit + Delete */}
-              <div className="flex items-center justify-between pt-2 border-t border-zinc-900 gap-2">
-                {/* Stock Toggle Badge with Piece Count */}
-                <button
-                  type="button"
-                  onClick={() => onToggleStock(product.id, product.stockCount)}
-                  className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold transition cursor-pointer border ${
-                    inStock
-                      ? product.stockCount === 1
-                        ? 'bg-amber-950/70 border-dasara-gold/40 text-dasara-goldLight'
-                        : 'bg-emerald-950/70 border-emerald-500/40 text-emerald-400'
-                      : 'bg-rose-950/70 border-rose-500/40 text-rose-400'
-                  }`}
-                  title="Click to toggle Stock Status"
-                >
-                  {inStock ? (
-                    product.stockCount === 1 ? (
-                      <Sparkles className="h-3 w-3 text-dasara-gold" />
-                    ) : (
-                      <CheckCircle2 className="h-3 w-3 text-emerald-400" />
-                    )
-                  ) : (
-                    <XCircle className="h-3 w-3 text-rose-400" />
-                  )}
-                  <span>
-                    {inStock
-                      ? product.stockCount === 1
-                        ? 'Single Piece (1)'
-                        : `${product.stockCount} Pieces In Stock`
-                      : 'Sold Out (0)'}
+      {/* Mobile View: Cards */}
+      <div className="grid grid-cols-1 gap-3 sm:hidden">
+        {products.map((product) => (
+          <div
+            key={product.id}
+            className="rounded-2xl border border-[#e5dfd3] bg-white p-4 space-y-4 shadow-sm"
+          >
+            {/* Top Row: Image & Basics */}
+            <div className="flex items-start gap-3">
+              <div className="relative h-16 w-16 rounded-xl overflow-hidden shrink-0 border border-[#e5dfd3]">
+                <img src={product.images[0]} alt="" className="h-full w-full object-cover" />
+                {product.images.length > 1 && (
+                  <span className="absolute bottom-1 right-1 rounded bg-white/90 backdrop-blur-md px-1 py-0.5 text-[8px] font-mono font-bold text-[#b08a47] border border-[#b08a47]/30 flex items-center gap-0.5">
+                    <Camera className="h-2 w-2" /> {product.images.length}
                   </span>
-                </button>
-
-                {/* Edit & Delete Action Buttons */}
-                <div className="flex items-center gap-2">
+                )}
+              </div>
+              <div className="min-w-0 flex-1">
+                <div className="flex items-start justify-between gap-1">
+                  <h4 className="font-serif font-bold text-[#4c0d17] text-xs truncate leading-snug">
+                    {product.name}
+                  </h4>
                   <button
-                    type="button"
-                    onClick={() => onEdit(product)}
-                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white transition cursor-pointer border border-zinc-800 text-xs font-semibold"
+                    onClick={() => onToggleShowstopper(product.id, product.isFeaturedShowstopper)}
+                    className={`p-1 rounded-full transition cursor-pointer shrink-0 ${
+                      product.isFeaturedShowstopper
+                        ? 'bg-[#4c0d17] text-[#b08a47] border border-[#4c0d17]'
+                        : 'text-[#8a7a6b] hover:text-[#4c0d17] bg-[#f9f5ec]'
+                    }`}
                   >
-                    <Edit2 className="h-3 w-3" />
-                    <span>Edit</span>
+                    <Star className={`h-3 w-3 ${product.isFeaturedShowstopper ? 'fill-[#b08a47]' : ''}`} />
                   </button>
-                  <button
-                    type="button"
-                    onClick={() => onDelete(product.id)}
-                    className="p-1 rounded-lg bg-zinc-900 hover:bg-rose-950 text-zinc-400 hover:text-rose-400 transition cursor-pointer border border-zinc-800"
-                    title="Delete Saree"
-                  >
-                    <Trash2 className="h-3.5 w-3.5" />
-                  </button>
+                </div>
+                <div className="flex flex-col gap-0.5 mt-0.5">
+                  <span className="font-mono text-[10px] text-[#8a7a6b]">SKU: {product.sku}</span>
+                  <span className="text-[10px] text-[#4c0d17] font-medium truncate">📍 {product.category}</span>
                 </div>
               </div>
             </div>
-          );
-        })}
+
+            {/* Price & Stock */}
+            <div className="flex items-center justify-between border-t border-[#e5dfd3] pt-3">
+              <div>
+                <span className="font-sans font-bold text-sm text-[#4c0d17]">
+                  ₹{product.price.toLocaleString('en-IN')}
+                </span>
+                {product.originalPrice > product.price && (
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-[10px] text-[#8a7a6b] line-through">
+                      ₹{product.originalPrice.toLocaleString('en-IN')}
+                    </span>
+                    <span className="text-[9px] font-bold text-[#065f46]">
+                      {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              <button
+                onClick={() => onToggleStock(product.id, product.stockCount)}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition cursor-pointer border ${
+                  product.stockCount > 0
+                    ? product.stockCount === 1
+                      ? 'bg-[#b08a47]/10 border-[#b08a47]/30 text-[#b08a47]'
+                      : 'bg-[#065f46]/10 border-[#065f46]/20 text-[#065f46]'
+                    : 'bg-[#4c0d17]/10 border-[#4c0d17]/20 text-[#4c0d17]'
+                }`}
+              >
+                {product.stockCount > 0 ? (
+                  product.stockCount === 1 ? (
+                    <>
+                      <Sparkles className="h-3 w-3 text-[#b08a47]" /> Single Piece
+                    </>
+                  ) : (
+                    <>
+                      <CheckCircle2 className="h-3 w-3 text-[#065f46]" /> {product.stockCount} In Stock
+                    </>
+                  )
+                ) : (
+                  <>
+                    <XCircle className="h-3 w-3 text-[#4c0d17]" /> Sold Out
+                  </>
+                )}
+              </button>
+            </div>
+
+            {/* Actions */}
+            <div className="flex gap-2 border-t border-[#e5dfd3] pt-3">
+              <button
+                onClick={() => onEdit(product)}
+                className="flex-1 inline-flex justify-center items-center gap-1.5 px-3 py-2 rounded-xl bg-[#f9f5ec] hover:bg-[#e5dfd3] text-[#4c0d17] transition cursor-pointer text-xs font-bold"
+              >
+                <Edit2 className="h-3.5 w-3.5" /> Edit Details
+              </button>
+              <button
+                onClick={() => onDelete(product.id)}
+                className="p-2 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 transition cursor-pointer border border-red-100 shrink-0"
+              >
+                <Trash2 className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
 
-      {/* ======================================================== */}
-      {/* 2. DESKTOP FULL INVENTORY TABLE (Visible on >= 640px) */}
-      {/* ======================================================== */}
-      <div className="hidden sm:block overflow-x-auto rounded-2xl border border-zinc-800 bg-zinc-950/70 shadow-xl">
-        <table className="w-full text-left text-xs text-zinc-300">
-          <thead className="border-b border-zinc-800 bg-black/60 text-[11px] font-bold uppercase tracking-wider text-dasara-gold">
+      {/* Desktop View: Table */}
+      <div className="hidden sm:block overflow-x-auto rounded-2xl border border-[#e5dfd3] bg-white shadow-sm">
+        <table className="w-full text-left text-xs text-[#4c0d17]">
+          <thead className="border-b border-[#e5dfd3] bg-[#f9f5ec] text-[10px] font-bold uppercase tracking-[0.15em] text-[#8a7a6b]">
             <tr>
-              <th className="px-4 py-3">Saree / SKU</th>
-              <th className="px-4 py-3">Category & Hub</th>
-              <th className="px-4 py-3">Price</th>
-              <th className="px-4 py-3 text-center">Stock Available</th>
-              <th className="px-4 py-3 text-center">Star Unique</th>
-              <th className="px-4 py-3 text-right">Actions</th>
+              <th className="px-5 py-4 w-1/4">Saree / SKU</th>
+              <th className="px-5 py-4 w-1/4">Category & Hub</th>
+              <th className="px-5 py-4 w-1/6">Price</th>
+              <th className="px-5 py-4 text-center">Stock Available</th>
+              <th className="px-5 py-4 text-center">Star Unique</th>
+              <th className="px-5 py-4 text-right">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-zinc-900">
-            {products.map((product) => {
-              const inStock = product.stockCount > 0;
-              return (
-                <tr key={product.id} className="hover:bg-zinc-900/50 transition">
-                  {/* Saree & Thumbnail */}
-                  <td className="px-4 py-3">
-                    <div className="flex items-center gap-3">
-                      <div className="relative h-11 w-11 rounded-lg overflow-hidden shrink-0 border border-zinc-800 bg-black">
-                        <img
-                          src={product.images[0] || 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=400&q=80'}
-                          alt={product.name}
-                          className="h-full w-full object-cover"
-                        />
-                        {product.images.length > 1 && (
-                          <span className="absolute bottom-0 right-0 rounded-tl bg-black/90 px-1 text-[8px] font-mono text-dasara-gold border-t border-l border-dasara-gold/40">
-                            {product.images.length}📸
-                          </span>
-                        )}
-                      </div>
-                      <div className="min-w-0 max-w-xs">
-                        <p className="font-semibold text-white truncate">{product.name}</p>
-                        <div className="flex items-center gap-2">
-                          <span className="font-mono text-[10px] text-zinc-400">SKU: {product.sku}</span>
-                          {product.isSilkMarkCertified && (
-                            <span className="text-[9px] font-bold text-emerald-400 bg-emerald-950/50 px-1 rounded border border-emerald-500/30">
-                              Silk Mark
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-
-                  {/* Category & Origin */}
-                  <td className="px-4 py-3">
-                    <span className="block text-zinc-200 font-medium">{product.category}</span>
-                    <span className="text-[10px] text-zinc-400">📍 {product.provenance}</span>
-                  </td>
-
-                  {/* Price */}
-                  <td className="px-4 py-3">
-                    <span className="font-mono font-bold text-dasara-gold">
-                      ₹{product.price.toLocaleString('en-IN')}
-                    </span>
-                    <div className="flex items-center gap-1.5">
-                      <span className="text-[10px] text-zinc-500 line-through">
-                        ₹{product.originalPrice.toLocaleString('en-IN')}
-                      </span>
-                      {product.discountPercent > 0 && (
-                        <span className="text-[10px] text-emerald-400 font-semibold">
-                          ({product.discountPercent}% OFF)
+          <tbody className="divide-y divide-[#e5dfd3]">
+            {products.map((product) => (
+              <tr key={product.id} className="hover:bg-[#f9f5ec]/50 transition">
+                <td className="px-5 py-3">
+                  <div className="flex items-center gap-3">
+                    <div className="relative h-12 w-12 rounded-lg overflow-hidden shrink-0 border border-[#e5dfd3] bg-white shadow-sm">
+                      <img src={product.images[0]} alt="" className="h-full w-full object-cover" />
+                      {product.images.length > 1 && (
+                        <span className="absolute bottom-0 right-0 rounded-tl bg-white/90 backdrop-blur-md px-1 text-[8px] font-mono font-bold text-[#b08a47] border-t border-l border-[#e5dfd3]">
+                          <Camera className="h-2 w-2 inline" /> {product.images.length}
                         </span>
                       )}
                     </div>
-                  </td>
-
-                  {/* Quick Stock Toggle with Exact Piece Count */}
-                  <td className="px-4 py-3 text-center">
-                    <button
-                      type="button"
-                      onClick={() => onToggleStock(product.id, product.stockCount)}
-                      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold transition cursor-pointer border ${
-                        inStock
-                          ? product.stockCount === 1
-                            ? 'bg-amber-950/60 border-dasara-gold/40 text-dasara-goldLight hover:bg-amber-900/60'
-                            : 'bg-emerald-950/60 border-emerald-500/40 text-emerald-400 hover:bg-emerald-900/60'
-                          : 'bg-rose-950/60 border-rose-500/40 text-rose-400 hover:bg-rose-900/60'
-                      }`}
-                      title="Click to toggle between In-Stock and Sold Out"
-                    >
-                      {inStock ? (
-                        product.stockCount === 1 ? (
-                          <Sparkles className="h-3 w-3 text-dasara-gold" />
-                        ) : (
-                          <CheckCircle2 className="h-3 w-3 text-emerald-400" />
-                        )
-                      ) : (
-                        <XCircle className="h-3 w-3 text-rose-400" />
-                      )}
-                      <span>
-                        {inStock
-                          ? product.stockCount === 1
-                            ? 'Single Piece (1)'
-                            : `${product.stockCount} Pieces In Stock`
-                          : 'Sold Out (0)'}
-                      </span>
-                    </button>
-                  </td>
-
-                  {/* Quick Star Showstopper Toggle */}
-                  <td className="px-4 py-3 text-center">
-                    <button
-                      type="button"
-                      onClick={() => onToggleShowstopper(product.id, product.isFeaturedShowstopper)}
-                      className={`p-1.5 rounded-lg transition cursor-pointer ${
-                        product.isFeaturedShowstopper
-                          ? 'bg-dasara-maroon text-dasara-gold border border-dasara-gold/50 shadow-sm'
-                          : 'text-zinc-600 hover:text-zinc-400 border border-transparent'
-                      }`}
-                      title="Toggle Star in Top Unique Pieces"
-                    >
-                      <Star className={`h-4 w-4 ${product.isFeaturedShowstopper ? 'fill-dasara-gold' : ''}`} />
-                    </button>
-                  </td>
-
-                  {/* Actions */}
-                  <td className="px-4 py-3 text-right">
-                    <div className="flex items-center justify-end gap-2">
-                      <button
-                        type="button"
-                        onClick={() => onEdit(product)}
-                        className="p-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white transition cursor-pointer border border-zinc-800"
-                        title="Edit Saree"
-                      >
-                        <Edit2 className="h-3.5 w-3.5" />
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => onDelete(product.id)}
-                        className="p-1.5 rounded-lg bg-zinc-900 hover:bg-rose-950 text-zinc-400 hover:text-rose-400 transition cursor-pointer border border-zinc-800 hover:border-rose-800"
-                        title="Delete Saree"
-                      >
-                        <Trash2 className="h-3.5 w-3.5" />
-                      </button>
+                    <div className="min-w-0">
+                      <p className="font-serif font-bold text-[#4c0d17] truncate">{product.name}</p>
+                      <div className="flex items-center gap-2 mt-0.5">
+                        <span className="font-mono text-[10px] text-[#8a7a6b]">SKU: {product.sku}</span>
+                        {product.isSilkMarkCertified && (
+                          <span className="text-[9px] font-bold text-[#065f46] bg-[#065f46]/10 px-1.5 py-0.5 rounded border border-[#065f46]/20">
+                            Silk Mark
+                          </span>
+                        )}
+                      </div>
                     </div>
-                  </td>
-                </tr>
-              );
-            })}
+                  </div>
+                </td>
+                <td className="px-5 py-3">
+                  <span className="block text-[#4c0d17] font-medium font-serif">{product.category}</span>
+                  <span className="text-[10px] text-[#8a7a6b] truncate inline-block max-w-[150px]">📍 {product.provenance}</span>
+                </td>
+                <td className="px-5 py-3">
+                  <span className="font-sans text-sm font-bold text-[#4c0d17]">
+                    ₹{product.price.toLocaleString('en-IN')}
+                  </span>
+                  {product.originalPrice > product.price && (
+                    <div className="flex items-center gap-1.5 mt-0.5">
+                      <span className="text-[10px] text-[#8a7a6b] line-through">
+                        ₹{product.originalPrice.toLocaleString('en-IN')}
+                      </span>
+                      <span className="text-[10px] text-[#065f46] font-bold">
+                        ({Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF)
+                      </span>
+                    </div>
+                  )}
+                </td>
+                <td className="px-5 py-3 text-center">
+                  <button
+                    onClick={() => onToggleStock(product.id, product.stockCount)}
+                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider transition cursor-pointer border ${
+                      product.stockCount > 0
+                        ? product.stockCount === 1
+                          ? 'bg-[#b08a47]/10 border-[#b08a47]/30 text-[#b08a47] hover:bg-[#b08a47]/20'
+                          : 'bg-[#065f46]/10 border-[#065f46]/20 text-[#065f46] hover:bg-[#065f46]/20'
+                        : 'bg-[#4c0d17]/10 border-[#4c0d17]/20 text-[#4c0d17] hover:bg-[#4c0d17]/20'
+                    }`}
+                  >
+                    {product.stockCount > 0 ? (
+                      product.stockCount === 1 ? (
+                        <>
+                          <Sparkles className="h-3 w-3 text-[#b08a47]" /> Single Piece
+                        </>
+                      ) : (
+                        <>
+                          <CheckCircle2 className="h-3 w-3 text-[#065f46]" /> {product.stockCount} In Stock
+                        </>
+                      )
+                    ) : (
+                      <>
+                        <XCircle className="h-3 w-3 text-[#4c0d17]" /> Sold Out
+                      </>
+                    )}
+                  </button>
+                </td>
+                <td className="px-5 py-3 text-center">
+                  <button
+                    onClick={() => onToggleShowstopper(product.id, product.isFeaturedShowstopper)}
+                    className={`p-1.5 rounded-full transition cursor-pointer mx-auto ${
+                      product.isFeaturedShowstopper
+                        ? 'bg-[#4c0d17] text-[#b08a47] border border-[#4c0d17] shadow-sm'
+                        : 'text-[#8a7a6b] hover:text-[#4c0d17] bg-[#f9f5ec] border border-[#e5dfd3]'
+                    }`}
+                    title={product.isFeaturedShowstopper ? 'Remove from Showstoppers' : 'Feature as Showstopper'}
+                  >
+                    <Star className={`h-4 w-4 ${product.isFeaturedShowstopper ? 'fill-[#b08a47]' : ''}`} />
+                  </button>
+                </td>
+                <td className="px-5 py-3 text-right">
+                  <div className="flex items-center justify-end gap-2">
+                    <button
+                      onClick={() => onEdit(product)}
+                      className="p-2 rounded-lg bg-[#f9f5ec] hover:bg-[#e5dfd3] text-[#4c0d17] transition cursor-pointer border border-[#e5dfd3]"
+                      title="Edit Saree"
+                    >
+                      <Edit2 className="h-3.5 w-3.5" />
+                    </button>
+                    <button
+                      onClick={() => onDelete(product.id)}
+                      className="p-2 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition cursor-pointer border border-red-100"
+                      title="Delete Saree"
+                    >
+                      <Trash2 className="h-3.5 w-3.5" />
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

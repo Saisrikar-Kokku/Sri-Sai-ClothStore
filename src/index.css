@@ -9,10 +9,16 @@
   }
 
   body {
-    background-color: #0E0C0F;
-    color: #FAF6F0;
+    background-color: #f9f5ec;
+    color: #551a24;
     overflow-x: hidden;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Protect Telugu text from letter-spacing/tracking that breaks matras and ligatures */
+  .telugu-text, [lang="te"] {
+    font-family: 'Noto Serif Telugu', 'Playfair Display', serif;
+    letter-spacing: normal !important;
   }
 }
 

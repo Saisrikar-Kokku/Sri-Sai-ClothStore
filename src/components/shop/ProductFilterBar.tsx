@@ -58,7 +58,7 @@ export const ProductFilterBar: React.FC<Props> = ({
             <button
               onClick={() => onFilterChange({ ...filters, searchQuery: '' })}
               aria-label="Clear search input"
-              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-white transition p-1 rounded-md hover:bg-zinc-800"
+              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#8a7a6b] hover:text-white transition p-1 rounded-md hover:bg-zinc-800"
             >
               <X className="h-4 w-4" />
             </button>
@@ -78,9 +78,9 @@ export const ProductFilterBar: React.FC<Props> = ({
               onChange={(e) => onFilterChange({ ...filters, originHub: e.target.value })}
               className="appearance-none rounded-xl border border-zinc-800 bg-zinc-900/90 pl-3.5 pr-9 py-2.5 text-xs font-semibold text-dasara-champagne focus:border-dasara-gold focus:outline-none cursor-pointer transition-all hover:border-dasara-gold/50 hover:bg-zinc-800/90 shadow-sm"
             >
-              <option value="All" className="bg-zinc-950 text-white">All Weaving Hubs</option>
+              <option value="All" className="bg-white text-[#4c0d17]">All Weaving Hubs</option>
               {originHubs.map((hub) => (
-                <option key={hub} value={hub} className="bg-zinc-950 text-white">
+                <option key={hub} value={hub} className="bg-white text-[#4c0d17]">
                   📍 {hub}
                 </option>
               ))}
@@ -98,11 +98,11 @@ export const ProductFilterBar: React.FC<Props> = ({
               onChange={(e) => onFilterChange({ ...filters, sortBy: e.target.value as SortOption })}
               className="appearance-none rounded-xl border border-zinc-800 bg-zinc-900/90 pl-3.5 pr-9 py-2.5 text-xs font-semibold text-dasara-champagne focus:border-dasara-gold focus:outline-none cursor-pointer transition-all hover:border-dasara-gold/50 hover:bg-zinc-800/90 shadow-sm"
             >
-              <option value="featured" className="bg-zinc-950 text-white">Featured First</option>
-              <option value="price-low" className="bg-zinc-950 text-white">Price: Low to High</option>
-              <option value="price-high" className="bg-zinc-950 text-white">Price: High to Low</option>
-              <option value="discount" className="bg-zinc-950 text-white">Highest Discount</option>
-              <option value="newest" className="bg-zinc-950 text-white">Newly Unpacked Lots</option>
+              <option value="featured" className="bg-white text-[#4c0d17]">Featured First</option>
+              <option value="price-low" className="bg-white text-[#4c0d17]">Price: Low to High</option>
+              <option value="price-high" className="bg-white text-[#4c0d17]">Price: High to Low</option>
+              <option value="discount" className="bg-white text-[#4c0d17]">Highest Discount</option>
+              <option value="newest" className="bg-white text-[#4c0d17]">Newly Unpacked Lots</option>
             </select>
             <ChevronDown className="pointer-events-none absolute right-3 h-3.5 w-3.5 text-dasara-gold transition-transform duration-200 group-hover:scale-110" />
           </div>
@@ -114,15 +114,15 @@ export const ProductFilterBar: React.FC<Props> = ({
             className={`flex items-center gap-1.5 rounded-xl px-3.5 py-2.5 text-xs font-semibold transition-all duration-300 cursor-pointer border ${
               filters.onlyUniquePieces
                 ? 'bg-gradient-to-r from-dasara-maroon to-dasara-gold/90 border-dasara-gold text-white shadow-[0_0_18px_rgba(212,175,55,0.35)] ring-1 ring-dasara-gold/40'
-                : 'border-zinc-800 bg-zinc-900/90 text-zinc-300 hover:text-white hover:border-dasara-gold/40 hover:bg-zinc-800/90'
+                : 'border-[#e5dfd3] bg-white text-[#8a7a6b] hover:text-[#4c0d17] hover:border-[#b08a47]/40 hover:bg-[#f9f5ec]'
             }`}
           >
-            <Sparkles className={`h-3.5 w-3.5 ${filters.onlyUniquePieces ? 'text-dasara-goldLight animate-pulse' : 'text-zinc-400'}`} />
+            <Sparkles className={`h-3.5 w-3.5 ${filters.onlyUniquePieces ? 'text-dasara-goldLight animate-pulse' : 'text-[#8a7a6b]'}`} />
             <span>1-of-1 Dealer Exclusive</span>
           </button>
 
           {/* Total Results Count */}
-          <span className="text-xs text-zinc-400 font-mono hidden xl:inline-block pl-1">
+          <span className="text-xs text-[#8a7a6b] font-mono hidden xl:inline-block pl-1">
             ({totalResults} items)
           </span>
         </div>
@@ -131,7 +131,7 @@ export const ProductFilterBar: React.FC<Props> = ({
       {/* Bottom Row: Color Swatch Filter Row */}
       <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-zinc-800/70">
         <div className="flex flex-wrap items-center gap-2.5">
-          <span className="text-[11px] font-medium uppercase tracking-wider text-zinc-400">
+          <span className="text-[11px] font-medium uppercase tracking-wider text-[#8a7a6b]">
             Saree Palette:
           </span>
 
@@ -142,7 +142,7 @@ export const ProductFilterBar: React.FC<Props> = ({
             className={`text-xs px-2.5 py-1 rounded-full transition-all duration-200 cursor-pointer ${
               !activeColor
                 ? 'bg-dasara-gold/20 text-dasara-goldLight border border-dasara-gold/60 font-semibold shadow-[0_0_10px_rgba(212,175,55,0.2)]'
-                : 'text-zinc-400 hover:text-white bg-zinc-900/60 border border-zinc-800'
+                : 'text-[#8a7a6b] hover:text-white bg-zinc-900/60 border border-zinc-800'
             }`}
           >
             All Colors
@@ -188,7 +188,7 @@ export const ProductFilterBar: React.FC<Props> = ({
               <button
                 type="button"
                 onClick={() => onFilterChange({ ...filters, selectedColor: 'All' })}
-                className="text-zinc-400 hover:text-white p-0.5"
+                className="text-[#8a7a6b] hover:text-white p-0.5"
                 title="Clear color filter"
               >
                 <X className="h-3 w-3" />
@@ -197,7 +197,7 @@ export const ProductFilterBar: React.FC<Props> = ({
           )}
         </div>
 
-        <span className="text-[11px] text-zinc-500 font-mono hidden sm:inline-block">
+        <span className="text-[11px] text-[#8a7a6b] font-mono hidden sm:inline-block">
           Click swatch to filter instantaneously
         </span>
       </div>

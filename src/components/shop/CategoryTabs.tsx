@@ -24,7 +24,7 @@ export const CategoryTabs: React.FC<Props> = ({
   return (
     <div className="relative w-full">
       <div className="w-full overflow-x-auto pb-2 scrollbar-none">
-        <div className="flex gap-2 sm:gap-2.5 min-w-max p-1 bg-zinc-950/60 rounded-2xl border border-zinc-900/80 backdrop-blur-md">
+        <div className="flex gap-2 sm:gap-2.5 min-w-max p-1 bg-white rounded-2xl border border-[#e5dfd3] backdrop-blur-md">
           {CATEGORIES.map((label) => {
             const isActive = activeCategory === label;
             const count = categoryCounts[label] || 0;
@@ -37,7 +37,7 @@ export const CategoryTabs: React.FC<Props> = ({
                 className={`group relative flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-medium tracking-wide transition-all duration-300 cursor-pointer ${
                   isActive
                     ? 'bg-gradient-to-r from-dasara-maroon/90 via-dasara-deepCrimson to-dasara-maroon/90 text-white border border-dasara-gold/60 shadow-lg shadow-dasara-gold/15'
-                    : 'bg-transparent text-zinc-400 hover:text-white hover:bg-zinc-900/70 border border-transparent hover:border-zinc-800'
+                    : 'bg-transparent text-[#8a7a6b] hover:text-[#4c0d17] hover:bg-[#f9f5ec] border border-transparent hover:border-[#e5dfd3]'
                 }`}
               >
                 <span className="font-sans font-medium transition-colors">
@@ -49,7 +49,7 @@ export const CategoryTabs: React.FC<Props> = ({
                   className={`rounded px-1.5 py-0.5 text-[10px] font-mono tracking-tight transition-colors ${
                     isActive
                       ? 'bg-dasara-gold/20 text-dasara-goldLight border border-dasara-gold/40'
-                      : 'bg-zinc-900 text-zinc-500 border border-zinc-800/60 group-hover:text-zinc-300'
+                      : 'bg-[#f9f5ec] text-[#8a7a6b] border border-[#e5dfd3] group-hover:text-[#4c0d17]'
                   }`}
                 >
                   {count}

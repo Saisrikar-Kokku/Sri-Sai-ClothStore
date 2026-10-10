@@ -150,40 +150,40 @@ export const LiveCameraModal: React.FC<LiveCameraModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[60] bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 animate-in fade-in-0 duration-200">
-      <div className="w-full max-w-lg border border-dasara-gold/40 bg-[#0E0C0F] p-4 text-white rounded-2xl max-h-[96vh] flex flex-col shadow-2xl relative">
+    <div className="fixed inset-0 z-[60] bg-white/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 animate-in fade-in-0 duration-200">
+      <div className="w-full max-w-lg border border-[#b08a47]/30 bg-[#f9f5ec] p-4 text-[#4c0d17] rounded-2xl max-h-[96vh] flex flex-col shadow-2xl relative">
         <div className="text-left space-y-1 pb-2">
           <div className="flex items-center justify-between">
-            <h3 className="font-serif text-lg font-bold text-dasara-champagne flex items-center gap-2">
-              <Camera className="h-5 w-5 text-dasara-gold" />
+            <h3 className="font-serif text-lg font-bold text-[#4c0d17] flex items-center gap-2">
+              <Camera className="h-5 w-5 text-[#b08a47]" />
               <span>Live Shop Camera (లైవ్ కెమెరా)</span>
             </h3>
-            <span className="rounded-full bg-dasara-maroon/90 border border-dasara-gold/40 px-2 py-0.5 text-[10px] font-bold text-dasara-goldLight">
+            <span className="rounded-full bg-[#4c0d17]/10 border border-[#b08a47]/30 px-2 py-0.5 text-[10px] font-bold text-[#4c0d17]">
               On-The-Flow Snapper
             </span>
           </div>
-          <p className="text-[11px] text-zinc-400">
+          <p className="text-[11px] text-[#8a7a6b]">
             Snap saree angles live on the go. Each snap is automatically uploaded and saved!
           </p>
         </div>
 
         {/* Viewfinder Window */}
-        <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-black border border-zinc-800 flex items-center justify-center">
+        <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-black border border-[#e5dfd3] flex items-center justify-center">
           {isInitializing ? (
             <div className="flex flex-col items-center justify-center space-y-2 p-6 text-center">
-              <Loader2 className="h-8 w-8 text-dasara-gold animate-spin" />
-              <p className="text-xs text-zinc-300">Starting shop camera...</p>
-              <span className="text-[10px] text-zinc-500">Please allow camera permissions if prompted</span>
+              <Loader2 className="h-8 w-8 text-[#b08a47] animate-spin" />
+              <p className="text-xs text-[#4c0d17]/90">Starting shop camera...</p>
+              <span className="text-[10px] text-[#8a7a6b]/70">Please allow camera permissions if prompted</span>
             </div>
           ) : cameraError ? (
-            <div className="flex flex-col items-center justify-center space-y-3 p-6 text-center text-rose-300">
-              <AlertCircle className="h-10 w-10 text-rose-400" />
+            <div className="flex flex-col items-center justify-center space-y-3 p-6 text-center text-red-600">
+              <AlertCircle className="h-10 w-10 text-red-600" />
               <p className="text-xs leading-relaxed max-w-xs">{cameraError}</p>
               <Button
                 type="button"
                 variant="outline"
                 onClick={handleDone}
-                className="text-xs border-zinc-700 text-white mt-2"
+                className="text-xs border-[#e5dfd3] text-[#4c0d17] mt-2"
               >
                 Close & Use Device Gallery
               </Button>
@@ -201,14 +201,14 @@ export const LiveCameraModal: React.FC<LiveCameraModalProps> = ({
 
               {/* 3x3 Saree Framing Guide Lines */}
               <div className="absolute inset-0 pointer-events-none grid grid-cols-3 grid-rows-3 opacity-25">
-                <div className="border-r border-b border-dasara-gold/40" />
-                <div className="border-r border-b border-dasara-gold/40" />
-                <div className="border-b border-dasara-gold/40" />
-                <div className="border-r border-b border-dasara-gold/40" />
-                <div className="border-r border-b border-dasara-gold/40" />
-                <div className="border-b border-dasara-gold/40" />
-                <div className="border-r border-dasara-gold/40" />
-                <div className="border-r border-dasara-gold/40" />
+                <div className="border-r border-b border-[#b08a47]/30" />
+                <div className="border-r border-b border-[#b08a47]/30" />
+                <div className="border-b border-[#b08a47]/30" />
+                <div className="border-r border-b border-[#b08a47]/30" />
+                <div className="border-r border-b border-[#b08a47]/30" />
+                <div className="border-b border-[#b08a47]/30" />
+                <div className="border-r border-[#b08a47]/30" />
+                <div className="border-r border-[#b08a47]/30" />
                 <div />
               </div>
 
@@ -218,7 +218,7 @@ export const LiveCameraModal: React.FC<LiveCameraModalProps> = ({
               )}
 
               {/* Angle Counter Badge */}
-              <div className="absolute top-3 left-3 rounded-full bg-black/75 backdrop-blur-md px-3 py-1 text-[11px] font-bold text-dasara-goldLight border border-dasara-gold/40 shadow-lg">
+              <div className="absolute top-3 left-3 rounded-full bg-white/80 backdrop-blur-md px-3 py-1 text-[11px] font-bold text-[#4c0d17] border border-[#b08a47]/30 shadow-lg">
                 Angle #{currentAnglesCount + capturedInSession.length + 1} Ready
               </div>
 
@@ -226,7 +226,7 @@ export const LiveCameraModal: React.FC<LiveCameraModalProps> = ({
               <button
                 type="button"
                 onClick={toggleFacingMode}
-                className="absolute top-3 right-3 h-9 w-9 rounded-full bg-black/75 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-black hover:border-dasara-gold transition cursor-pointer shadow-lg"
+                className="absolute top-3 right-3 h-9 w-9 rounded-full bg-white/80 backdrop-blur-md border border-white/20 text-[#4c0d17] flex items-center justify-center hover:bg-black hover:border-[#b08a47] transition cursor-pointer shadow-lg"
                 title="Switch between front and rear camera"
               >
                 <SwitchCamera className="h-4 w-4" />
@@ -234,9 +234,9 @@ export const LiveCameraModal: React.FC<LiveCameraModalProps> = ({
 
               {/* Capture in progress spinner overlay */}
               {isCapturing && (
-                <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex flex-col items-center justify-center space-y-2 z-30">
-                  <Loader2 className="h-8 w-8 text-dasara-gold animate-spin" />
-                  <span className="text-xs font-bold text-dasara-goldLight">Saving & Uploading Angle...</span>
+                <div className="absolute inset-0 bg-[#f9f5ec] backdrop-blur-sm flex flex-col items-center justify-center space-y-2 z-30">
+                  <Loader2 className="h-8 w-8 text-[#b08a47] animate-spin" />
+                  <span className="text-xs font-bold text-[#4c0d17]">Saving & Uploading Angle...</span>
                 </div>
               )}
             </>
@@ -246,20 +246,20 @@ export const LiveCameraModal: React.FC<LiveCameraModalProps> = ({
         {/* Captured Angles Strip in this session */}
         {capturedInSession.length > 0 && (
           <div className="pt-2">
-            <div className="flex items-center justify-between text-[11px] text-zinc-400 mb-1.5">
-              <span className="flex items-center gap-1 text-emerald-400 font-semibold">
+            <div className="flex items-center justify-between text-[11px] text-[#8a7a6b] mb-1.5">
+              <span className="flex items-center gap-1 text-[#065f46] font-semibold">
                 <Sparkles className="h-3 w-3" /> {capturedInSession.length} New Photo{capturedInSession.length > 1 ? 's' : ''} Snapped:
               </span>
-              <span className="font-mono text-zinc-500">Auto-saved to catalog</span>
+              <span className="font-mono text-[#8a7a6b]/70">Auto-saved to catalog</span>
             </div>
             <div className="flex gap-2 overflow-x-auto pb-1">
               {capturedInSession.map((url, i) => (
                 <div
                   key={i}
-                  className="relative h-12 w-12 rounded-lg overflow-hidden border border-dasara-gold/60 shrink-0 bg-black"
+                  className="relative h-12 w-12 rounded-lg overflow-hidden border border-[#b08a47]/30 shrink-0 bg-black"
                 >
                   <img src={url} alt={`Snap ${i + 1}`} className="h-full w-full object-cover" />
-                  <span className="absolute bottom-0 inset-x-0 bg-black/80 text-[8px] text-center font-mono text-dasara-gold">
+                  <span className="absolute bottom-0 inset-x-0 bg-white/80 text-[8px] text-center font-mono text-[#b08a47]">
                     #{currentAnglesCount + i + 1}
                   </span>
                 </div>
@@ -269,12 +269,12 @@ export const LiveCameraModal: React.FC<LiveCameraModalProps> = ({
         )}
 
         {/* Shutter and Action Controls */}
-        <div className="pt-3 border-t border-zinc-800 flex items-center justify-between gap-3">
+        <div className="pt-3 border-t border-[#e5dfd3] flex items-center justify-between gap-3">
           <Button
             type="button"
             variant="outline"
             onClick={handleDone}
-            className="border-zinc-800 text-zinc-300 hover:text-white cursor-pointer text-xs"
+            className="border-[#e5dfd3] text-[#4c0d17]/90 hover:text-[#4c0d17] cursor-pointer text-xs"
           >
             <X className="h-3.5 w-3.5 mr-1" /> Cancel
           </Button>
@@ -286,12 +286,12 @@ export const LiveCameraModal: React.FC<LiveCameraModalProps> = ({
             onClick={handleCapture}
             className={`group relative flex items-center justify-center h-14 w-14 rounded-full border-4 transition-all duration-200 cursor-pointer shadow-xl ${
               isCapturing || !!cameraError
-                ? 'border-zinc-700 bg-zinc-800 opacity-50 cursor-not-allowed'
-                : 'border-dasara-gold bg-gradient-to-r from-dasara-maroon via-dasara-deepCrimson to-dasara-maroon hover:scale-105 active:scale-95 shadow-dasara-gold/30'
+                ? 'border-[#e5dfd3] bg-[#e5dfd3] opacity-50 cursor-not-allowed'
+                : 'border-[#b08a47] bg-[#4c0d17] hover:scale-105 active:scale-95 shadow-[#4c0d17]/30'
             }`}
             title="Click to snap photo"
           >
-            <div className="h-8 w-8 rounded-full bg-dasara-gold group-hover:bg-dasara-goldLight flex items-center justify-center transition">
+            <div className="h-8 w-8 rounded-full bg-[#b08a47] group-hover:bg-[#b08a47]Light flex items-center justify-center transition">
               <Camera className="h-4 w-4 text-black" />
             </div>
           </button>
@@ -299,7 +299,7 @@ export const LiveCameraModal: React.FC<LiveCameraModalProps> = ({
           <Button
             type="button"
             onClick={handleDone}
-            className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-4 cursor-pointer"
+            className="bg-[#065f46] hover:bg-[#044030] text-white text-[#4c0d17] font-bold text-xs px-4 cursor-pointer"
           >
             <Check className="h-3.5 w-3.5 mr-1" />
             Done ({capturedInSession.length})

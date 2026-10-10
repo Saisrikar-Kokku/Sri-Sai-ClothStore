@@ -68,104 +68,104 @@ export const SareeSpecTabs: React.FC<SareeSpecTabsProps> = ({ product }) => {
       : 'Dasara Pooja, Vijayadashami Muhurtham, Festive Mandap & Weddings';
 
   return (
-    <Tabs defaultValue="weave" className="w-full mt-4">
-      <TabsList className="grid w-full grid-cols-3">
-        <TabsTrigger value="weave">Weave & Loom</TabsTrigger>
-        <TabsTrigger value="purity">Fabric & Zari</TabsTrigger>
-        <TabsTrigger value="styling">Blouse & Styling</TabsTrigger>
+    <Tabs defaultValue="weave" className="w-full mt-6">
+      <TabsList className="grid w-full grid-cols-3 !bg-[#e5dfd3]/50 p-1 rounded-sm border border-[#e5dfd3]">
+        <TabsTrigger value="weave" className="data-[state=active]:!bg-none data-[state=active]:!bg-white data-[state=active]:!text-[#4c0d17] data-[state=active]:!shadow-sm data-[state=active]:!border-[#b08a47] !text-[#8a7a6b] uppercase tracking-widest text-[10px] font-bold rounded-sm border border-transparent">Weave & Loom</TabsTrigger>
+        <TabsTrigger value="purity" className="data-[state=active]:!bg-none data-[state=active]:!bg-white data-[state=active]:!text-[#4c0d17] data-[state=active]:!shadow-sm data-[state=active]:!border-[#b08a47] !text-[#8a7a6b] uppercase tracking-widest text-[10px] font-bold rounded-sm border border-transparent">Fabric & Zari</TabsTrigger>
+        <TabsTrigger value="styling" className="data-[state=active]:!bg-none data-[state=active]:!bg-white data-[state=active]:!text-[#4c0d17] data-[state=active]:!shadow-sm data-[state=active]:!border-[#b08a47] !text-[#8a7a6b] uppercase tracking-widest text-[10px] font-bold rounded-sm border border-transparent">Blouse & Styling</TabsTrigger>
       </TabsList>
 
       {/* TAB 1: WEAVE & LOOM ARCHITECTURE */}
-      <TabsContent value="weave" className="space-y-2.5 text-xs sm:text-sm">
-        <div className="flex justify-between items-center py-1.5 border-b border-zinc-800/80">
-          <span className="text-zinc-400">Hub Origin:</span>
-          <span className="font-semibold text-dasara-champagne flex items-center gap-1">
+      <TabsContent value="weave" className="!bg-transparent !border-none !p-0 space-y-3 text-[11px] sm:text-[13px] mt-4">
+        <div className="flex justify-between items-center py-2 border-b border-[#e5dfd3]">
+          <span className="text-[#8a7a6b] font-sans tracking-widest uppercase text-[10px]">Hub Origin:</span>
+          <span className="font-bold text-[#4c0d17] font-serif flex items-center gap-1">
             📍 {product.provenance}
           </span>
         </div>
-        <div className="flex justify-between items-center py-1.5 border-b border-zinc-800/80">
-          <span className="text-zinc-400">Loom & Architecture:</span>
-          <span className="font-medium text-amber-300">{loomInterlock}</span>
+        <div className="flex justify-between items-center py-2 border-b border-[#e5dfd3]">
+          <span className="text-[#8a7a6b] font-sans tracking-widest uppercase text-[10px]">Loom & Architecture:</span>
+          <span className="font-bold text-[#b08a47] font-serif">{loomInterlock}</span>
         </div>
-        <div className="flex justify-between items-center py-1.5 border-b border-zinc-800/80">
-          <span className="text-zinc-400">Interlock Technique:</span>
-          <span className="text-zinc-300 font-medium text-right max-w-[60%] truncate">{interlockTech}</span>
+        <div className="flex justify-between items-center py-2 border-b border-[#e5dfd3]">
+          <span className="text-[#8a7a6b] font-sans tracking-widest uppercase text-[10px]">Interlock Technique:</span>
+          <span className="font-medium text-[#4c0d17] font-serif text-right max-w-[60%] truncate">{interlockTech}</span>
         </div>
-        <div className="flex justify-between items-center py-1.5 border-b border-zinc-800/80">
-          <span className="text-zinc-400">Warp & Weft Yarn:</span>
-          <span className="text-zinc-300 text-right max-w-[65%] truncate">{warpComp} / {weftComp}</span>
+        <div className="flex justify-between items-center py-2 border-b border-[#e5dfd3]">
+          <span className="text-[#8a7a6b] font-sans tracking-widest uppercase text-[10px]">Warp & Weft Yarn:</span>
+          <span className="font-medium text-[#4c0d17] font-serif text-right max-w-[65%] truncate">{warpComp} / {weftComp}</span>
         </div>
-        <div className="flex justify-between items-center py-1.5 border-b border-zinc-800/80">
-          <span className="text-zinc-400">Thread Count Density:</span>
-          <span className="font-mono text-zinc-300">{threadCount}</span>
+        <div className="flex justify-between items-center py-2 border-b border-[#e5dfd3]">
+          <span className="text-[#8a7a6b] font-sans tracking-widest uppercase text-[10px]">Thread Count Density:</span>
+          <span className="font-mono text-[#4c0d17] font-bold">{threadCount}</span>
         </div>
-        <div className="flex justify-between items-center py-1.5 border-b border-zinc-800/80">
-          <span className="text-zinc-400">Consignment SKU:</span>
-          <span className="font-mono text-zinc-300 font-semibold">{product.sku}</span>
+        <div className="flex justify-between items-center py-2 border-b border-[#e5dfd3]">
+          <span className="text-[#8a7a6b] font-sans tracking-widest uppercase text-[10px]">Consignment SKU:</span>
+          <span className="font-mono text-[#4c0d17] font-bold">{product.sku}</span>
         </div>
-        <div className="flex justify-between items-center py-1.5 border-b border-zinc-800/80">
-          <span className="text-zinc-400">Artisan Weaving Time:</span>
-          <span className="font-mono text-emerald-400">{weavingDays}</span>
+        <div className="flex justify-between items-center py-2 border-b border-[#e5dfd3]">
+          <span className="text-[#8a7a6b] font-sans tracking-widest uppercase text-[10px]">Artisan Weaving Time:</span>
+          <span className="font-sans font-bold text-[#065f46] tracking-wider text-[11px] uppercase">{weavingDays}</span>
         </div>
-        <p className="text-zinc-300 text-xs leading-relaxed pt-1.5">{product.description}</p>
+        <p className="text-[#4c0d17] font-serif text-xs leading-relaxed pt-2">{product.description}</p>
       </TabsContent>
 
       {/* TAB 2: FABRIC & ZARI PURITY */}
-      <TabsContent value="purity" className="space-y-2.5 text-xs sm:text-sm">
-        <div className="flex justify-between items-center py-1.5 border-b border-zinc-800/80">
-          <span className="text-zinc-400">Silk Certification:</span>
-          <span className="font-semibold text-emerald-400 flex items-center gap-1.5">
-            <Award className="h-4 w-4 text-emerald-400" />
+      <TabsContent value="purity" className="!bg-transparent !border-none !p-0 space-y-3 text-[11px] sm:text-[13px] mt-4">
+        <div className="flex justify-between items-center py-2 border-b border-[#e5dfd3]">
+          <span className="text-[#8a7a6b] font-sans tracking-widest uppercase text-[10px]">Silk Certification:</span>
+          <span className="font-bold font-serif text-[#065f46] flex items-center gap-1.5">
+            <Award className="h-4 w-4" />
             {product.isSilkMarkCertified ? 'Silk Mark Certified (100% Pure Natural Silk)' : 'Handloom Certified Pure Weave'}
           </span>
         </div>
-        <div className="flex justify-between items-center py-1.5 border-b border-zinc-800/80">
-          <span className="text-zinc-400">Silk Mark Reg. Code:</span>
-          <span className="font-mono text-dasara-goldLight font-bold">{silkRegNumber}</span>
+        <div className="flex justify-between items-center py-2 border-b border-[#e5dfd3]">
+          <span className="text-[#8a7a6b] font-sans tracking-widest uppercase text-[10px]">Silk Mark Reg. Code:</span>
+          <span className="font-mono text-[#4c0d17] font-bold">{silkRegNumber}</span>
         </div>
-        <div className="flex justify-between items-center py-1.5 border-b border-zinc-800/80">
-          <span className="text-zinc-400">Silk Classification:</span>
-          <span className="font-medium text-dasara-champagne">{silkType}</span>
+        <div className="flex justify-between items-center py-2 border-b border-[#e5dfd3]">
+          <span className="text-[#8a7a6b] font-sans tracking-widest uppercase text-[10px]">Silk Classification:</span>
+          <span className="font-bold font-serif text-[#4c0d17]">{silkType}</span>
         </div>
-        <div className="flex justify-between items-center py-1.5 border-b border-zinc-800/80">
-          <span className="text-zinc-400">Zari Specification & Grade:</span>
-          <span className="font-medium text-amber-300">{zariGrade}</span>
+        <div className="flex justify-between items-center py-2 border-b border-[#e5dfd3]">
+          <span className="text-[#8a7a6b] font-sans tracking-widest uppercase text-[10px]">Zari Specification & Grade:</span>
+          <span className="font-bold font-serif text-[#b08a47]">{zariGrade}</span>
         </div>
-        <div className="flex justify-between items-center py-1.5 border-b border-zinc-800/80">
-          <span className="text-zinc-400">Fabric Composition:</span>
-          <span className="font-medium text-dasara-champagne">{product.fabric}</span>
+        <div className="flex justify-between items-center py-2 border-b border-[#e5dfd3]">
+          <span className="text-[#8a7a6b] font-sans tracking-widest uppercase text-[10px]">Fabric Composition:</span>
+          <span className="font-bold font-serif text-[#4c0d17]">{product.fabric}</span>
         </div>
-        <div className="flex justify-between items-center py-1.5 border-b border-zinc-800/80">
-          <span className="text-zinc-400">Net Saree Weight:</span>
-          <span className="font-mono text-zinc-300">{weight}</span>
+        <div className="flex justify-between items-center py-2 border-b border-[#e5dfd3]">
+          <span className="text-[#8a7a6b] font-sans tracking-widest uppercase text-[10px]">Net Saree Weight:</span>
+          <span className="font-mono text-[#4c0d17] font-bold">{weight}</span>
         </div>
-        <div className="flex justify-between items-center py-1.5">
-          <span className="text-zinc-400">Zari Purity Assay:</span>
-          <span className="font-mono text-dasara-gold font-bold">{zariRating}</span>
+        <div className="flex justify-between items-center py-2">
+          <span className="text-[#8a7a6b] font-sans tracking-widest uppercase text-[10px]">Zari Purity Assay:</span>
+          <span className="font-mono text-[#b08a47] font-bold">{zariRating}</span>
         </div>
       </TabsContent>
 
       {/* TAB 3: BLOUSE & STYLING CONSULTATION */}
-      <TabsContent value="styling" className="space-y-2.5 text-xs sm:text-sm">
-        <div className="flex justify-between items-center py-1.5 border-b border-zinc-800/80">
-          <span className="text-zinc-400">Included Blouse Piece:</span>
-          <span className="font-semibold text-emerald-400">{product.blouseDetails}</span>
+      <TabsContent value="styling" className="!bg-transparent !border-none !p-0 space-y-3 text-[11px] sm:text-[13px] mt-4">
+        <div className="flex justify-between items-center py-2 border-b border-[#e5dfd3]">
+          <span className="text-[#8a7a6b] font-sans tracking-widest uppercase text-[10px]">Included Blouse Piece:</span>
+          <span className="font-bold font-serif text-[#065f46]">{product.blouseDetails}</span>
         </div>
-        <div className="flex justify-between items-center py-1.5 border-b border-zinc-800/80">
-          <span className="text-zinc-400">Blouse Cut & Sleeve Border:</span>
-          <span className="font-medium text-amber-300">{blouseType} ({blouseLength} • {sleeveBorder})</span>
+        <div className="flex justify-between items-center py-2 border-b border-[#e5dfd3]">
+          <span className="text-[#8a7a6b] font-sans tracking-widest uppercase text-[10px]">Blouse Cut & Sleeve Border:</span>
+          <span className="font-bold font-serif text-[#b08a47]">{blouseType} ({blouseLength} • {sleeveBorder})</span>
         </div>
-        <div className="flex justify-between items-center py-1.5 border-b border-zinc-800/80">
-          <span className="text-zinc-400">Recommended Neckline:</span>
-          <span className="font-medium text-dasara-champagne">{necklines}</span>
+        <div className="flex justify-between items-center py-2 border-b border-[#e5dfd3]">
+          <span className="text-[#8a7a6b] font-sans tracking-widest uppercase text-[10px]">Recommended Neckline:</span>
+          <span className="font-bold font-serif text-[#4c0d17]">{necklines}</span>
         </div>
-        <div className="flex justify-between items-center py-1.5 border-b border-zinc-800/80">
-          <span className="text-zinc-400">Jewelry Pairing:</span>
-          <span className="font-medium text-amber-300">{jewelry}</span>
+        <div className="flex justify-between items-center py-2 border-b border-[#e5dfd3]">
+          <span className="text-[#8a7a6b] font-sans tracking-widest uppercase text-[10px]">Jewelry Pairing:</span>
+          <span className="font-bold font-serif text-[#b08a47]">{jewelry}</span>
         </div>
-        <div className="flex justify-between items-center py-1.5">
-          <span className="text-zinc-400">Auspicious Occasion:</span>
-          <span className="font-medium text-dasara-goldLight">{occasions}</span>
+        <div className="flex justify-between items-center py-2">
+          <span className="text-[#8a7a6b] font-sans tracking-widest uppercase text-[10px]">Auspicious Occasion:</span>
+          <span className="font-bold font-serif text-[#4c0d17]">{occasions}</span>
         </div>
       </TabsContent>
     </Tabs>

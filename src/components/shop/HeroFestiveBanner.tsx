@@ -74,31 +74,31 @@ export const HeroFestiveBanner: React.FC<HeroFestiveBannerProps> = ({
   ];
 
   return (
-    <section className="relative overflow-hidden border-b border-dasara-gold/30 bg-gradient-to-b from-[#180C14] via-[#0E0C0F] to-[#0E0C0F]">
+    <section className="relative overflow-hidden border-b border-[#e5dfd3] bg-[#f9f5ec]">
       {/* 1. Ambient Blurred Backdrop Glow matching authentic banner colors */}
       <div 
         className="absolute inset-0 bg-cover bg-center opacity-20 blur-3xl scale-110 pointer-events-none transform -translate-y-6"
         style={{ backgroundImage: `url(${bannerImagePath})` }}
       />
-      <div className="absolute inset-0 bg-radial-gradient from-dasara-maroon/20 via-transparent to-[#0E0C0F] pointer-events-none" />
+      <div className="absolute inset-0 bg-radial-gradient from-[#b08a47]/10 via-transparent to-transparent pointer-events-none" />
 
       {/* 2. Top Header Ribbon - Snug wrap with the sticky navbar above */}
-      <div className="relative z-10 border-b border-dasara-gold/15 bg-black/40 backdrop-blur-md">
+      <div className="relative z-10 border-b border-[#e5dfd3] bg-white/90 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 py-2.5 flex flex-wrap items-center justify-between gap-3 text-xs">
-          <div className="flex items-center gap-2 text-dasara-goldLight font-medium">
+          <div className="flex items-center gap-2 text-[#4c0d17] font-medium">
             <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="font-serif font-bold text-white tracking-wide">
+            <span className="font-serif font-bold text-[#4c0d17] tracking-wide">
               Sri Sai Cloth Store Flagship
             </span>
-            <span className="text-zinc-500">•</span>
-            <span className="text-zinc-300">Mahadevpur, Near Pathangadi Bazaar</span>
+            <span className="text-[#8a7a6b]/70">•</span>
+            <span className="text-[#4c0d17]/80">Mahadevpur, Near Pathangadi Bazaar</span>
           </div>
 
           <div className="flex items-center gap-2 text-[11px]">
-            <span className="rounded-full bg-dasara-maroon/90 border border-dasara-gold/50 px-3 py-0.5 font-bold text-dasara-goldLight shadow-sm">
+            <span className="rounded-full bg-[#f9f5ec] border border-[#e5dfd3] px-3 py-0.5 font-bold text-[#4c0d17] shadow-sm">
               ✨ Dasara Specials Ready to Sale!
             </span>
-            <span className="hidden md:inline text-zinc-400">
+            <span className="hidden md:inline text-[#8a7a6b]">
               Special Offers & Attractive Festival Discounts
             </span>
           </div>
@@ -114,12 +114,12 @@ export const HeroFestiveBanner: React.FC<HeroFestiveBannerProps> = ({
             <div className="relative group w-full max-w-[320px] sm:max-w-sm lg:max-w-[360px] transition-all duration-300">
               
               {/* Luminous Gold Halo Aura */}
-              <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-dasara-maroon via-dasara-gold/40 to-dasara-deepCrimson opacity-70 blur-xl group-hover:opacity-100 transition duration-500" />
+              <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-[#4c0d17]/30 via-[#b08a47]/30 to-[#4c0d17]/30 opacity-70 blur-xl group-hover:opacity-100 transition duration-500" />
 
               {/* Framed Flyer Card */}
               <div 
                 onClick={() => setIsZoomOpen(true)}
-                className="relative rounded-2xl overflow-hidden border-2 border-dasara-gold/70 bg-[#0E0C0F] shadow-2xl shadow-dasara-maroon/60 cursor-pointer select-none group"
+                className="relative rounded-2xl overflow-hidden border-2 border-[#e5dfd3] bg-white shadow-2xl shadow-[#4c0d17]/10 cursor-pointer select-none group"
                 title="Click to view full-resolution official flyer"
               >
                 {/* Gold Top Accent Line */}
@@ -141,17 +141,17 @@ export const HeroFestiveBanner: React.FC<HeroFestiveBannerProps> = ({
                       e.stopPropagation();
                       setIsZoomOpen(true);
                     }}
-                    className="flex items-center gap-1.5 rounded-full bg-black/85 hover:bg-dasara-maroon border border-dasara-gold/70 px-3.5 py-1.5 text-xs font-semibold text-dasara-goldLight backdrop-blur-md shadow-xl transition-all duration-200"
+                    className="flex items-center gap-1.5 rounded-full bg-white/90 hover:bg-[#4c0d17] border border-[#e5dfd3] px-3.5 py-1.5 text-xs font-semibold text-[#4c0d17] backdrop-blur-md shadow-xl transition-all duration-200"
                   >
-                    <ZoomIn className="h-3.5 w-3.5 text-dasara-gold" />
+                    <ZoomIn className="h-3.5 w-3.5 text-[#b08a47]" />
                     <span>Click to Enlarge Official Flyer</span>
                   </button>
                 </div>
               </div>
 
               {/* Address Micro-Bar beneath poster */}
-              <div className="mt-3 flex items-center justify-center gap-1.5 text-[11px] text-zinc-400">
-                <MapPin className="h-3.5 w-3.5 text-dasara-gold shrink-0" />
+              <div className="mt-3 flex items-center justify-center gap-1.5 text-[11px] text-[#8a7a6b]">
+                <MapPin className="h-3.5 w-3.5 text-white shrink-0" />
                 <span>Sri Sai Cloth Store | Mahadevpur Near Pathangadi Bazaar</span>
               </div>
             </div>
@@ -162,30 +162,30 @@ export const HeroFestiveBanner: React.FC<HeroFestiveBannerProps> = ({
             
             {/* Header Title & Tagline matching the flyer */}
             <div className="space-y-3">
-              <div className="inline-flex items-center gap-2 rounded-full bg-dasara-maroon/90 border border-dasara-gold/50 px-4 py-1 text-xs font-semibold text-dasara-goldLight shadow-md">
-                <Sparkles className="h-3.5 w-3.5 text-dasara-gold animate-spin" style={{ animationDuration: '6s' }} />
+              <div className="inline-flex items-center gap-2 rounded-full bg-[#f9f5ec] border border-[#e5dfd3] px-4 py-1 text-xs font-semibold text-[#4c0d17] shadow-md">
+                <Sparkles className="h-3.5 w-3.5 text-[#b08a47] animate-spin" style={{ animationDuration: '6s' }} />
                 <span>Celebrate Festivals with Tradition & Grace</span>
               </div>
 
-              <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.15]">
+              <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-black text-[#4c0d17] tracking-tight leading-[1.15]">
                 Sri Sai Cloth Store <br />
-                <span className="text-dasara-gold font-serif italic text-2xl sm:text-3xl lg:text-4xl font-normal">
+                <span className="text-[#b08a47] font-serif italic text-2xl sm:text-3xl lg:text-4xl font-normal">
                   Tradition • Style • For Every You
                 </span>
               </h1>
 
-              <p className="text-zinc-300 text-sm sm:text-base leading-relaxed font-sans max-w-xl">
-                Your one-stop boutique for all women's festive needs! Fresh <strong className="text-white">Dasara Specials & Festival Arrivals</strong> have arrived directly from artisan weaver hubs. Ready to sale at direct wholesale & reasonable prices in Mahadevpur.
+              <p className="text-[#4c0d17]/80 text-sm sm:text-base leading-relaxed font-sans max-w-xl">
+                Your one-stop boutique for all women's festive needs! Fresh <strong className="text-[#4c0d17]">Dasara Specials & Festival Arrivals</strong> have arrived directly from artisan weaver hubs. Ready to sale at direct wholesale & reasonable prices in Mahadevpur.
               </p>
             </div>
 
             {/* Flyer Categories Grid */}
             <div className="space-y-2.5">
-              <div className="flex items-center justify-between text-xs text-zinc-400">
-                <span className="font-serif font-bold text-dasara-goldLight uppercase tracking-wider text-[11px]">
+              <div className="flex items-center justify-between text-xs text-[#8a7a6b]">
+                <span className="font-serif font-bold text-[#4c0d17] uppercase tracking-wider text-[11px]">
                   ✨ Available Festival Collections
                 </span>
-                <span className="text-[10px] text-zinc-500">All Colours & Falls Available</span>
+                <span className="text-[10px] text-[#8a7a6b]/70">All Colours & Falls Available</span>
               </div>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -196,12 +196,12 @@ export const HeroFestiveBanner: React.FC<HeroFestiveBannerProps> = ({
                       if (onSelectCategory) onSelectCategory(cat.label);
                       scrollToCatalog();
                     }}
-                    className="flex flex-col rounded-xl bg-black/60 hover:bg-zinc-900 border border-dasara-gold/25 hover:border-dasara-gold/60 p-2.5 cursor-pointer transition shadow-sm group"
+                    className="flex flex-col rounded-xl bg-white hover:bg-[#f9f5ec] border border-[#e5dfd3] hover:border-[#b08a47]/50 p-2.5 cursor-pointer transition shadow-sm group"
                   >
-                    <span className="text-xs font-bold text-white group-hover:text-dasara-gold transition">
+                    <span className="text-xs font-bold text-[#4c0d17] group-hover:text-[#b08a47] transition">
                       {cat.label}
                     </span>
-                    <span className="text-[10px] text-zinc-400">
+                    <span className="text-[10px] text-[#8a7a6b]">
                       {cat.sub}
                     </span>
                   </div>
@@ -215,9 +215,9 @@ export const HeroFestiveBanner: React.FC<HeroFestiveBannerProps> = ({
               <button
                 type="button"
                 onClick={scrollToCatalog}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-dasara-maroon via-dasara-deepCrimson to-dasara-maroon border border-dasara-gold px-5 py-3 text-sm font-bold text-white shadow-xl shadow-dasara-maroon/50 hover:brightness-110 transition cursor-pointer w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#4c0d17] border border-[#4c0d17] px-5 py-3 text-sm font-bold text-white shadow-xl shadow-[#4c0d17]/20 hover:brightness-110 transition cursor-pointer w-full sm:w-auto"
               >
-                <ShoppingBag className="h-4 w-4 text-dasara-gold" />
+                <ShoppingBag className="h-4 w-4 text-[#b08a47]" />
                 <span>Explore Saree Collection</span>
                 <ChevronDown className="h-4 w-4" />
               </button>
@@ -226,9 +226,9 @@ export const HeroFestiveBanner: React.FC<HeroFestiveBannerProps> = ({
               <button
                 type="button"
                 onClick={handleWhatsAppInquiry}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-500/50 px-4 py-3 text-sm font-semibold text-emerald-300 transition cursor-pointer shadow-md w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#065f46]/10 hover:bg-[#065f46]/20 border border-[#065f46]/20 px-4 py-3 text-sm font-semibold text-[#065f46] transition cursor-pointer shadow-md w-full sm:w-auto"
               >
-                <MessageCircle className="h-4 w-4 text-emerald-400" />
+                <MessageCircle className="h-4 w-4 text-[#065f46]" />
                 <span>WhatsApp Store Inquiry</span>
               </button>
 
@@ -236,9 +236,9 @@ export const HeroFestiveBanner: React.FC<HeroFestiveBannerProps> = ({
               <button
                 type="button"
                 onClick={handleOpenMaps}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-black/70 hover:bg-zinc-900 border border-dasara-gold/40 px-4 py-3 text-sm font-semibold text-dasara-goldLight transition cursor-pointer shadow-md w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-white hover:bg-[#f9f5ec] border border-[#e5dfd3] px-4 py-3 text-sm font-semibold text-[#4c0d17] transition cursor-pointer shadow-md w-full sm:w-auto"
               >
-                <Navigation className="h-4 w-4 text-dasara-gold" />
+                <Navigation className="h-4 w-4 text-[#b08a47]" />
                 <span>Mahadevpur Location</span>
               </button>
             </div>
@@ -246,16 +246,16 @@ export const HeroFestiveBanner: React.FC<HeroFestiveBannerProps> = ({
             {/* In-Store Coupon & Assurances Bar */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
               {/* Coupon Box */}
-              <div className="flex items-center justify-between rounded-xl bg-zinc-950/90 border border-dasara-gold/40 p-3 shadow-md">
+              <div className="flex items-center justify-between rounded-xl bg-white border border-[#e5dfd3] p-3 shadow-md">
                 <div>
-                  <span className="text-[10px] uppercase font-mono tracking-widest text-zinc-500 block">
+                  <span className="text-[10px] uppercase font-mono tracking-widest text-[#8a7a6b]/70 block">
                     In-Store Voucher Pass
                   </span>
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-sm font-black text-white tracking-widest">
+                    <span className="font-mono text-sm font-black text-[#4c0d17] tracking-widest">
                       DASARA500
                     </span>
-                    <span className="text-[10px] text-amber-400 font-semibold">
+                    <span className="text-[10px] text-[#b08a47] font-semibold">
                       (₹500 OFF)
                     </span>
                   </div>
@@ -263,11 +263,11 @@ export const HeroFestiveBanner: React.FC<HeroFestiveBannerProps> = ({
                 <button
                   type="button"
                   onClick={handleCopyVoucher}
-                  className="flex items-center gap-1 rounded-lg bg-dasara-maroon px-2.5 py-1.5 text-xs font-semibold text-dasara-goldLight hover:bg-dasara-maroon/80 transition cursor-pointer"
+                  className="flex items-center gap-1 rounded-lg bg-[#4c0d17] px-2.5 py-1.5 text-xs font-semibold text-[#4c0d17] hover:bg-[#4c0d17]/80 transition cursor-pointer"
                 >
                   {copiedVoucher ? (
                     <>
-                      <Check className="h-3.5 w-3.5 text-emerald-400" />
+                      <Check className="h-3.5 w-3.5 text-[#065f46]" />
                       <span>Copied!</span>
                     </>
                   ) : (
@@ -280,26 +280,26 @@ export const HeroFestiveBanner: React.FC<HeroFestiveBannerProps> = ({
               </div>
 
               {/* Boutique Hours & Trial */}
-              <div className="flex items-center gap-2.5 rounded-xl bg-zinc-950/90 border border-zinc-800 p-3 shadow-md">
-                <Clock className="h-4 w-4 text-dasara-gold shrink-0" />
+              <div className="flex items-center gap-2.5 rounded-xl bg-white border border-[#e5dfd3] p-3 shadow-md">
+                <Clock className="h-4 w-4 text-white shrink-0" />
                 <div className="text-xs">
-                  <span className="font-bold text-white block">Daily Festive Hours</span>
-                  <span className="text-zinc-400 text-[11px]">10:00 AM – 9:30 PM (All 10 Days)</span>
+                  <span className="font-bold text-[#4c0d17] block">Daily Festive Hours</span>
+                  <span className="text-[#8a7a6b] text-[11px]">10:00 AM – 9:30 PM (All 10 Days)</span>
                 </div>
               </div>
             </div>
 
             {/* Key Value Badges matching the flyer's footer */}
-            <div className="flex flex-wrap items-center gap-2 sm:gap-3 pt-1 text-[11px] text-zinc-300">
-              <span className="inline-flex items-center gap-1.5 rounded-lg bg-black/60 border border-emerald-500/30 px-3 py-1.5 text-emerald-400 font-semibold">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 pt-1 text-[11px] text-[#4c0d17]/80">
+              <span className="inline-flex items-center gap-1.5 rounded-lg bg-white border border-[#065f46]/20 px-3 py-1.5 text-[#065f46] font-semibold">
                 <ShieldCheck className="h-3.5 w-3.5" />
                 <span>100% Best Quality Products</span>
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-lg bg-black/60 border border-dasara-gold/30 px-3 py-1.5 text-dasara-goldLight font-medium">
-                <Store className="h-3.5 w-3.5 text-dasara-gold" />
+              <span className="inline-flex items-center gap-1.5 rounded-lg bg-white border border-[#e5dfd3] px-3 py-1.5 text-[#4c0d17] font-medium">
+                <Store className="h-3.5 w-3.5 text-[#b08a47]" />
                 <span>Special Navaratri Sarees</span>
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-lg bg-black/60 border border-amber-500/30 px-3 py-1.5 text-amber-300 font-medium">
+              <span className="inline-flex items-center gap-1.5 rounded-lg bg-white border border-[#b08a47]/20 px-3 py-1.5 text-[#b08a47] font-medium">
                 <Tag className="h-3.5 w-3.5" />
                 <span>Wholesale & Reasonable Prices</span>
               </span>
@@ -313,14 +313,14 @@ export const HeroFestiveBanner: React.FC<HeroFestiveBannerProps> = ({
       {/* 4. Fullscreen High-Resolution Lightbox Modal */}
       {isZoomOpen && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/92 backdrop-blur-md p-2 sm:p-6"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-white/95 backdrop-blur-md p-2 sm:p-6"
           onClick={() => setIsZoomOpen(false)}
         >
           {/* Close button */}
           <button
             type="button"
             onClick={() => setIsZoomOpen(false)}
-            className="absolute top-4 right-4 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-black/80 border border-dasara-gold/50 text-white hover:text-dasara-gold hover:scale-105 transition shadow-2xl cursor-pointer"
+            className="absolute top-4 right-4 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 border border-[#e5dfd3] text-[#4c0d17] hover:text-[#b08a47] hover:scale-105 transition shadow-2xl cursor-pointer"
             aria-label="Close flyer preview"
           >
             <X className="h-5 w-5" />
@@ -328,7 +328,7 @@ export const HeroFestiveBanner: React.FC<HeroFestiveBannerProps> = ({
 
           {/* Modal Content */}
           <div 
-            className="relative max-w-2xl max-h-[92vh] w-full flex flex-col items-center overflow-auto rounded-2xl border-2 border-dasara-gold/70 bg-[#0E0C0F] p-2 shadow-2xl"
+            className="relative max-w-2xl max-h-[92vh] w-full flex flex-col items-center overflow-auto rounded-2xl border-2 border-[#e5dfd3] bg-white p-2 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <img
@@ -338,23 +338,23 @@ export const HeroFestiveBanner: React.FC<HeroFestiveBannerProps> = ({
             />
 
             {/* Modal Bottom Bar */}
-            <div className="w-full flex flex-wrap items-center justify-between gap-3 p-3 bg-zinc-950/90 rounded-b-xl border-t border-zinc-800 text-xs">
-              <div className="flex items-center gap-2 text-dasara-goldLight font-serif">
-                <Store className="h-4 w-4 text-dasara-gold" />
+            <div className="w-full flex flex-wrap items-center justify-between gap-3 p-3 bg-white rounded-b-xl border-t border-[#e5dfd3] text-xs">
+              <div className="flex items-center gap-2 text-[#4c0d17] font-serif">
+                <Store className="h-4 w-4 text-[#b08a47]" />
                 <span>Sri Sai Cloth Store • Mahadevpur Near Pathangadi Bazaar</span>
               </div>
               <div className="flex items-center gap-2">
                 <button
                   type="button"
                   onClick={handleWhatsAppInquiry}
-                  className="rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-3 py-1.5 text-xs transition"
+                  className="rounded-lg bg-emerald-600 hover:bg-emerald-500 text-[#4c0d17] font-semibold px-3 py-1.5 text-xs transition"
                 >
                   WhatsApp Inquiries
                 </button>
                 <button
                   type="button"
                   onClick={() => setIsZoomOpen(false)}
-                  className="rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 px-3 py-1.5 text-xs transition"
+                  className="rounded-lg bg-[#e5dfd3] hover:bg-[#e5dfd3] text-[#4c0d17]/80 px-3 py-1.5 text-xs transition"
                 >
                   Close
                 </button>

@@ -11,22 +11,23 @@ export default {
     extend: {
       colors: {
         dasara: {
-          maroon: '#6B0B24',       // Royal Kumkuma Maroon (Primary brand)
-          deepCrimson: '#420614',  // Deep contrast festive background
-          gold: '#D4AF37',         // Pure Temple Zari Gold
-          goldLight: '#F7E7A9',    // Shimmer highlight
-          peacock: '#0D5C75',      // Peacock Teal (Auspicious secondary)
-          emerald: '#0B4D3C',      // Deep Silk Green
-          haldi: '#E5A93C',        // Festive Turmeric Gold
-          champagne: '#FAF6F0',    // Silk Ivory (Text and light cards)
-          obsidian: '#121013',     // Rich dark base
-          cardBg: '#1A1518',       // Card surface base
-          borderGold: 'rgba(212, 175, 55, 0.25)',
+          maroon: '#4c0d17',       // Deep Burgundy (Matches AI Hero Image)
+          deepCrimson: '#3d1118',  // Darker shade for contrast
+          gold: '#b08a47',         // Soft Gold
+          goldLight: '#d2b471',    // Shimmer highlight
+          peacock: '#0D5C75',
+          emerald: '#0B4D3C',
+          haldi: '#E5A93C',
+          champagne: '#f9f5ec',    // Warm Cream
+          obsidian: '#121013',
+          cardBg: '#1A1518',
+          borderGold: 'rgba(176, 138, 71, 0.25)',
         }
       },
       fontFamily: {
-        serif: ['"Playfair Display"', 'Georgia', 'serif'],
-        sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+        serif: ['"Playfair Display"', '"Noto Serif Telugu"', 'Georgia', 'serif'],
+        sans: ['"Plus Jakarta Sans"', '"Noto Sans Telugu"', 'Inter', 'sans-serif'],
+        telugu: ['"Noto Serif Telugu"', '"Noto Sans Telugu"', 'serif'],
       },
       animation: {
         'shine': 'shine 4s ease-in-out infinite',

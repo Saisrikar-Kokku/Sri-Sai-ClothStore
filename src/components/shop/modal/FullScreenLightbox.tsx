@@ -202,32 +202,32 @@ export const FullScreenLightbox: React.FC<FullScreenLightboxProps> = ({
   return (
     <DialogPrimitive.Root open={isOpen} onOpenChange={(open) => { if (!open) onClose(); }}>
       <DialogPrimitive.Portal>
-        <DialogPrimitive.Overlay className="fixed inset-0 z-[70] bg-black/95 backdrop-blur-md transition-opacity data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
+        <DialogPrimitive.Overlay className="fixed inset-0 z-[70] bg-[#f4efeb]/95 backdrop-blur-md transition-opacity data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
         <DialogPrimitive.Content
           className="fixed inset-0 z-[70] flex flex-col justify-between select-none outline-none touch-none"
           aria-label="Full-Screen Saree Lightbox Theatre"
         >
           {/* Top Theatre Bar */}
-          <div className="flex items-center justify-between px-6 py-4 bg-gradient-to-b from-black/95 via-black/70 to-transparent z-20">
+          <div className="flex items-center justify-between px-6 py-4 bg-gradient-to-b from-[#f4efeb] via-[#f4efeb]/90 to-transparent z-20">
             <div>
-              <DialogPrimitive.Title className="font-serif text-lg sm:text-xl font-bold text-dasara-champagne">
+              <DialogPrimitive.Title className="font-serif text-lg sm:text-2xl font-bold text-[#4c0d17]">
                 {productName}
               </DialogPrimitive.Title>
               <DialogPrimitive.Description className="sr-only">
                 Full-screen high-resolution inspection for {productName}
               </DialogPrimitive.Description>
-              <p className="text-xs text-dasara-gold font-mono mt-0.5">
+              <p className="text-[10px] font-sans tracking-widest uppercase font-bold text-[#8a7a6b] mt-1">
                 Angle {currentIndex + 1} of {angleImages.length}: {currentImage.label} ({currentImage.description})
               </p>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               {/* Zoom Controls */}
-              <div className="flex items-center gap-1 bg-zinc-900 border border-zinc-800 rounded-xl p-1 text-white">
+              <div className="flex items-center gap-1 bg-white border border-[#e5dfd3] rounded-sm p-1 shadow-sm text-[#4c0d17]">
                 <button
                   type="button"
                   onClick={handleZoomIn}
-                  className="p-1.5 hover:bg-zinc-800 rounded-lg text-dasara-gold cursor-pointer transition"
+                  className="p-1.5 hover:bg-[#f4efeb] rounded-sm text-[#b08a47] cursor-pointer transition"
                   title="Zoom In (+)"
                   aria-label="Zoom In"
                 >
@@ -236,7 +236,7 @@ export const FullScreenLightbox: React.FC<FullScreenLightboxProps> = ({
                 <button
                   type="button"
                   onClick={handleZoomOut}
-                  className="p-1.5 hover:bg-zinc-800 rounded-lg text-dasara-gold cursor-pointer transition"
+                  className="p-1.5 hover:bg-[#f4efeb] rounded-sm text-[#b08a47] cursor-pointer transition"
                   title="Zoom Out (-)"
                   aria-label="Zoom Out"
                 >
@@ -245,13 +245,13 @@ export const FullScreenLightbox: React.FC<FullScreenLightboxProps> = ({
                 <button
                   type="button"
                   onClick={handleResetZoom}
-                  className="p-1.5 hover:bg-zinc-800 rounded-lg text-zinc-400 hover:text-white cursor-pointer transition"
+                  className="p-1.5 hover:bg-[#f4efeb] rounded-sm text-[#8a7a6b] hover:text-[#4c0d17] cursor-pointer transition"
                   title="Reset Zoom (0 / R)"
                   aria-label="Reset Zoom"
                 >
                   <RotateCcw className="h-4 w-4" />
                 </button>
-                <span className="px-2 text-xs font-mono font-bold text-zinc-300">
+                <span className="px-2 text-[11px] font-mono font-bold text-[#4c0d17]">
                   {Math.round(scale * 100)}%
                 </span>
               </div>
@@ -259,7 +259,7 @@ export const FullScreenLightbox: React.FC<FullScreenLightboxProps> = ({
               <button
                 type="button"
                 onClick={onClose}
-                className="p-2 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-dasara-gold transition cursor-pointer"
+                className="p-2 rounded-sm bg-white border border-[#e5dfd3] text-[#8a7a6b] hover:text-[#4c0d17] hover:border-[#4c0d17] transition cursor-pointer shadow-sm"
                 aria-label="Close Theatre View"
               >
                 <X className="h-5 w-5" />
@@ -288,7 +288,7 @@ export const FullScreenLightbox: React.FC<FullScreenLightboxProps> = ({
                 transform: `scale(${scale}) translate(${position.x / scale}px, ${position.y / scale}px)`,
                 transition: isDragging ? 'none' : 'transform 0.2s ease-out',
               }}
-              className="max-h-[85vh] max-w-[85vw] object-contain pointer-events-none drop-shadow-2xl"
+              className="max-h-[85vh] max-w-[85vw] object-contain pointer-events-none drop-shadow-lg"
             />
 
             {/* Navigation Arrows */}
@@ -302,7 +302,7 @@ export const FullScreenLightbox: React.FC<FullScreenLightboxProps> = ({
                     setScale(1);
                     setPosition({ x: 0, y: 0 });
                   }}
-                  className="absolute left-6 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-black/70 border border-zinc-700 text-white flex items-center justify-center hover:border-dasara-gold hover:bg-black transition cursor-pointer z-10 shadow-xl"
+                  className="absolute left-6 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white/90 border border-[#e5dfd3] text-[#4c0d17] flex items-center justify-center hover:border-[#b08a47] hover:bg-white transition cursor-pointer z-10 shadow-md"
                   aria-label="Previous image"
                 >
                   <ChevronLeft className="h-6 w-6" />
@@ -316,7 +316,7 @@ export const FullScreenLightbox: React.FC<FullScreenLightboxProps> = ({
                     setScale(1);
                     setPosition({ x: 0, y: 0 });
                   }}
-                  className="absolute right-6 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-black/70 border border-zinc-700 text-white flex items-center justify-center hover:border-dasara-gold hover:bg-black transition cursor-pointer z-10 shadow-xl"
+                  className="absolute right-6 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white/90 border border-[#e5dfd3] text-[#4c0d17] flex items-center justify-center hover:border-[#b08a47] hover:bg-white transition cursor-pointer z-10 shadow-md"
                   aria-label="Next image"
                 >
                   <ChevronRight className="h-6 w-6" />
@@ -326,7 +326,7 @@ export const FullScreenLightbox: React.FC<FullScreenLightboxProps> = ({
           </div>
 
           {/* Bottom Thumbnail Strip */}
-          <div className="flex items-center justify-center gap-3 py-4 bg-gradient-to-t from-black/95 via-black/70 to-transparent z-20">
+          <div className="flex items-center justify-center gap-3 py-4 bg-gradient-to-t from-[#f4efeb] via-[#f4efeb]/90 to-transparent z-20">
             {angleImages.map((img, idx) => (
               <button
                 key={`${img.angle}-${idx}`}
@@ -337,10 +337,10 @@ export const FullScreenLightbox: React.FC<FullScreenLightboxProps> = ({
                   setPosition({ x: 0, y: 0 });
                 }}
                 aria-label={`View ${img.label}`}
-                className={`h-14 w-14 rounded-lg overflow-hidden border-2 transition cursor-pointer ${
+                className={`h-16 w-16 rounded-sm overflow-hidden border-2 transition cursor-pointer ${
                   currentIndex === idx
-                    ? 'border-dasara-gold scale-110 shadow-[0_0_12px_#D4AF37]'
-                    : 'border-zinc-800 opacity-60 hover:opacity-100'
+                    ? 'border-[#b08a47] scale-110 shadow-md'
+                    : 'border-[#e5dfd3] opacity-60 hover:opacity-100 hover:border-[#b08a47]/50'
                 }`}
               >
                 <img src={img.url} alt={img.label} className="h-full w-full object-cover" />

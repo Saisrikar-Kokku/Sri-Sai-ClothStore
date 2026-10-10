@@ -168,7 +168,7 @@ export const FabricLoupeLens: React.FC<FabricLoupeLensProps> = ({
         onTouchCancel={handleTouchEnd}
         onTouchMove={handleTouchMove}
         onDoubleClick={onOpenLightbox}
-        className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl border border-dasara-gold/30 bg-zinc-950 cursor-crosshair select-none group shadow-2xl touch-none"
+        className="relative aspect-[3/4] w-full overflow-hidden rounded-sm border border-[#e5dfd3] bg-[#f4efeb] cursor-crosshair select-none group shadow-sm touch-none"
       >
         <img
           src={imageSrc}
@@ -176,13 +176,10 @@ export const FabricLoupeLens: React.FC<FabricLoupeLensProps> = ({
           className="h-full w-full object-cover transition-opacity duration-200 pointer-events-none"
         />
 
-        {/* Ambient Darkening Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
-
         {/* Current Angle Badge if available */}
         {currentAngleLabel && (
-          <div className="absolute top-3 left-3 z-10 pointer-events-none">
-            <span className="rounded-full bg-black/80 px-2.5 py-1 text-[11px] font-medium text-dasara-goldLight border border-dasara-gold/40 backdrop-blur-md shadow-md">
+          <div className="absolute top-4 left-4 z-10 pointer-events-none">
+            <span className="rounded-sm bg-[#4c0d17] px-3 py-1.5 text-[10px] font-bold tracking-widest uppercase text-white shadow-md">
               {currentAngleLabel}
             </span>
           </div>
@@ -197,20 +194,17 @@ export const FabricLoupeLens: React.FC<FabricLoupeLensProps> = ({
             opacity: isActive || isTouchActive ? 1 : 0,
             pointerEvents: 'none',
           }}
-          className="absolute h-44 w-44 rounded-full border-2 border-dasara-gold shadow-[0_0_35px_rgba(212,175,55,0.65),0_15px_35px_rgba(0,0,0,0.9)] ring-4 ring-black/80 z-30 overflow-hidden transition-opacity duration-150 will-change-transform"
+          className="absolute h-44 w-44 rounded-full border border-[#b08a47] shadow-[0_0_20px_rgba(76,13,23,0.15),0_10px_25px_rgba(0,0,0,0.1)] ring-4 ring-[#f4efeb] z-30 overflow-hidden transition-opacity duration-150 will-change-transform"
         >
-          {/* Specular Zari Sheen Highlight */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_35%_35%,rgba(255,248,220,0.4)_0%,transparent_60%)] pointer-events-none" />
-
           {/* Crosshair Target Centering Reticle */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="h-4 w-4 rounded-full border border-dasara-gold/80 flex items-center justify-center shadow-sm">
-              <div className="h-1 w-1 rounded-full bg-dasara-gold" />
+            <div className="h-4 w-4 rounded-full border border-[#4c0d17]/50 flex items-center justify-center shadow-sm">
+              <div className="h-1 w-1 rounded-full bg-[#4c0d17]" />
             </div>
           </div>
 
           <div className="absolute bottom-2.5 inset-x-0 text-center pointer-events-none">
-            <span className="rounded-full bg-black/90 px-2.5 py-0.5 text-[9px] font-mono font-bold text-dasara-gold border border-dasara-gold/40 shadow-sm">
+            <span className="rounded-sm bg-white/95 px-2.5 py-1 text-[9px] font-sans tracking-widest uppercase font-bold text-[#4c0d17] border border-[#e5dfd3] shadow-sm">
               {zoomLevel}x Macro Lens
             </span>
           </div>
@@ -220,37 +214,37 @@ export const FabricLoupeLens: React.FC<FabricLoupeLensProps> = ({
         <button
           type="button"
           onClick={onOpenLightbox}
-          className="absolute top-3 right-3 flex items-center gap-1.5 rounded-full bg-black/80 hover:bg-black border border-dasara-gold/40 px-3 py-1 text-xs font-semibold text-dasara-goldLight backdrop-blur-md shadow-lg transition hover:scale-105 cursor-pointer z-20"
+          className="absolute top-4 right-4 flex items-center gap-2 rounded-sm bg-[#4c0d17] hover:bg-[#4c0d17]/90 px-4 py-1.5 text-[10px] uppercase tracking-widest font-bold text-white shadow-md transition hover:scale-105 cursor-pointer z-20"
           aria-label="Open Full-Screen Theatre View"
         >
-          <Maximize2 className="h-3.5 w-3.5 text-dasara-gold" />
+          <Maximize2 className="h-3.5 w-3.5 text-[#b08a47]" />
           <span className="hidden sm:inline">Theatre View</span>
         </button>
 
         {/* Instruction Pill (hidden during active inspection) */}
         {!isActive && !isTouchActive && (
-          <div className="absolute bottom-3 right-3 flex items-center gap-1.5 rounded-full bg-black/80 backdrop-blur-md border border-dasara-gold/40 px-3 py-1 text-[11px] font-medium text-dasara-goldLight shadow-lg pointer-events-none transition-opacity">
-            <ZoomIn className="h-3.5 w-3.5 text-dasara-gold" />
+          <div className="absolute bottom-4 right-4 flex items-center gap-2 rounded-sm bg-white/95 backdrop-blur-sm border border-[#e5dfd3] px-4 py-1.5 text-[10px] uppercase tracking-widest font-bold text-[#4c0d17] shadow-sm pointer-events-none transition-opacity">
+            <ZoomIn className="h-3.5 w-3.5 text-[#b08a47]" />
             <span>Hover / Hold for {zoomLevel}x Macro Weave Inspection</span>
           </div>
         )}
       </div>
 
       {/* Optical Zoom Multiplier Bar */}
-      <div className="flex items-center justify-between px-1 text-xs">
-        <span className="text-zinc-400 text-[11px] flex items-center gap-1">
-          <Sparkles className="h-3 w-3 text-dasara-gold" /> Inspection Magnification:
+      <div className="flex items-center justify-between px-1 text-xs mt-1">
+        <span className="text-[#8a7a6b] font-sans tracking-widest uppercase text-[10px] flex items-center gap-1">
+          <Sparkles className="h-3 w-3 text-[#b08a47]" /> Inspection Magnification:
         </span>
-        <div className="flex items-center gap-1.5 bg-zinc-950/90 border border-zinc-800 rounded-lg p-1">
+        <div className="flex items-center gap-1.5 bg-transparent rounded-sm">
           {([2.0, 3.0, 4.5] as ZoomLevel[]).map((level) => (
             <button
               key={level}
               type="button"
               onClick={() => onZoomChange(level)}
-              className={`px-2 py-0.5 rounded text-[11px] font-mono font-bold transition cursor-pointer ${
+              className={`px-3 py-1 rounded-sm text-[10px] tracking-widest font-mono font-bold transition border cursor-pointer ${
                 zoomLevel === level
-                  ? 'bg-dasara-maroon text-dasara-goldLight border border-dasara-gold/50 shadow-sm'
-                  : 'text-zinc-400 hover:text-white'
+                  ? 'bg-white text-[#4c0d17] border-[#e5dfd3] shadow-sm'
+                  : 'text-[#8a7a6b] hover:text-[#4c0d17] border-transparent hover:bg-white/50'
               }`}
             >
               {level}x

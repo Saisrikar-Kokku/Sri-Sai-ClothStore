@@ -218,12 +218,12 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
   return (
     <>
       <Dialog open={isOpen} onOpenChange={(open) => { if (!open) onClose(); }}>
-        <DialogContent className="max-w-3xl w-full border border-dasara-gold/40 bg-[#0E0C0F] p-4 sm:p-6 text-white sm:rounded-2xl max-h-[92vh] overflow-y-auto shadow-2xl">
+        <DialogContent className="max-w-3xl w-full border border-[#b08a47]/30 bg-[#f9f5ec] p-4 sm:p-6 text-[#4c0d17] sm:rounded-2xl max-h-[92vh] overflow-y-auto shadow-2xl">
           <DialogHeader className="text-left space-y-1">
             <DialogTitle className="font-serif text-xl sm:text-2xl font-bold text-dasara-champagne">
               {productToEdit ? 'Edit Saree Consignment' : 'Add New Saree (New Maal)'}
             </DialogTitle>
-            <p className="text-xs text-zinc-400">
+            <p className="text-xs text-[#8a7a6b]">
               Snap photos with your phone camera, set stock pieces & pricing, and save directly to live database.
             </p>
           </DialogHeader>
@@ -232,25 +232,25 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
             {/* Row 1: Name and SKU */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div className="sm:col-span-2">
-                <label className="text-xs font-semibold text-zinc-300 block mb-1">Saree Name / Title</label>
+                <label className="text-xs font-semibold text-[#4c0d17]/90 block mb-1">Saree Name / Title</label>
                 <input
                   type="text"
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="e.g. Kanchipuram Pure Bridal Pattu in Royal Crimson"
-                  className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:border-dasara-gold focus:outline-none"
+                  className="w-full bg-white border border-[#e5dfd3] rounded-xl px-3.5 py-2.5 text-xs text-[#4c0d17] focus:border-dasara-gold focus:outline-none"
                 />
               </div>
               <div>
-                <label className="text-xs font-semibold text-zinc-300 block mb-1">Consignment SKU</label>
+                <label className="text-xs font-semibold text-[#4c0d17]/90 block mb-1">Consignment SKU</label>
                 <input
                   type="text"
                   required
                   value={formData.sku}
                   onChange={(e) => setFormData({ ...formData, sku: e.target.value.toUpperCase() })}
                   placeholder="e.g. SSC-KP-101"
-                  className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3.5 py-2.5 text-xs text-white font-mono uppercase focus:border-dasara-gold focus:outline-none"
+                  className="w-full bg-white border border-[#e5dfd3] rounded-xl px-3.5 py-2.5 text-xs text-[#4c0d17] font-mono uppercase focus:border-dasara-gold focus:outline-none"
                 />
               </div>
             </div>
@@ -258,11 +258,11 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
             {/* Row 2: Category, Provenance, Color */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div>
-                <label className="text-xs font-semibold text-zinc-300 block mb-1">Category</label>
+                <label className="text-xs font-semibold text-[#4c0d17]/90 block mb-1">Category</label>
                 <select
                   value={formData.category}
                   onChange={(e) => setFormData({ ...formData, category: e.target.value as any })}
-                  className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:border-dasara-gold focus:outline-none cursor-pointer"
+                  className="w-full bg-white border border-[#e5dfd3] rounded-xl px-3.5 py-2.5 text-xs text-[#4c0d17] focus:border-dasara-gold focus:outline-none cursor-pointer"
                 >
                   <option value="Kanchi Pattu">Kanchi Pattu</option>
                   <option value="Banarasi Silk">Banarasi Silk</option>
@@ -272,31 +272,31 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
                 </select>
               </div>
               <div>
-                <label className="text-xs font-semibold text-zinc-300 block mb-1">Provenance / Hub</label>
+                <label className="text-xs font-semibold text-[#4c0d17]/90 block mb-1">Provenance / Hub</label>
                 <input
                   type="text"
                   required
                   value={formData.provenance}
                   onChange={(e) => setFormData({ ...formData, provenance: e.target.value })}
                   placeholder="e.g. Kanchipuram, Tamil Nadu"
-                  className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:border-dasara-gold focus:outline-none"
+                  className="w-full bg-white border border-[#e5dfd3] rounded-xl px-3.5 py-2.5 text-xs text-[#4c0d17] focus:border-dasara-gold focus:outline-none"
                 />
               </div>
               <div>
-                <label className="text-xs font-semibold text-zinc-300 block mb-1">Color Shade</label>
+                <label className="text-xs font-semibold text-[#4c0d17]/90 block mb-1">Color Shade</label>
                 <input
                   type="text"
                   required
                   value={formData.color}
                   onChange={(e) => setFormData({ ...formData, color: e.target.value })}
                   placeholder="e.g. Crimson Red"
-                  className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:border-dasara-gold focus:outline-none"
+                  className="w-full bg-white border border-[#e5dfd3] rounded-xl px-3.5 py-2.5 text-xs text-[#4c0d17] focus:border-dasara-gold focus:outline-none"
                 />
               </div>
             </div>
 
             {/* Row 3: Pricing and Discount */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-3.5 bg-zinc-950/80 rounded-xl border border-zinc-800">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-3.5 bg-white/80 rounded-xl border border-[#e5dfd3]">
               <div>
                 <label className="text-xs font-semibold text-dasara-gold block mb-1">Selling Price (₹)</label>
                 <input
@@ -305,23 +305,23 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
                   min={100}
                   value={formData.price}
                   onChange={(e) => setFormData({ ...formData, price: Number(e.target.value) })}
-                  className="w-full bg-black border border-zinc-800 rounded-xl px-3.5 py-2 text-sm font-bold text-dasara-gold focus:border-dasara-gold focus:outline-none"
+                  className="w-full bg-black border border-[#e5dfd3] rounded-xl px-3.5 py-2 text-sm font-bold text-dasara-gold focus:border-dasara-gold focus:outline-none"
                 />
               </div>
               <div>
-                <label className="text-xs font-semibold text-zinc-400 block mb-1">Original MRP (₹)</label>
+                <label className="text-xs font-semibold text-[#8a7a6b] block mb-1">Original MRP (₹)</label>
                 <input
                   type="number"
                   required
                   min={formData.price}
                   value={formData.originalPrice}
                   onChange={(e) => setFormData({ ...formData, originalPrice: Number(e.target.value) })}
-                  className="w-full bg-black border border-zinc-800 rounded-xl px-3.5 py-2 text-sm font-medium text-zinc-400 line-through focus:border-dasara-gold focus:outline-none"
+                  className="w-full bg-black border border-[#e5dfd3] rounded-xl px-3.5 py-2 text-sm font-medium text-[#8a7a6b] line-through focus:border-dasara-gold focus:outline-none"
                 />
               </div>
               <div className="flex flex-col justify-center">
-                <span className="text-[10px] text-zinc-400 block">Festive Discount:</span>
-                <span className="text-sm sm:text-base font-bold text-emerald-400">
+                <span className="text-[10px] text-[#8a7a6b] block">Festive Discount:</span>
+                <span className="text-sm sm:text-base font-bold text-[#065f46]">
                   {discountPercent}% OFF (Saves ₹{Math.max(0, formData.originalPrice - formData.price).toLocaleString('en-IN')})
                 </span>
               </div>
@@ -330,60 +330,60 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
             {/* Row 4: Fabric, Zari, Blouse */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div>
-                <label className="text-xs font-semibold text-zinc-300 block mb-1">Fabric Composition</label>
+                <label className="text-xs font-semibold text-[#4c0d17]/90 block mb-1">Fabric Composition</label>
                 <input
                   type="text"
                   required
                   value={formData.fabric}
                   onChange={(e) => setFormData({ ...formData, fabric: e.target.value })}
-                  className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:border-dasara-gold focus:outline-none"
+                  className="w-full bg-white border border-[#e5dfd3] rounded-xl px-3.5 py-2.5 text-xs text-[#4c0d17] focus:border-dasara-gold focus:outline-none"
                 />
               </div>
               <div>
-                <label className="text-xs font-semibold text-zinc-300 block mb-1">Zari Specification</label>
+                <label className="text-xs font-semibold text-[#4c0d17]/90 block mb-1">Zari Specification</label>
                 <input
                   type="text"
                   required
                   value={formData.zariType}
                   onChange={(e) => setFormData({ ...formData, zariType: e.target.value })}
-                  className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:border-dasara-gold focus:outline-none"
+                  className="w-full bg-white border border-[#e5dfd3] rounded-xl px-3.5 py-2.5 text-xs text-[#4c0d17] focus:border-dasara-gold focus:outline-none"
                 />
               </div>
               <div>
-                <label className="text-xs font-semibold text-zinc-300 block mb-1">Blouse Piece</label>
+                <label className="text-xs font-semibold text-[#4c0d17]/90 block mb-1">Blouse Piece</label>
                 <input
                   type="text"
                   required
                   value={formData.blouseDetails}
                   onChange={(e) => setFormData({ ...formData, blouseDetails: e.target.value })}
-                  className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:border-dasara-gold focus:outline-none"
+                  className="w-full bg-white border border-[#e5dfd3] rounded-xl px-3.5 py-2.5 text-xs text-[#4c0d17] focus:border-dasara-gold focus:outline-none"
                 />
               </div>
             </div>
 
             {/* Row 5: Description */}
             <div>
-              <label className="text-xs font-semibold text-zinc-300 block mb-1">Description / Artisan Note</label>
+              <label className="text-xs font-semibold text-[#4c0d17]/90 block mb-1">Description / Artisan Note</label>
               <textarea
                 rows={2}
                 required
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                className="w-full bg-zinc-950 border border-zinc-800 rounded-xl p-3 text-xs text-white focus:border-dasara-gold focus:outline-none resize-none"
+                className="w-full bg-white border border-[#e5dfd3] rounded-xl p-3 text-xs text-[#4c0d17] focus:border-dasara-gold focus:outline-none resize-none"
               />
             </div>
 
             {/* ======================================================== */}
             {/* Row 6: STOCK AVAILABLE CONTROLS (EXPLICIT PIECES INPUT) */}
             {/* ======================================================== */}
-            <div className="p-4 bg-zinc-950/90 rounded-2xl border border-dasara-gold/40 space-y-3">
+            <div className="p-4 bg-white/90 rounded-2xl border border-[#b08a47]/30 space-y-3">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div>
-                  <label className="text-xs font-bold text-white flex items-center gap-1.5">
+                  <label className="text-xs font-bold text-[#4c0d17] flex items-center gap-1.5">
                     <PackageCheck className="h-4 w-4 text-dasara-gold" />
                     <span>Stock Available (అందుబాటులో ఉన్న పీసులు)</span>
                   </label>
-                  <p className="text-[11px] text-zinc-400 mt-0.5">
+                  <p className="text-[11px] text-[#8a7a6b] mt-0.5">
                     Enter the number of pieces physically in stock (e.g. 1 for single exclusive piece, 0 for sold out).
                   </p>
                 </div>
@@ -391,18 +391,18 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
                 {/* Status Indicator Pill */}
                 <div className="self-start sm:self-auto">
                   {formData.stockCount === 0 ? (
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-rose-950/80 border border-rose-500/50 px-3 py-1 text-xs font-bold text-rose-300">
-                      <XCircle className="h-3.5 w-3.5 text-rose-400" />
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-red-50 border border-red-200 px-3 py-1 text-xs font-bold text-red-600">
+                      <XCircle className="h-3.5 w-3.5 text-red-600" />
                       <span>Sold Out (స్టాక్ అయిపోయింది)</span>
                     </span>
                   ) : formData.stockCount === 1 ? (
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-950/80 border border-dasara-gold/50 px-3 py-1 text-xs font-bold text-dasara-goldLight">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-[#b08a47]/10 border border-[#b08a47]/30 px-3 py-1 text-xs font-bold text-[#b08a47]">
                       <Sparkles className="h-3.5 w-3.5 text-dasara-gold" />
                       <span>Single Piece Only (ఒక్కటే పీస్ - 1-of-1)</span>
                     </span>
                   ) : (
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-950/80 border border-emerald-500/50 px-3 py-1 text-xs font-bold text-emerald-300">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400" />
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-[#065f46]/5 border border-[#065f46]/20 px-3 py-1 text-xs font-bold text-[#065f46]">
+                      <CheckCircle2 className="h-3.5 w-3.5 text-[#065f46]" />
                       <span>{formData.stockCount} Pieces Available (స్టాక్ లో ఉన్నాయి)</span>
                     </span>
                   )}
@@ -412,7 +412,7 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
               {/* Stepper Input & Quick Presets */}
               <div className="flex flex-wrap items-center gap-3 pt-1">
                 {/* Stepper with - / + */}
-                <div className="flex items-center rounded-xl bg-black border border-zinc-800 p-1">
+                <div className="flex items-center rounded-xl bg-black border border-[#e5dfd3] p-1">
                   <button
                     type="button"
                     onClick={() =>
@@ -425,7 +425,7 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
                         };
                       })
                     }
-                    className="h-8 w-8 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-white flex items-center justify-center transition cursor-pointer font-bold disabled:opacity-40"
+                    className="h-8 w-8 rounded-lg bg-[#f9f5ec] hover:bg-[#e5dfd3] text-[#4c0d17] flex items-center justify-center transition cursor-pointer font-bold disabled:opacity-40"
                     disabled={formData.stockCount <= 0}
                     title="Decrease count"
                   >
@@ -458,7 +458,7 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
                         };
                       })
                     }
-                    className="h-8 w-8 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-white flex items-center justify-center transition cursor-pointer font-bold"
+                    className="h-8 w-8 rounded-lg bg-[#f9f5ec] hover:bg-[#e5dfd3] text-[#4c0d17] flex items-center justify-center transition cursor-pointer font-bold"
                     title="Increase count"
                   >
                     <Plus className="h-3.5 w-3.5" />
@@ -488,7 +488,7 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
                       className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer border ${
                         formData.stockCount === preset.count
                           ? 'bg-dasara-gold text-black border-dasara-gold shadow-md'
-                          : 'bg-zinc-900 text-zinc-300 border-zinc-800 hover:border-zinc-700 hover:text-white'
+                          : 'bg-[#f9f5ec] text-[#4c0d17]/90 border-[#e5dfd3] hover:border-[#e5dfd3] hover:text-[#4c0d17]'
                       }`}
                     >
                       {preset.label}
@@ -499,15 +499,15 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
             </div>
 
             {/* Row 7: Checkboxes (Unique, Silk Mark, Star Showstopper) */}
-            <div className="flex flex-wrap items-center gap-3 p-3 bg-zinc-950/60 rounded-xl border border-zinc-800">
+            <div className="flex flex-wrap items-center gap-3 p-3 bg-white/60 rounded-xl border border-[#e5dfd3]">
               <label className="flex items-center gap-2 cursor-pointer text-xs">
                 <input
                   type="checkbox"
                   checked={formData.isDealerUnique}
                   onChange={(e) => setFormData({ ...formData, isDealerUnique: e.target.checked })}
-                  className="rounded border-zinc-700 text-dasara-gold focus:ring-dasara-gold"
+                  className="rounded border-[#e5dfd3] text-dasara-gold focus:ring-dasara-gold"
                 />
-                <span className="text-zinc-300">1-of-1 Exclusive (ఒక్కటే పీస్)</span>
+                <span className="text-[#4c0d17]/90">1-of-1 Exclusive (ఒక్కటే పీస్)</span>
               </label>
 
               <label className="flex items-center gap-2 cursor-pointer text-xs">
@@ -515,9 +515,9 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
                   type="checkbox"
                   checked={formData.isSilkMarkCertified}
                   onChange={(e) => setFormData({ ...formData, isSilkMarkCertified: e.target.checked })}
-                  className="rounded border-zinc-700 text-dasara-gold focus:ring-dasara-gold"
+                  className="rounded border-[#e5dfd3] text-dasara-gold focus:ring-dasara-gold"
                 />
-                <span className="text-zinc-300">Silk Mark Certified</span>
+                <span className="text-[#4c0d17]/90">Silk Mark Certified</span>
               </label>
 
               <label className="flex items-center gap-2 cursor-pointer text-xs">
@@ -525,9 +525,9 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
                   type="checkbox"
                   checked={formData.isFeaturedShowstopper}
                   onChange={(e) => setFormData({ ...formData, isFeaturedShowstopper: e.target.checked })}
-                  className="rounded border-zinc-700 text-dasara-gold focus:ring-dasara-gold"
+                  className="rounded border-[#e5dfd3] text-dasara-gold focus:ring-dasara-gold"
                 />
-                <span className="text-amber-300 font-semibold flex items-center gap-1">
+                <span className="text-[#b08a47] font-semibold flex items-center gap-1">
                   ★ Star (Feature in Top Unique Pieces)
                 </span>
               </label>
@@ -536,14 +536,14 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
             {/* ======================================================== */}
             {/* Row 8: MULTI-ANGLE PHOTOGRAPHY & ON-THE-FLOW CAMERA */}
             {/* ======================================================== */}
-            <div className="space-y-3 pt-2 border-t border-zinc-800">
+            <div className="space-y-3 pt-2 border-t border-[#e5dfd3]">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                 <div>
                   <label className="text-xs font-bold text-dasara-champagne flex items-center gap-1.5">
                     <Camera className="h-4 w-4 text-dasara-gold" />
                     <span>Saree Photos ({formData.images.length} uploaded)</span>
                   </label>
-                  <p className="text-[11px] text-zinc-400">
+                  <p className="text-[11px] text-[#8a7a6b]">
                     Snap or upload multiple angles: Front drape, Pallu/Zari, Side border, Opened saree, and Blouse.
                   </p>
                 </div>
@@ -551,7 +551,7 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
                 <button
                   type="button"
                   onClick={() => setShowUrlInput(!showUrlInput)}
-                  className="text-[11px] text-zinc-400 hover:text-dasara-gold flex items-center gap-1 transition self-start sm:self-auto"
+                  className="text-[11px] text-[#8a7a6b] hover:text-dasara-gold flex items-center gap-1 transition self-start sm:self-auto"
                 >
                   <LinkIcon className="h-3 w-3" />
                   {showUrlInput ? 'Hide URL paste' : 'Or paste web link'}
@@ -585,9 +585,9 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
                   type="button"
                   disabled={isUploading}
                   onClick={() => nativeCameraInputRef.current?.click()}
-                  className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-950 via-[#0e3b2e] to-emerald-950 border border-emerald-500/50 hover:border-emerald-400 p-3 text-xs font-bold text-emerald-300 shadow-lg hover:shadow-emerald-900/40 transition cursor-pointer active:scale-98"
+                  className="flex items-center justify-center gap-2 rounded-xl bg-[#065f46]/10 border border-[#065f46]/20 hover:border-[#065f46]/40 p-3 text-xs font-bold text-[#065f46] shadow-lg hover:shadow-none transition cursor-pointer active:scale-98"
                 >
-                  <Camera className="h-4 w-4 text-emerald-400 shrink-0" />
+                  <Camera className="h-4 w-4 text-[#065f46] shrink-0" />
                   <span>📸 Snap with Camera (ఫోటో తీయండి)</span>
                 </button>
 
@@ -596,7 +596,7 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
                   type="button"
                   disabled={isUploading}
                   onClick={() => setIsLiveCameraOpen(true)}
-                  className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-dasara-maroon/90 via-[#3a1523] to-dasara-maroon/90 border border-dasara-gold/50 hover:border-dasara-gold p-3 text-xs font-bold text-dasara-goldLight shadow-lg hover:shadow-dasara-gold/20 transition cursor-pointer active:scale-98"
+                  className="flex items-center justify-center gap-2 rounded-xl bg-[#f9f5ec] border border-[#b08a47]/30 hover:border-dasara-gold p-3 text-xs font-bold text-[#b08a47] shadow-lg hover:shadow-dasara-gold/20 transition cursor-pointer active:scale-98"
                 >
                   <Video className="h-4 w-4 text-dasara-gold shrink-0" />
                   <span>🎥 Live Camera Viewfinder</span>
@@ -607,9 +607,9 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
                   type="button"
                   disabled={isUploading}
                   onClick={() => fileInputRef.current?.click()}
-                  className="flex items-center justify-center gap-2 rounded-xl bg-zinc-900 border border-zinc-700 hover:border-zinc-500 p-3 text-xs font-semibold text-zinc-200 hover:text-white transition cursor-pointer active:scale-98"
+                  className="flex items-center justify-center gap-2 rounded-xl bg-[#f9f5ec] border border-[#e5dfd3] hover:border-zinc-500 p-3 text-xs font-semibold text-zinc-200 hover:text-[#4c0d17] transition cursor-pointer active:scale-98"
                 >
-                  <Smartphone className="h-4 w-4 text-amber-400 shrink-0" />
+                  <Smartphone className="h-4 w-4 text-[#b08a47] shrink-0" />
                   <span>📁 Gallery / PC Files (గ్యాలరీ)</span>
                 </button>
               </div>
@@ -631,17 +631,17 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
                   isDragging
                     ? 'border-dasara-gold bg-dasara-gold/10 scale-[1.01]'
                     : isUploading
-                    ? 'border-dasara-gold/50 bg-black/60 pointer-events-none'
-                    : 'border-zinc-800 hover:border-dasara-gold/60 bg-zinc-950/60 hover:bg-zinc-900/50'
+                    ? 'border-[#b08a47]/30 bg-[#f9f5ec] pointer-events-none'
+                    : 'border-[#e5dfd3] hover:border-[#b08a47]/30 bg-white/60 hover:bg-[#f9f5ec]/50'
                 }`}
               >
                 {isUploading ? (
                   <div className="flex flex-col items-center justify-center py-2 space-y-2">
                     <Loader2 className="h-7 w-7 text-dasara-gold animate-spin" />
-                    <span className="text-xs font-semibold text-dasara-goldLight">
+                    <span className="text-xs font-semibold text-[#b08a47]">
                       Compressing & Uploading Photos... ({uploadProgress?.current || 0} of {uploadProgress?.total || 0})
                     </span>
-                    <div className="w-48 h-1.5 bg-zinc-800 rounded-full overflow-hidden">
+                    <div className="w-48 h-1.5 bg-[#e5dfd3] rounded-full overflow-hidden">
                       <div
                         className="h-full bg-dasara-gold transition-all duration-300"
                         style={{
@@ -654,13 +654,13 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
                   </div>
                 ) : (
                   <div className="flex flex-col items-center justify-center space-y-1.5 py-1">
-                    <div className="flex items-center gap-2 text-zinc-400">
+                    <div className="flex items-center gap-2 text-[#8a7a6b]">
                       <UploadCloud className="h-5 w-5 text-dasara-gold" />
                       <span className="text-xs">
                         Or drag & drop photos here directly
                       </span>
                     </div>
-                    <span className="text-[10px] text-zinc-500">
+                    <span className="text-[10px] text-[#8a7a6b]/70">
                       High resolution JPEG, PNG, WEBP supported • Auto-compressed for fast loading
                     </span>
                   </div>
@@ -669,27 +669,27 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
 
               {/* Upload Error Banner */}
               {uploadError && (
-                <div className="flex items-center gap-2 p-2.5 rounded-xl bg-rose-950/60 border border-rose-500/40 text-xs text-rose-300">
-                  <AlertCircle className="h-4 w-4 shrink-0 text-rose-400" />
+                <div className="flex items-center gap-2 p-2.5 rounded-xl bg-red-50 border border-red-200 text-xs text-red-600">
+                  <AlertCircle className="h-4 w-4 shrink-0 text-red-600" />
                   <span>{uploadError}</span>
                 </div>
               )}
 
               {/* Optional URL Paste Box */}
               {showUrlInput && (
-                <div className="flex gap-2 p-3 bg-zinc-950 rounded-xl border border-zinc-800">
+                <div className="flex gap-2 p-3 bg-white rounded-xl border border-[#e5dfd3]">
                   <input
                     type="url"
                     value={urlInput}
                     onChange={(e) => setUrlInput(e.target.value)}
                     placeholder="Paste high-res image link (https://...)"
-                    className="flex-1 bg-black border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white focus:border-dasara-gold focus:outline-none"
+                    className="flex-1 bg-black border border-[#e5dfd3] rounded-xl px-3 py-2 text-xs text-[#4c0d17] focus:border-dasara-gold focus:outline-none"
                   />
                   <Button
                     type="button"
                     onClick={handleAddImageUrl}
                     variant="outline"
-                    className="text-xs border-zinc-700 cursor-pointer"
+                    className="text-xs border-[#e5dfd3] cursor-pointer"
                   >
                     <Plus className="h-3.5 w-3.5 mr-1" /> Add URL
                   </Button>
@@ -699,7 +699,7 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
               {/* Multi-Angle Image Grid & Reordering Controls */}
               {formData.images.length > 0 ? (
                 <div className="space-y-2">
-                  <div className="text-[11px] text-zinc-400 flex items-center justify-between">
+                  <div className="text-[11px] text-[#8a7a6b] flex items-center justify-between">
                     <span>Photo Angle Sequence (Angle 1 is the main photo shown on storefront cards):</span>
                     <span className="font-mono text-dasara-gold font-bold">{formData.images.length} Angles</span>
                   </div>
@@ -708,10 +708,10 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
                     {formData.images.map((img, idx) => (
                       <div
                         key={idx}
-                        className={`relative flex flex-col rounded-xl border overflow-hidden bg-zinc-950 transition-all ${
+                        className={`relative flex flex-col rounded-xl border overflow-hidden bg-white transition-all ${
                           idx === 0
                             ? 'border-dasara-gold ring-1 ring-dasara-gold/40 shadow-lg shadow-dasara-maroon/20'
-                            : 'border-zinc-800'
+                            : 'border-[#e5dfd3]'
                         }`}
                       >
                         {/* Image Thumbnail */}
@@ -722,7 +722,7 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
                             className="h-full w-full object-cover"
                           />
                           {/* Angle Pill Badge */}
-                          <div className="absolute top-1.5 left-1.5 rounded-md bg-black/85 backdrop-blur-md px-1.5 py-0.5 text-[9px] font-bold text-dasara-goldLight border border-dasara-gold/30">
+                          <div className="absolute top-1.5 left-1.5 rounded-md bg-white/90 backdrop-blur-md px-1.5 py-0.5 text-[9px] font-bold text-[#b08a47] border border-[#b08a47]/30">
                             {idx === 0 ? '★ Main Front' : `Angle ${idx + 1}`}
                           </div>
 
@@ -730,7 +730,7 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
                           <button
                             type="button"
                             onClick={() => handleRemoveImage(idx)}
-                            className="absolute top-1.5 right-1.5 h-6 w-6 rounded-md bg-rose-950/90 border border-rose-500/40 text-rose-300 flex items-center justify-center hover:bg-rose-900 transition cursor-pointer"
+                            className="absolute top-1.5 right-1.5 h-6 w-6 rounded-md bg-red-50 border border-red-200 text-red-600 flex items-center justify-center hover:bg-red-100 transition cursor-pointer"
                             title="Remove this photo"
                           >
                             <Trash2 className="h-3.5 w-3.5" />
@@ -738,8 +738,8 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
                         </div>
 
                         {/* Label & Order Controls */}
-                        <div className="p-2 bg-zinc-900/90 flex flex-col gap-1 border-t border-zinc-800">
-                          <span className="text-[10px] font-medium text-zinc-300 truncate">
+                        <div className="p-2 bg-[#f9f5ec]/90 flex flex-col gap-1 border-t border-[#e5dfd3]">
+                          <span className="text-[10px] font-medium text-[#4c0d17]/90 truncate">
                             {ANGLE_LABELS[idx] || `Angle ${idx + 1}`}
                           </span>
 
@@ -748,17 +748,17 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
                               type="button"
                               disabled={idx === 0}
                               onClick={() => handleMoveImage(idx, idx - 1)}
-                              className="p-1 rounded bg-zinc-800 hover:bg-zinc-700 disabled:opacity-30 disabled:pointer-events-none text-zinc-300 transition cursor-pointer"
+                              className="p-1 rounded bg-[#e5dfd3] hover:bg-[#e5dfd3] disabled:opacity-30 disabled:pointer-events-none text-[#4c0d17]/90 transition cursor-pointer"
                               title="Move Earlier (Higher Priority)"
                             >
                               <ChevronLeft className="h-3 w-3" />
                             </button>
-                            <span className="text-[9px] font-mono text-zinc-500">#{idx + 1}</span>
+                            <span className="text-[9px] font-mono text-[#8a7a6b]/70">#{idx + 1}</span>
                             <button
                               type="button"
                               disabled={idx === formData.images.length - 1}
                               onClick={() => handleMoveImage(idx, idx + 1)}
-                              className="p-1 rounded bg-zinc-800 hover:bg-zinc-700 disabled:opacity-30 disabled:pointer-events-none text-zinc-300 transition cursor-pointer"
+                              className="p-1 rounded bg-[#e5dfd3] hover:bg-[#e5dfd3] disabled:opacity-30 disabled:pointer-events-none text-[#4c0d17]/90 transition cursor-pointer"
                               title="Move Later"
                             >
                               <ChevronRight className="h-3 w-3" />
@@ -770,9 +770,9 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
                   </div>
                 </div>
               ) : (
-                <div className="p-4 rounded-xl border border-zinc-800 bg-zinc-950/40 text-center">
+                <div className="p-4 rounded-xl border border-[#e5dfd3] bg-white/40 text-center">
                   <ImageIcon className="h-6 w-6 text-zinc-600 mx-auto mb-1.5" />
-                  <p className="text-xs text-zinc-400">
+                  <p className="text-xs text-[#8a7a6b]">
                     No photos added yet. Tap <strong>Snap with Camera</strong> or <strong>Live Camera</strong> or choose from gallery above.
                   </p>
                 </div>
@@ -781,20 +781,20 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
 
             {/* Action Area Error Alert */}
             {uploadError && (
-              <div className="flex items-center gap-2.5 p-3 rounded-xl bg-rose-950/80 border border-rose-500/60 text-xs text-rose-200 shadow-md">
-                <AlertCircle className="h-4 w-4 shrink-0 text-rose-400" />
+              <div className="flex items-center gap-2.5 p-3 rounded-xl bg-red-50 border border-red-200 text-xs text-red-600 shadow-md">
+                <AlertCircle className="h-4 w-4 shrink-0 text-red-600" />
                 <span className="font-medium leading-relaxed">{uploadError}</span>
               </div>
             )}
 
             {/* Actions */}
-            <div className="flex flex-col-reverse sm:flex-row justify-end gap-2.5 pt-3 border-t border-zinc-800">
+            <div className="flex flex-col-reverse sm:flex-row justify-end gap-2.5 pt-3 border-t border-[#e5dfd3]">
               <Button
                 type="button"
                 variant="outline"
                 disabled={isSubmitting}
                 onClick={onClose}
-                className="border-zinc-800 text-zinc-300 hover:text-white cursor-pointer w-full sm:w-auto"
+                className="border-[#e5dfd3] text-[#4c0d17]/90 hover:text-[#4c0d17] cursor-pointer w-full sm:w-auto"
               >
                 Cancel
               </Button>

@@ -36,3 +36,12 @@ dist-ssr
 /*.jpg
 /*.jpeg
 
+# Scratch scripts & temp files
+*.py
+*.patch
+*.txt
+*.mp4
+homepage.html
+b891a72fcd626538.css
+
+

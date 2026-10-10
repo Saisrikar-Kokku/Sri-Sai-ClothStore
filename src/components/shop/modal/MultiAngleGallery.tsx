@@ -58,7 +58,7 @@ export const MultiAngleGallery: React.FC<MultiAngleGalleryProps> = ({
       <div
         role="tablist"
         aria-label="Saree Inspection Angles"
-        className="flex items-center gap-1.5 p-1 rounded-xl bg-zinc-950/80 border border-zinc-800/80 overflow-x-auto scrollbar-none"
+        className="flex items-center justify-center gap-2 p-1 rounded-sm bg-[#f4efeb] border border-[#e5dfd3] overflow-x-auto scrollbar-none"
       >
         {angleImages.map((item, idx) => {
           const isSelected = selectedAngleIndex === idx;
@@ -70,16 +70,16 @@ export const MultiAngleGallery: React.FC<MultiAngleGalleryProps> = ({
               aria-selected={isSelected}
               aria-label={`${item.label} (${item.hindiLabel}) angle`}
               onClick={() => onSelectAngle(idx)}
-              className={`flex-1 min-w-[70px] flex flex-col items-center justify-center py-1.5 px-1.5 rounded-lg text-center transition-all cursor-pointer ${
+              className={`min-w-[75px] max-w-[120px] w-full flex flex-col items-center justify-center py-2 px-1 rounded-sm text-center transition-all cursor-pointer ${
                 isSelected
-                  ? 'bg-gradient-to-r from-dasara-maroon to-dasara-deepCrimson text-dasara-goldLight border border-dasara-gold/50 shadow-md ring-1 ring-dasara-gold/30'
-                  : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-900/60'
+                  ? 'bg-white text-[#4c0d17] border border-[#b08a47] shadow-sm'
+                  : 'text-[#8a7a6b] hover:text-[#4c0d17] hover:bg-white/50 border border-transparent'
               }`}
             >
-              <span className="text-[11px] font-bold tracking-tight truncate w-full">
+              <span className="text-[10px] font-bold tracking-widest uppercase truncate w-full">
                 {item.label}
               </span>
-              <span className="text-[9px] text-zinc-400 font-serif opacity-80 truncate w-full">
+              <span className="text-[11px] font-serif opacity-80 truncate w-full mt-0.5">
                 {item.hindiLabel}
               </span>
             </button>
@@ -88,19 +88,19 @@ export const MultiAngleGallery: React.FC<MultiAngleGalleryProps> = ({
       </div>
 
       {/* Thumbnail Track with Angle Badges */}
-      <div className="relative flex items-center">
+      <div className="relative flex items-center mt-2">
         {angleImages.length > 1 && (
           <button
             type="button"
             onClick={handlePrev}
-            className="absolute -left-2 z-10 h-7 w-7 rounded-full bg-black/80 border border-zinc-700 text-white flex items-center justify-center hover:border-dasara-gold transition cursor-pointer shadow-md"
+            className="absolute -left-3 z-10 h-8 w-8 rounded-full bg-white border border-[#e5dfd3] text-[#4c0d17] flex items-center justify-center hover:border-[#b08a47] transition cursor-pointer shadow-md"
             aria-label="Previous angle"
           >
             <ChevronLeft className="h-4 w-4" />
           </button>
         )}
 
-        <div className="flex items-center gap-2.5 overflow-x-auto px-1 py-1 w-full scrollbar-none justify-start sm:justify-center">
+        <div className="flex items-center gap-3 overflow-x-auto px-2 py-1 w-full scrollbar-none justify-start sm:justify-center">
           {angleImages.map((item, idx) => {
             const isSelected = selectedAngleIndex === idx;
             return (
@@ -109,14 +109,14 @@ export const MultiAngleGallery: React.FC<MultiAngleGalleryProps> = ({
                 type="button"
                 onClick={() => onSelectAngle(idx)}
                 aria-label={`View ${item.label}`}
-                className={`relative h-16 w-16 sm:h-18 sm:w-18 flex-shrink-0 overflow-hidden rounded-xl border-2 transition-all duration-200 cursor-pointer ${
+                className={`relative h-16 w-16 sm:h-20 sm:w-20 flex-shrink-0 overflow-hidden rounded-sm border-2 transition-all duration-200 cursor-pointer ${
                   isSelected
-                    ? 'border-dasara-gold scale-105 shadow-[0_0_15px_rgba(212,175,55,0.45)] ring-1 ring-dasara-gold/60'
-                    : 'border-zinc-800 opacity-60 hover:opacity-100 hover:border-zinc-600'
+                    ? 'border-[#b08a47] scale-105 shadow-md'
+                    : 'border-[#e5dfd3] opacity-70 hover:opacity-100 hover:border-[#b08a47]/50'
                 }`}
               >
                 <img src={item.url} alt={item.label} className="h-full w-full object-cover" />
-                <span className="absolute bottom-0 inset-x-0 bg-black/85 text-[9px] text-center font-mono py-0.5 text-zinc-300">
+                <span className="absolute bottom-0 inset-x-0 bg-white/90 backdrop-blur-sm text-[8px] text-center font-sans tracking-widest uppercase font-bold py-0.5 text-[#4c0d17]">
                   {item.label}
                 </span>
               </button>
@@ -128,7 +128,7 @@ export const MultiAngleGallery: React.FC<MultiAngleGalleryProps> = ({
           <button
             type="button"
             onClick={handleNext}
-            className="absolute -right-2 z-10 h-7 w-7 rounded-full bg-black/80 border border-zinc-700 text-white flex items-center justify-center hover:border-dasara-gold transition cursor-pointer shadow-md"
+            className="absolute -right-3 z-10 h-8 w-8 rounded-full bg-white border border-[#e5dfd3] text-[#4c0d17] flex items-center justify-center hover:border-[#b08a47] transition cursor-pointer shadow-md"
             aria-label="Next angle"
           >
             <ChevronRight className="h-4 w-4" />
@@ -137,9 +137,9 @@ export const MultiAngleGallery: React.FC<MultiAngleGalleryProps> = ({
       </div>
 
       {/* Optical Description of Active Angle */}
-      <div className="rounded-lg bg-zinc-950/60 border border-zinc-900 px-3 py-1.5 text-xs text-zinc-300 flex items-center gap-2">
-        <Sparkles className="h-3.5 w-3.5 text-dasara-gold shrink-0" />
-        <span className="italic">{currentAngle.description}</span>
+      <div className="rounded-sm bg-transparent border border-[#e5dfd3] px-4 py-2.5 text-xs text-[#4c0d17] flex items-center gap-2 mt-2">
+        <Sparkles className="h-3.5 w-3.5 text-[#b08a47] shrink-0" />
+        <span className="italic font-serif">{currentAngle.description}</span>
       </div>
     </div>
   );

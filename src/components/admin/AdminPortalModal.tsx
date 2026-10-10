@@ -101,23 +101,23 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => { if (!open) onClose(); }}>
-      <DialogContent className="fixed inset-0 !left-0 !top-0 !translate-x-0 !translate-y-0 z-50 !max-w-none !w-screen !h-screen bg-[#0A080B] !p-0 !border-0 !flex !flex-col !gap-0 select-none text-white overflow-hidden !rounded-none">
+      <DialogContent className="fixed inset-0 !left-0 !top-0 !translate-x-0 !translate-y-0 z-50 !max-w-none !w-screen !h-screen bg-[#f9f5ec] !p-0 !border-0 !flex !flex-col !gap-0 select-none text-[#4c0d17] overflow-hidden !rounded-none [&>button]:hidden">
         
         {/* Top Header Bar */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between px-4 sm:px-6 py-3 border-b border-zinc-800/80 bg-zinc-950/95 backdrop-blur-md shrink-0 gap-3">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between px-4 sm:px-6 py-4 border-b border-[#e5dfd3] bg-white shrink-0 gap-3 shadow-sm">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2.5">
-              <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-dasara-maroon to-zinc-900 border border-dasara-gold/50 flex items-center justify-center text-dasara-gold font-bold text-sm shadow-md">
+            <div className="flex items-center gap-3">
+              <div className="h-10 w-10 rounded-xl bg-[#4c0d17] border border-[#4c0d17] flex items-center justify-center text-[#b08a47] font-bold text-sm shadow-md">
                 SS
               </div>
               <div>
-                <h2 className="font-serif text-base sm:text-lg font-bold text-dasara-champagne flex items-center gap-2">
+                <h2 className="font-serif text-lg sm:text-xl font-bold text-[#4c0d17] flex items-center gap-2">
                   <span>Operations Hub</span>
-                  <span className="rounded-full bg-dasara-maroon px-2 py-0.5 text-[9px] font-mono text-dasara-goldLight border border-dasara-gold/40">
+                  <span className="rounded-full bg-[#4c0d17] px-2 py-0.5 text-[9px] font-bold tracking-widest uppercase text-white border border-[#4c0d17]">
                     Admin
                   </span>
                 </h2>
-                <p className="text-[10px] text-zinc-400 hidden sm:block">
+                <p className="text-[11px] text-[#8a7a6b] hidden sm:block font-sans mt-0.5">
                   Mahadevpur Flagship Consignments • Live Stock Controls
                 </p>
               </div>
@@ -126,7 +126,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
             {/* Mobile Close Button */}
             <button
               onClick={onClose}
-              className="sm:hidden h-8 w-8 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white"
+              className="sm:hidden h-8 w-8 rounded-lg bg-[#f9f5ec] border border-[#e5dfd3] flex items-center justify-center text-[#8a7a6b] hover:text-[#4c0d17]"
               title="Close Portal"
               aria-label="Close Portal"
             >
@@ -137,17 +137,17 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
           <div className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0">
             <Button
               onClick={handleOpenAdd}
-              className="bg-dasara-gold hover:bg-dasara-goldLight text-black font-bold text-xs py-2 px-3 sm:px-4 rounded-xl shadow-lg shadow-dasara-gold/20 cursor-pointer shrink-0"
+              className="bg-[#b08a47] hover:bg-[#9a773a] text-white font-bold text-xs py-2 px-3 sm:px-4 rounded-xl shadow-md cursor-pointer shrink-0 transition"
             >
-              <Plus className="mr-1 h-3.5 w-3.5" /> Add Saree (New Maal)
+              <Plus className="mr-1.5 h-3.5 w-3.5" /> Add Saree (New Maal)
             </Button>
             <Button
               variant="outline"
               onClick={onClose}
-              className="border-zinc-800 text-zinc-300 hover:text-white hover:bg-zinc-900 text-xs py-2 px-2.5 sm:px-3 rounded-xl cursor-pointer shrink-0"
+              className="border-[#e5dfd3] text-[#8a7a6b] hover:text-[#4c0d17] hover:bg-[#f9f5ec] bg-white text-xs py-2 px-2.5 sm:px-3 rounded-xl cursor-pointer shrink-0 transition"
               title="Return to Storefront"
             >
-              <Store className="mr-1 h-3.5 w-3.5 text-dasara-gold" /> Storefront
+              <Store className="mr-1.5 h-3.5 w-3.5 text-[#b08a47]" /> Storefront
             </Button>
             <Button
               variant="outline"
@@ -155,14 +155,14 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
                 signOut();
                 onClose();
               }}
-              className="border-zinc-800 text-zinc-400 hover:text-white hover:bg-zinc-900 text-xs py-2 px-2.5 sm:px-3 rounded-xl cursor-pointer shrink-0"
+              className="border-[#e5dfd3] text-[#8a7a6b] hover:text-white hover:bg-[#4c0d17] bg-white text-xs py-2 px-2.5 sm:px-3 rounded-xl cursor-pointer shrink-0 transition"
               title="Sign Out from Admin"
             >
-              <LogOut className="mr-1 h-3.5 w-3.5" /> Sign Out
+              <LogOut className="mr-1.5 h-3.5 w-3.5" /> Sign Out
             </Button>
             <button
               onClick={onClose}
-              className="hidden sm:flex h-9 w-9 rounded-xl bg-zinc-900 border border-zinc-800 items-center justify-center text-zinc-400 hover:text-white transition cursor-pointer ml-1"
+              className="hidden sm:flex h-9 w-9 rounded-xl bg-white border border-[#e5dfd3] items-center justify-center text-[#8a7a6b] hover:text-white hover:bg-[#4c0d17] transition cursor-pointer ml-1 shadow-sm"
               title="Close Portal"
               aria-label="Close Portal"
             >
@@ -172,47 +172,47 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
         </div>
 
         {/* Real-Time KPI Metrics Ribbon */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3 p-3 sm:p-4 sm:px-6 bg-zinc-950 border-b border-zinc-800 shrink-0">
-          <div className="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800">
-            <span className="text-[10px] text-zinc-400 block uppercase font-mono">Total Catalog</span>
-            <span className="text-xl font-bold text-white font-mono">{metrics.totalProducts} Pieces</span>
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4 p-3 sm:p-5 sm:px-6 bg-[#f9f5ec] border-b border-[#e5dfd3] shrink-0">
+          <div className="p-3.5 rounded-xl bg-white border border-[#e5dfd3] shadow-sm flex flex-col justify-center">
+            <span className="text-[9px] text-[#8a7a6b] block uppercase tracking-widest font-bold mb-1">Total Catalog</span>
+            <span className="text-xl font-bold text-[#4c0d17] font-serif">{metrics.totalProducts} Pieces</span>
           </div>
-          <div className="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800">
-            <span className="text-[10px] text-zinc-400 block uppercase font-mono">In-Stock</span>
-            <span className="text-xl font-bold text-emerald-400 font-mono">{metrics.inStockPieces} Active</span>
+          <div className="p-3.5 rounded-xl bg-white border border-[#e5dfd3] shadow-sm flex flex-col justify-center">
+            <span className="text-[9px] text-[#8a7a6b] block uppercase tracking-widest font-bold mb-1">In-Stock</span>
+            <span className="text-xl font-bold text-[#065f46] font-serif">{metrics.inStockPieces} Active</span>
           </div>
-          <div className="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800">
-            <span className="text-[10px] text-zinc-400 block uppercase font-mono">Sold Out</span>
-            <span className="text-xl font-bold text-rose-400 font-mono">{metrics.soldOutPieces} Claimed</span>
+          <div className="p-3.5 rounded-xl bg-white border border-[#e5dfd3] shadow-sm flex flex-col justify-center">
+            <span className="text-[9px] text-[#8a7a6b] block uppercase tracking-widest font-bold mb-1">Sold Out</span>
+            <span className="text-xl font-bold text-red-600 font-serif">{metrics.soldOutPieces} Claimed</span>
           </div>
-          <div className="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800">
-            <span className="text-[10px] text-zinc-400 block uppercase font-mono">Showstoppers</span>
-            <span className="text-xl font-bold text-amber-300 font-mono">{metrics.featuredShowstoppers} Spotlighted</span>
+          <div className="p-3.5 rounded-xl bg-white border border-[#e5dfd3] shadow-sm flex flex-col justify-center">
+            <span className="text-[9px] text-[#8a7a6b] block uppercase tracking-widest font-bold mb-1">Showstoppers</span>
+            <span className="text-xl font-bold text-[#b08a47] font-serif">{metrics.featuredShowstoppers} Spotlighted</span>
           </div>
-          <div className="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800 hidden lg:block">
-            <span className="text-[10px] text-zinc-400 block uppercase font-mono">Inventory Value</span>
-            <span className="text-xl font-bold text-dasara-gold font-mono">₹{metrics.totalInventoryValue.toLocaleString('en-IN')}</span>
+          <div className="p-3.5 rounded-xl bg-white border border-[#e5dfd3] shadow-sm hidden lg:flex flex-col justify-center">
+            <span className="text-[9px] text-[#8a7a6b] block uppercase tracking-widest font-bold mb-1">Inventory Value</span>
+            <span className="text-xl font-bold text-[#4c0d17] font-sans">₹{metrics.totalInventoryValue.toLocaleString('en-IN')}</span>
           </div>
         </div>
 
         {/* Filter and Search Bar */}
-        <div className="p-4 px-6 flex flex-col sm:flex-row items-center justify-between gap-3 bg-[#0E0C0F] shrink-0 border-b border-zinc-800/40">
-          <div className="relative w-full sm:w-80">
-            <Search className="absolute left-3 top-2.5 h-4 w-4 text-zinc-500" />
+        <div className="p-4 px-6 flex flex-col sm:flex-row items-center justify-between gap-3 bg-white shrink-0 border-b border-[#e5dfd3] shadow-sm z-10">
+          <div className="relative w-full sm:w-96">
+            <Search className="absolute left-3 top-2.5 h-4 w-4 text-[#8a7a6b]" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by SKU, Name, Hub, or Color..."
-              className="w-full bg-zinc-950 border border-zinc-800 rounded-xl pl-9 pr-3 py-2 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-dasara-gold"
+              className="w-full bg-[#f9f5ec] border border-[#e5dfd3] rounded-xl pl-9 pr-4 py-2.5 text-xs text-[#4c0d17] placeholder-[#8a7a6b]/70 focus:outline-none focus:border-[#b08a47] focus:ring-1 focus:ring-[#b08a47]/20 transition"
             />
           </div>
 
-          <div className="flex items-center gap-2 w-full sm:w-auto">
+          <div className="flex items-center gap-3 w-full sm:w-auto">
             <select
               value={filterCategory}
               onChange={(e) => setFilterCategory(e.target.value)}
-              className="bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-dasara-gold cursor-pointer"
+              className="bg-[#f9f5ec] border border-[#e5dfd3] rounded-xl px-4 py-2.5 text-xs text-[#4c0d17] font-bold focus:outline-none focus:border-[#b08a47] cursor-pointer"
             >
               <option value="All">All Categories ({products.length})</option>
               <option value="Kanchi Pattu">Kanchi Pattu</option>
@@ -221,21 +221,23 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
               <option value="Fancy Sarees">Fancy Sarees</option>
               <option value="Partywear & Kurtis">Partywear & Kurtis</option>
             </select>
-            <span className="text-xs text-zinc-400 font-mono">
-              Showing {filteredProducts.length} of {products.length}
+            <span className="text-xs text-[#8a7a6b] font-sans whitespace-nowrap">
+              Showing <span className="font-bold text-[#4c0d17]">{filteredProducts.length}</span> of {products.length}
             </span>
           </div>
         </div>
 
         {/* Main Content Area */}
-        <div className="flex-1 overflow-y-auto p-6 pt-4 bg-[#0E0C0F]">
-          <InventoryTable
-            products={filteredProducts}
-            onEdit={handleOpenEdit}
-            onDelete={(id) => setDeletingId(id)}
-            onToggleStock={handleToggleStock}
-            onToggleShowstopper={handleToggleShowstopper}
-          />
+        <div className="flex-1 overflow-y-auto p-4 sm:p-6 bg-[#f9f5ec] scrollbar-thin scrollbar-thumb-[#e5dfd3] scrollbar-track-transparent">
+          <div className="bg-white rounded-2xl border border-[#e5dfd3] shadow-sm overflow-hidden">
+            <InventoryTable
+              products={filteredProducts}
+              onEdit={handleOpenEdit}
+              onDelete={(id) => setDeletingId(id)}
+              onToggleStock={handleToggleStock}
+              onToggleShowstopper={handleToggleShowstopper}
+            />
+          </div>
         </div>
 
         {/* Modals */}

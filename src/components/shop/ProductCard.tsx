@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { SareeProduct } from '@/types/product.types';
-import { MessageCircle, ShieldCheck, MapPin, Eye, Clock, Sparkles, Heart } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { Heart, Video } from 'lucide-react';
 import { getWhatsAppOrderUrl } from '@/lib/whatsapp';
-import { TiltedCard } from '@/components/reactbits/TiltedCard';
-import { SpotlightCard } from '@/components/reactbits/SpotlightCard';
 
 interface Props {
   product: SareeProduct;
@@ -31,189 +28,127 @@ export const ProductCard: React.FC<Props> = ({
   };
 
   return (
-    <TiltedCard maxTilt={5} scale={1.02} glareOpacity={0.2} className="h-full">
-      <SpotlightCard
-        spotlightColor="rgba(212, 175, 55, 0.22)"
-        className="festive-glass-card group relative flex h-full flex-col overflow-hidden rounded-2xl border border-dasara-gold/25 shadow-xl transition-all duration-300 hover:border-dasara-gold/60"
+    <div className="text-left group flex flex-col h-full bg-transparent">
+      {/* Seamless Borderless Image with strict aspect ratio lock */}
+      <div
+        onClick={() => onQuickView(product)}
+        className="w-full relative pb-[133%] bg-transparent overflow-hidden mb-6 cursor-pointer rounded-t-sm"
       >
-        {/* 1. Saree Image Frame */}
-        <div
-          onClick={() => onQuickView(product)}
-          className="relative aspect-[3/4] w-full overflow-hidden bg-zinc-950 cursor-pointer select-none"
-        >
-          {/* Base Saree Image */}
+        <img
+          src={product.images[0] || 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80'}
+          alt={product.name}
+          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+          loading="lazy"
+        />
+        
+        {/* Dual-Angle Hover Image Cross-Fade */}
+        {product.images[1] && (
           <img
-            src={product.images[0] || 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80'}
-            alt={product.name}
-            className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105 pointer-events-none"
+            src={product.images[1]}
+            alt={`${product.name} - Alternate View`}
+            className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100 group-hover:scale-105 pointer-events-none"
             loading="lazy"
           />
+        )}
+      </div>
 
-          {/* Dual-Angle Hover Image Cross-Fade (Pallu / Border Detail) */}
-          {product.images[1] && (
-            <img
-              src={product.images[1]}
-              alt={`${product.name} - Pallu & Border Detail`}
-              className="absolute inset-0 h-full w-full object-cover object-top opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100 group-hover:scale-105 transition-transform duration-700 pointer-events-none"
-              loading="lazy"
-            />
+      {/* Product Details with Strict Heights for Perfect Alignment */}
+      <div className="flex flex-col flex-grow px-1">
+        {/* Badges / Scarcity - locked min-height */}
+        <div className="flex flex-wrap gap-2 mb-3 min-h-[22px]">
+          {product.isSilkMarkCertified && (
+            <span className="text-[9px] font-sans tracking-widest text-[#b08a47] uppercase border border-[#b08a47]/40 px-2 py-0.5 rounded-sm flex items-center gap-1.5">
+              Silk Mark <span className="opacity-40">|</span> <span className="font-serif tracking-normal">సిల్క్ మార్క్</span>
+            </span>
           )}
+          {product.stockCount === 1 && (
+            <span className="text-[9px] font-sans tracking-widest text-[#4c0d17] uppercase border border-[#4c0d17]/20 px-2 py-0.5 rounded-sm bg-[#4c0d17]/5 flex items-center gap-1.5">
+              1-of-1 Unique <span className="opacity-40">|</span> <span className="font-serif tracking-normal">ఒక్కటే పీస్</span>
+            </span>
+          )}
+        </div>
 
-          {/* Ambient Dark Vignette */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0E0C0F] via-transparent to-black/35 opacity-75 group-hover:opacity-40 transition-opacity duration-300 pointer-events-none" />
+        <div className="pr-4 mb-4 flex-grow">
+          <h4
+            onClick={() => onQuickView(product)}
+            className="font-serif text-lg text-[#4c0d17] leading-snug group-hover:text-dasara-gold transition-colors line-clamp-2 min-h-[52px] cursor-pointer"
+          >
+            {product.name}
+          </h4>
+          <p className="font-sans text-[10px] tracking-[0.15em] text-[#8a7a6b] mt-3 uppercase line-clamp-1">
+            {product.fabric} • {product.zariType}
+          </p>
+          <p className="font-serif italic text-xs text-[#b08a47] mt-1 line-clamp-1">
+            {product.provenance}
+          </p>
+        </div>
 
-          {/* Minimalist Floating Top Badges */}
-          <div className="absolute top-3 left-3 right-3 flex justify-between items-center z-20">
-            {/* Top-left: Frosted glass pill */}
-            <div className="inline-flex items-center gap-1.5 rounded-full backdrop-blur-md bg-black/40 border border-white/10 px-2.5 py-1 text-[11px] font-medium text-dasara-champagne/90 shadow-sm pointer-events-none">
-              {product.isDealerUnique ? (
+        <div className="mt-auto pt-5 border-t border-[#e5dfd3]/50">
+          <div className="flex justify-between items-end mb-4">
+            <div className="min-h-[44px] flex flex-col justify-end">
+              {product.discountPercent > 0 ? (
                 <>
-                  <Sparkles className="h-3 w-3 text-dasara-gold shrink-0" />
-                  <span>Single Piece • ఒక్కటే పీస్</span>
+                  <span className="font-sans text-[10px] text-[#8a7a6b] line-through decoration-[#4c0d17]/50 tracking-wider">
+                    ₹ {product.originalPrice?.toLocaleString('en-IN')}
+                  </span>
+                  <span className="font-serif text-[#4c0d17] text-lg font-bold leading-none mt-1">
+                    ₹ {product.price.toLocaleString('en-IN')}
+                  </span>
                 </>
               ) : (
-                <span>{product.category}</span>
+                <span className="font-serif text-[#4c0d17] text-lg font-bold leading-none mt-1">
+                  ₹ {product.price.toLocaleString('en-IN')}
+                </span>
               )}
             </div>
-
-            {/* Top-right: Floating heart button for Wishlist/bookmarking */}
             <button
-              type="button"
               onClick={handleHeartClick}
-              aria-label={isWishlisted ? 'Remove from wishlist' : 'Save to wishlist'}
-              className={cn(
-                'group/heart relative flex h-8 w-8 items-center justify-center rounded-full backdrop-blur-md transition-all duration-300 cursor-pointer pointer-events-auto',
-                'bg-black/40 border border-white/10 hover:border-dasara-gold/40 hover:bg-black/60',
-                'active:scale-75 hover:scale-110',
-                isWishlisted && 'border-rose-500/40 bg-black/70 text-rose-500 shadow-[0_0_12px_rgba(244,63,94,0.4)]'
-              )}
+              className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors shadow-sm cursor-pointer ${
+                isWishlisted
+                  ? 'bg-[#4c0d17] text-white hover:bg-[#4c0d17]/90'
+                  : 'bg-[#b08a47]/10 text-dasara-gold hover:bg-dasara-gold hover:text-white'
+              }`}
             >
-              <Heart
-                className={cn(
-                  'h-4 w-4 transition-all duration-300',
-                  isWishlisted
-                    ? 'fill-rose-500 text-rose-500 scale-110'
-                    : 'text-zinc-300 group-hover/heart:text-white'
-                )}
-              />
+              <Heart className={`h-4 w-4 ${isWishlisted ? 'fill-white' : ''}`} />
             </button>
           </div>
 
-          {/* Pallu Peek Badge on Hover */}
-          {product.images[1] && (
-            <div className="absolute top-12 right-3 pointer-events-none opacity-0 group-hover:opacity-95 transition-opacity duration-300 z-10">
-              <span className="rounded-full backdrop-blur-md bg-black/60 border border-white/10 px-2 py-0.5 text-[9px] font-mono tracking-wider text-dasara-goldLight">
-                PALLU VIEW
-              </span>
-            </div>
-          )}
-
-          {/* Bottom Translucent Badges: Provenance and Silk Mark */}
-          <div className="absolute bottom-3 left-3 right-3 flex justify-between items-center text-xs z-10 pointer-events-none">
-            <span className="inline-flex items-center gap-1.5 rounded-full backdrop-blur-md bg-black/40 border border-white/10 px-2.5 py-0.5 text-[11px] text-zinc-300 font-normal">
-              <MapPin className="h-2.5 w-2.5 text-dasara-gold shrink-0" />
-              <span>{product.provenance.split(',')[0]}</span>
-            </span>
-
-            {product.isSilkMarkCertified && (
-              <span className="inline-flex items-center gap-1 rounded-full backdrop-blur-md bg-emerald-950/50 border border-emerald-500/20 px-2 py-0.5 text-[10px] font-medium text-emerald-300">
-                <ShieldCheck className="h-3 w-3 text-emerald-400 shrink-0" />
-                <span>Silk Mark</span>
-              </span>
-            )}
-          </div>
-
-          {/* Quick View Hover Button (Overlay) */}
-          <div className="absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-[1px] opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-20">
+          {/* Dual Action Buttons */}
+          <div className="grid grid-cols-2 gap-2">
             <button
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
                 onQuickView(product);
               }}
-              style={{ transform: 'translateZ(30px)' }}
-              className="inline-flex items-center gap-2 rounded-full backdrop-blur-md bg-black/70 border border-dasara-gold/50 px-4 py-2 text-xs font-semibold text-dasara-champagne shadow-2xl transition-all duration-300 hover:bg-dasara-gold hover:text-black hover:border-dasara-gold hover:scale-105 active:scale-95 cursor-pointer"
+              className="flex flex-col items-center justify-center rounded-xl bg-[#4c0d17] border border-[#4c0d17] py-2 transition-all hover:bg-[#3d1118] group shadow-sm cursor-pointer"
             >
-              <Eye className="h-3.5 w-3.5" />
-              <span>Quick View</span>
+              <span className="text-[#f9f5ec] text-[11px] font-sans font-semibold tracking-wide flex items-center gap-1.5">
+                Details <span className="h-1.5 w-1.5 rounded-full bg-[#b08a47] group-hover:bg-[#d2b471]"></span>
+              </span>
+              <span className="text-[#f9f5ec]/70 text-[10px] font-serif mt-0.5 group-hover:text-[#f9f5ec]">
+                వివరాలు
+              </span>
+            </button>
+
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                window.open(getWhatsAppOrderUrl(product), '_blank');
+              }}
+              className="flex flex-col items-center justify-center rounded-xl bg-transparent border border-[#b08a47]/50 py-2 transition-all hover:bg-[#b08a47]/10 group shadow-sm cursor-pointer"
+            >
+              <span className="text-[#4c0d17] text-[11px] font-sans font-semibold tracking-wide flex items-center gap-1.5">
+                <Video className="h-3.5 w-3.5 -ml-1 text-[#b08a47]" /> Video Call <span className="h-1.5 w-1.5 rounded-full bg-[#4c0d17]"></span>
+              </span>
+              <span className="text-[#4c0d17]/80 text-[10px] font-serif mt-0.5 group-hover:text-[#4c0d17]">
+                వీడియో కాల్
+              </span>
             </button>
           </div>
         </div>
-
-        {/* 2. Saree Information */}
-        <div className="flex flex-1 flex-col justify-between p-4 sm:p-5 space-y-3">
-          <div>
-            <div className="flex items-center justify-between text-[11px] text-zinc-400 mb-1.5 font-mono">
-              <span className="text-zinc-500">{product.sku}</span>
-              <span className={`flex items-center gap-1 font-sans font-medium text-[11px] ${
-                product.stockCount === 0
-                  ? 'text-rose-400'
-                  : product.stockCount === 1
-                  ? 'text-amber-300/90'
-                  : 'text-emerald-400'
-              }`}>
-                <Clock className="h-3 w-3 text-dasara-gold/80" />
-                {product.stockCount === 0
-                  ? 'Sold Out (అయిపోయింది)'
-                  : product.stockCount === 1
-                  ? 'Single Piece (ఒక్కటే పీస్)'
-                  : `${product.stockCount} Pieces Available`}
-              </span>
-            </div>
-
-            <h3
-              onClick={() => onQuickView(product)}
-              className="cursor-pointer font-serif text-base sm:text-lg font-bold text-dasara-champagne leading-snug line-clamp-1 transition-colors hover:text-dasara-gold"
-              title={product.name}
-            >
-              {product.name}
-            </h3>
-
-            <p className="mt-1 text-xs text-zinc-400 line-clamp-1 font-sans font-light">
-              {product.fabric} • {product.zariType}
-            </p>
-          </div>
-
-          {/* 3. Sleek Typography & Pricing & Action Buttons */}
-          <div className="pt-3 border-t border-zinc-800/80">
-            <div className="flex items-baseline justify-between mb-3.5">
-              <div className="flex items-baseline gap-2.5">
-                <span className="font-serif text-2xl font-bold text-dasara-gold tracking-tight">
-                  ₹{product.price.toLocaleString('en-IN')}
-                </span>
-                {product.originalPrice > product.price && (
-                  <span className="text-xs text-zinc-500 line-through font-sans">
-                    ₹{product.originalPrice.toLocaleString('en-IN')}
-                  </span>
-                )}
-              </div>
-              {product.discountPercent > 0 && (
-                <span className="rounded-full bg-dasara-maroon/30 border border-dasara-gold/20 px-2 py-0.5 text-[10px] font-semibold text-dasara-goldLight tracking-wider">
-                  -{product.discountPercent}%
-                </span>
-              )}
-            </div>
-
-            <div className="grid grid-cols-2 gap-2">
-              <button
-                type="button"
-                onClick={() => onQuickView(product)}
-                className="w-full inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2 text-xs font-medium text-zinc-300 transition-all duration-200 hover:border-dasara-gold/50 hover:bg-dasara-gold/[0.08] hover:text-dasara-gold active:scale-[0.98] cursor-pointer"
-              >
-                Quick View
-              </button>
-              <button
-                type="button"
-                onClick={() => window.open(getWhatsAppOrderUrl(product), '_blank')}
-                className="group/wa w-full inline-flex items-center justify-center gap-1.5 rounded-xl border border-emerald-500/30 bg-gradient-to-r from-emerald-950/80 to-[#0e3b2e] px-3 py-2 text-xs font-semibold text-emerald-300 shadow-md shadow-emerald-950/60 transition-all duration-200 hover:border-dasara-gold/60 hover:from-emerald-900 hover:to-emerald-800 hover:text-dasara-goldLight hover:shadow-[0_0_15px_rgba(212,175,55,0.15)] active:scale-[0.98] cursor-pointer"
-              >
-                <MessageCircle className="h-3.5 w-3.5 text-emerald-400 group-hover/wa:text-dasara-gold transition-colors" />
-                <span>WhatsApp</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </SpotlightCard>
-    </TiltedCard>
+      </div>
+    </div>
   );
 };

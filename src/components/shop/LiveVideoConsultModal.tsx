@@ -74,7 +74,6 @@ export const LiveVideoConsultModal: React.FC<LiveVideoConsultModalProps> = ({
     onClose();
   };
 
-  // Ensure pre-selected product appears in the list if available
   const displayProducts = React.useMemo(() => {
     const pool = availableProducts.slice(0, 18);
     if (!preSelectedProduct) return pool;
@@ -85,38 +84,38 @@ export const LiveVideoConsultModal: React.FC<LiveVideoConsultModalProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => { if (!open) onClose(); }}>
-      <DialogContent className="max-w-2xl border border-dasara-gold/40 bg-[#0E0C0F] p-5 sm:p-7 text-white sm:rounded-2xl max-h-[92vh] overflow-y-auto shadow-2xl">
+      <DialogContent className="max-w-2xl border border-[#e5dfd3]/60 bg-[#f9f5ec] p-5 sm:p-7 text-[#4c0d17] sm:rounded-2xl max-h-[92vh] overflow-y-auto shadow-2xl [&>button]:!text-[#8a7a6b] [&>button:hover]:!text-[#4c0d17]">
         <DialogHeader className="text-left space-y-2">
           <div className="flex items-center gap-2">
-            <span className="rounded-full bg-dasara-maroon border border-dasara-gold/40 px-3 py-1 text-xs font-bold text-dasara-goldLight flex items-center gap-1.5">
-              <Video className="h-3.5 w-3.5 text-dasara-gold" />
+            <span className="rounded-full bg-[#4c0d17]/5 border border-[#4c0d17]/20 px-3 py-1 text-[10px] font-bold text-[#4c0d17] uppercase tracking-widest flex items-center gap-1.5">
+              <Video className="h-3.5 w-3.5 text-[#b08a47]" />
               VIP Boutique Service
             </span>
-            <span className="rounded-full bg-emerald-950/80 border border-emerald-500/40 px-2.5 py-1 text-xs font-semibold text-emerald-400">
+            <span className="rounded-full bg-[#065f46]/5 border border-[#065f46]/20 px-2.5 py-1 text-[10px] font-bold text-[#065f46] uppercase tracking-widest">
               Free 5-Min Trial
             </span>
           </div>
 
-          <DialogTitle className="font-serif text-2xl sm:text-3xl font-bold text-dasara-champagne leading-snug">
-            Book a Live Video Saree Drape Call
+          <DialogTitle className="font-serif text-2xl sm:text-3xl font-bold text-[#4c0d17] leading-snug">
+            Book a Live Video Saree Call • లైవ్ వీడియో కాల్
           </DialogTitle>
-          <DialogDescription className="text-xs sm:text-sm text-zinc-300">
-            Inspect fabric fall, pleat drape, and zari luster under boutique showroom lighting before buying.
+          <DialogDescription className="text-xs sm:text-sm text-[#8a7a6b] font-sans">
+            ఇంట్లో కూర్చునే చీరల రంగు, జరీ మెరుపు, ఫాల్ వీడియో కాల్ లో ప్రత్యక్షంగా చూడండి.
           </DialogDescription>
         </DialogHeader>
 
-        <div className="mt-4 space-y-5">
-          {/* Step 1: Select Sarees to View (up to 3) */}
+        <div className="mt-4 space-y-6">
+          {/* Step 1: Select Sarees */}
           <div>
-            <div className="flex items-center justify-between mb-2">
-              <label className="text-xs font-bold uppercase tracking-wider text-dasara-goldLight block">
-                1. Select Sarees for Display Stand (Choose up to 3)
+            <div className="flex items-center justify-between mb-3">
+              <label className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#8a7a6b] block">
+                1. Select Sarees • చీరలను ఎంచుకోండి (గరిష్టంగా 3)
               </label>
-              <span className="text-[11px] text-zinc-400 font-mono">
+              <span className="text-[11px] text-[#b08a47] font-mono font-bold">
                 {selectedProductIds.length}/3 selected
               </span>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 max-h-48 overflow-y-auto pr-1 scrollbar-thin">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 max-h-48 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-[#e5dfd3] scrollbar-track-transparent">
               {displayProducts.map((product) => {
                 const isSelected = selectedProductIds.includes(product.id);
                 return (
@@ -126,21 +125,21 @@ export const LiveVideoConsultModal: React.FC<LiveVideoConsultModalProps> = ({
                     onClick={() => toggleProduct(product.id)}
                     className={`flex items-center gap-2 p-2 rounded-xl border text-left transition cursor-pointer ${
                       isSelected
-                        ? 'border-dasara-gold bg-dasara-maroon/40 shadow-sm ring-1 ring-dasara-gold/50'
-                        : 'border-zinc-800 bg-zinc-950/60 opacity-75 hover:opacity-100 hover:border-zinc-700'
+                        ? 'border-[#b08a47] bg-[#b08a47]/5 shadow-sm ring-1 ring-[#b08a47]/20'
+                        : 'border-[#e5dfd3] bg-white opacity-80 hover:opacity-100 hover:border-[#b08a47]/40'
                     }`}
                   >
                     <img
                       src={product.images[0]}
                       alt={product.name}
-                      className="h-10 w-10 rounded-lg object-cover shrink-0"
+                      className="h-12 w-12 rounded-lg object-cover shrink-0 border border-[#e5dfd3]/50"
                     />
                     <div className="min-w-0 flex-1">
-                      <p className="text-xs font-semibold text-white truncate">{product.name}</p>
-                      <p className="text-[10px] text-dasara-gold font-mono">₹{product.price.toLocaleString('en-IN')}</p>
+                      <p className="font-serif text-xs font-bold text-[#4c0d17] truncate">{product.name}</p>
+                      <p className="text-[10px] text-[#8a7a6b] font-mono mt-0.5">₹{product.price.toLocaleString('en-IN')}</p>
                     </div>
                     {isSelected && (
-                      <CheckCircle2 className="h-3.5 w-3.5 text-dasara-gold shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-[#b08a47] shrink-0" />
                     )}
                   </button>
                 );
@@ -150,10 +149,10 @@ export const LiveVideoConsultModal: React.FC<LiveVideoConsultModalProps> = ({
 
           {/* Step 2: Time Slot Picker */}
           <div>
-            <label className="text-xs font-bold uppercase tracking-wider text-dasara-goldLight block mb-2">
-              2. Select Auspicious Timing Slot
+            <label className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#8a7a6b] block mb-3">
+              2. Select Timing Slot • సమయం ఎంచుకోండి
             </label>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {([
                 'Morning Pooja (10:30 AM – 1:00 PM)',
                 'Afternoon High Tea (2:30 PM – 5:00 PM)',
@@ -163,16 +162,16 @@ export const LiveVideoConsultModal: React.FC<LiveVideoConsultModalProps> = ({
                   key={slot}
                   type="button"
                   onClick={() => setTimeSlot(slot)}
-                  className={`p-2.5 rounded-xl border text-xs text-left transition cursor-pointer flex flex-col justify-between ${
+                  className={`p-3 rounded-xl border text-left transition cursor-pointer flex flex-col justify-between ${
                     timeSlot === slot
-                      ? 'border-dasara-gold bg-gradient-to-br from-dasara-maroon/60 to-zinc-950 text-white font-semibold shadow-md ring-1 ring-dasara-gold/40'
-                      : 'border-zinc-800 bg-zinc-950/60 text-zinc-400 hover:text-zinc-200'
+                      ? 'border-[#4c0d17] bg-[#4c0d17] text-[#f9f5ec] font-semibold shadow-md ring-1 ring-[#4c0d17]/20'
+                      : 'border-[#e5dfd3] bg-white text-[#8a7a6b] hover:border-[#b08a47]/40'
                   }`}
                 >
-                  <span className="font-mono text-[11px] text-dasara-gold block mb-1">
+                  <span className={`font-serif text-xs block mb-1 ${timeSlot === slot ? 'text-white' : 'text-[#4c0d17]'}`}>
                     {slot.split(' (')[0]}
                   </span>
-                  <span className="text-[10px] text-zinc-300">
+                  <span className={`text-[10px] font-mono ${timeSlot === slot ? 'text-[#f9f5ec]/80' : 'text-[#8a7a6b]'}`}>
                     {slot.split(' (')[1]?.replace(')', '') || ''}
                   </span>
                 </button>
@@ -181,43 +180,48 @@ export const LiveVideoConsultModal: React.FC<LiveVideoConsultModalProps> = ({
           </div>
 
           {/* Step 3: Preferred Language & Platform */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 border-t border-[#e5dfd3] pt-5">
             <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-dasara-goldLight block mb-1.5">
-                3. Preferred Language
+              <label className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#8a7a6b] block mb-2">
+                3. Preferred Language • భాషను ఎంచుకోండి
               </label>
-              <div className="grid grid-cols-4 gap-1.5 bg-zinc-950 border border-zinc-800 p-1 rounded-xl">
-                {(['Telugu', 'Hindi', 'English', 'Tamil'] as PreferredLanguage[]).map((lang) => (
+              <div className="grid grid-cols-4 gap-1 bg-white border border-[#e5dfd3] p-1 rounded-xl shadow-sm">
+                {([
+                  { id: 'Telugu', label: 'తెలుగు (Telugu)' },
+                  { id: 'Hindi', label: 'हिंदी (Hindi)' },
+                  { id: 'English', label: 'English' },
+                  { id: 'Tamil', label: 'தமிழ் (Tamil)' },
+                ] as { id: PreferredLanguage; label: string }[]).map(({ id: lang, label }) => (
                   <button
                     key={lang}
                     type="button"
                     onClick={() => setLanguage(lang)}
-                    className={`py-1.5 rounded-lg text-xs font-bold transition cursor-pointer text-center ${
+                    className={`py-1.5 rounded-lg text-[11px] font-bold transition cursor-pointer text-center ${
                       language === lang
-                        ? 'bg-dasara-maroon text-dasara-goldLight border border-dasara-gold/40 shadow-sm'
-                        : 'text-zinc-400 hover:text-white'
+                        ? 'bg-[#4c0d17] text-[#f9f5ec] shadow-sm'
+                        : 'text-[#8a7a6b] hover:text-[#4c0d17] hover:bg-[#f9f5ec]'
                     }`}
                   >
-                    {lang}
+                    {label}
                   </button>
                 ))}
               </div>
             </div>
 
             <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-dasara-goldLight block mb-1.5">
-                4. Video Channel
+              <label className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#8a7a6b] block mb-2">
+                4. Video Channel • వీడియో మాధ్యమం
               </label>
-              <div className="grid grid-cols-2 gap-1.5 bg-zinc-950 border border-zinc-800 p-1 rounded-xl">
+              <div className="grid grid-cols-2 gap-1 bg-white border border-[#e5dfd3] p-1 rounded-xl shadow-sm">
                 {(['WhatsApp Video Call', 'Google Meet'] as VideoPlatform[]).map((plat) => (
                   <button
                     key={plat}
                     type="button"
                     onClick={() => setPlatform(plat)}
-                    className={`py-1.5 rounded-lg text-xs font-bold transition cursor-pointer text-center ${
+                    className={`py-1.5 rounded-lg text-[11px] font-bold transition cursor-pointer text-center ${
                       platform === plat
-                        ? 'bg-emerald-950 text-emerald-300 border border-emerald-500/50 shadow-sm'
-                        : 'text-zinc-400 hover:text-white'
+                        ? 'bg-[#065f46] text-white shadow-sm'
+                        : 'text-[#8a7a6b] hover:text-[#4c0d17] hover:bg-[#f9f5ec]'
                     }`}
                   >
                     {plat.split(' ')[0]}
@@ -228,54 +232,54 @@ export const LiveVideoConsultModal: React.FC<LiveVideoConsultModalProps> = ({
           </div>
 
           {/* Step 4: Customer Details */}
-          <div>
-            <label className="text-xs font-bold uppercase tracking-wider text-dasara-goldLight block mb-2">
-              5. Your Contact Information
+          <div className="border-t border-[#e5dfd3] pt-5">
+            <label className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#8a7a6b] block mb-3">
+              5. Contact Details • మీ వివరాలు
             </label>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <input
                 type="text"
-                placeholder="Your Name (e.g., Lakshmi)"
+                placeholder="మీ పేరు / Your Name (e.g., Lakshmi)"
                 value={customerName}
                 onChange={(e) => setCustomerName(e.target.value)}
-                className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-dasara-gold"
+                className="w-full bg-white border border-[#e5dfd3] rounded-xl px-4 py-2.5 text-xs text-[#4c0d17] font-serif placeholder-[#8a7a6b]/70 focus:outline-none focus:border-[#b08a47] focus:ring-1 focus:ring-[#b08a47]/20 shadow-sm"
               />
               <input
                 type="tel"
                 placeholder="Phone Number"
                 value={customerPhone}
                 onChange={(e) => setCustomerPhone(e.target.value)}
-                className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-dasara-gold"
+                className="w-full bg-white border border-[#e5dfd3] rounded-xl px-4 py-2.5 text-xs text-[#4c0d17] font-mono placeholder-[#8a7a6b]/70 focus:outline-none focus:border-[#b08a47] focus:ring-1 focus:ring-[#b08a47]/20 shadow-sm"
               />
               <input
                 type="text"
                 placeholder="City (e.g., Hyderabad)"
                 value={customerCity}
                 onChange={(e) => setCustomerCity(e.target.value)}
-                className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-dasara-gold"
+                className="w-full bg-white border border-[#e5dfd3] rounded-xl px-4 py-2.5 text-xs text-[#4c0d17] font-serif placeholder-[#8a7a6b]/70 focus:outline-none focus:border-[#b08a47] focus:ring-1 focus:ring-[#b08a47]/20 shadow-sm"
               />
             </div>
-            <div className="mt-2.5">
+            <div className="mt-3">
               <input
                 type="text"
                 placeholder="Special notes or drape preferences (optional)"
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
-                className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-dasara-gold"
+                className="w-full bg-white border border-[#e5dfd3] rounded-xl px-4 py-2.5 text-xs text-[#4c0d17] font-serif placeholder-[#8a7a6b]/70 focus:outline-none focus:border-[#b08a47] focus:ring-1 focus:ring-[#b08a47]/20 shadow-sm"
               />
             </div>
           </div>
 
           {/* Confirm Button */}
-          <div className="pt-2">
+          <div className="pt-4 border-t border-[#e5dfd3]">
             <Button
               onClick={handleConfirmBooking}
-              className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-6 text-sm sm:text-base rounded-xl shadow-xl shadow-emerald-950/50 cursor-pointer transition hover:scale-[1.01]"
+              className="w-full bg-[#065f46] hover:bg-[#044030] text-white font-bold py-6 text-sm sm:text-base rounded-xl shadow-lg cursor-pointer transition hover:scale-[1.01]"
             >
-              <Video className="mr-2 h-5 w-5" />
-              Confirm Video Appointment via WhatsApp Now
+              <Video className="mr-2 h-5 w-5 text-[#b08a47]" />
+              Confirm Video Appointment • వాట్సాప్‌లో బుక్ చేయండి
             </Button>
-            <p className="text-[11px] text-zinc-400 text-center mt-2">
+            <p className="text-[11px] text-[#8a7a6b] font-sans text-center mt-3">
               Our boutique staff will immediately accept and coordinate your live drape session.
             </p>
           </div>

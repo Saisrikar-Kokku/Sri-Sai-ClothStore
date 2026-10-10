@@ -62,24 +62,24 @@ export const ProductQuickViewModal: React.FC<Props> = ({
           if (!open) onClose();
         }}
       >
-        <DialogContent className="max-w-5xl border border-dasara-gold/40 bg-[#0E0C0F] p-4 sm:p-7 text-white sm:rounded-2xl max-h-[92vh] overflow-y-auto shadow-2xl">
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
+        <DialogContent className="max-w-6xl border-none bg-dasara-champagne p-6 sm:p-10 text-[#3d1118] sm:rounded-none max-h-[92vh] overflow-y-auto shadow-2xl [&>button]:!text-[#8a7a6b] [&>button:hover]:!text-[#4c0d17] [&>button]:!top-6 [&>button]:!right-6">
+          {/* Close button is handled by DialogContent natively, but we ensure the theme fits */}
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
             {/* ================= LEFT COLUMN: LOUPE & MULTI-ANGLE GALLERY (5 Cols) ================= */}
-            <div className="lg:col-span-5 flex flex-col gap-3.5">
-              {/* Badges on Top */}
-              <div className="flex justify-between items-center gap-2">
+            <div className="lg:col-span-5 flex flex-col gap-4">
+              <div className="flex flex-wrap items-center gap-2">
                 {product.isDealerUnique ? (
-                  <span className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-dasara-maroon to-dasara-gold/90 px-3 py-1 text-xs font-bold text-white shadow-xl border border-dasara-gold/50 backdrop-blur-md">
-                    <Sparkles className="h-3 w-3 text-dasara-goldLight" /> 1-of-1 Dealer Exclusive
+                  <span className="inline-flex items-center gap-1.5 rounded-sm bg-[#4c0d17] px-3 py-1 text-[10px] uppercase tracking-widest font-bold text-white shadow-sm">
+                    <Sparkles className="h-3 w-3 text-[#b08a47]" /> 1-of-1 Dealer Exclusive
                   </span>
                 ) : (
-                  <span className="inline-flex items-center gap-1 rounded-full bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs font-medium text-zinc-300">
+                  <span className="inline-flex items-center gap-1.5 rounded-sm bg-white px-3 py-1 text-[10px] uppercase tracking-widest font-bold text-[#4c0d17] shadow-sm border border-[#e5dfd3]">
                     Masterweaver Handloom Lot
                   </span>
                 )}
 
                 {product.isSilkMarkCertified && (
-                  <div className="inline-flex items-center gap-1 rounded-full bg-black/80 px-2.5 py-1 text-xs font-semibold text-emerald-400 border border-emerald-500/40 backdrop-blur-md">
+                  <div className="inline-flex items-center gap-1.5 rounded-sm bg-[#065f46] px-3 py-1 text-[10px] uppercase tracking-widest font-bold text-white shadow-sm">
                     <ShieldCheck className="h-3.5 w-3.5" /> Silk Mark Certified
                   </div>
                 )}
@@ -106,17 +106,17 @@ export const ProductQuickViewModal: React.FC<Props> = ({
             </div>
 
             {/* ================= RIGHT COLUMN: METADATA, SPECS & CTAs (7 Cols) ================= */}
-            <div className="lg:col-span-7 flex flex-col justify-between space-y-4">
+            <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
               <div>
-                <DialogHeader className="text-left space-y-2">
+                <DialogHeader className="text-left space-y-4">
                   {/* Category, SKU, Provenance & Wishlist button */}
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="rounded-full border border-dasara-gold/60 bg-dasara-gold/10 px-2.5 py-0.5 text-xs font-semibold text-dasara-goldLight">
+                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#e5dfd3]/60 pb-4">
+                    <div className="flex flex-wrap items-center gap-4">
+                      <span className="rounded-sm border border-[#b08a47]/40 bg-[#b08a47]/10 px-3 py-1 text-[10px] uppercase tracking-widest font-bold text-[#b08a47]">
                         {product.category}
                       </span>
-                      <span className="text-xs text-zinc-400 font-mono">SKU: {product.sku}</span>
-                      <span className="text-xs text-amber-400 font-medium">📍 {product.provenance}</span>
+                      <span className="text-[11px] tracking-widest uppercase font-sans text-[#8a7a6b]">SKU: {product.sku}</span>
+                      <span className="text-[11px] tracking-widest uppercase font-sans text-[#8a7a6b] flex items-center gap-1"><span className="text-[#b08a47]">📍</span> {product.provenance}</span>
                     </div>
 
                     {/* Shortlist Toggle */}
@@ -124,16 +124,16 @@ export const ProductQuickViewModal: React.FC<Props> = ({
                       <button
                         type="button"
                         onClick={() => onToggleWishlist(product)}
-                        className={`flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold transition border cursor-pointer ${
+                        className={`flex items-center gap-2 rounded-full px-4 py-1.5 text-[10px] uppercase tracking-widest font-bold transition border cursor-pointer ${
                           isWishlisted
-                            ? 'bg-rose-950/70 text-rose-400 border-rose-600/50 shadow-sm'
-                            : 'bg-zinc-900/80 text-zinc-300 border-zinc-800 hover:border-zinc-700 hover:text-white'
+                            ? 'bg-[#4c0d17] text-white border-[#4c0d17] shadow-sm'
+                            : 'bg-transparent text-[#4c0d17] border-[#4c0d17]/30 hover:border-[#4c0d17] hover:bg-[#4c0d17]/5'
                         }`}
                         aria-label={isWishlisted ? 'Remove from Shortlist' : 'Add to Shortlist'}
                       >
                         <Heart
-                          className={`h-3.5 w-3.5 ${
-                            isWishlisted ? 'fill-rose-500 text-rose-500' : 'text-zinc-400'
+                          className={`h-3 w-3 ${
+                            isWishlisted ? 'fill-white' : ''
                           }`}
                         />
                         <span>{isWishlisted ? 'Shortlisted' : 'Add to Shortlist'}</span>
@@ -141,7 +141,7 @@ export const ProductQuickViewModal: React.FC<Props> = ({
                     )}
                   </div>
 
-                  <DialogTitle className="font-serif text-2xl sm:text-3xl font-bold text-dasara-champagne leading-snug">
+                  <DialogTitle className="font-serif text-4xl sm:text-5xl font-bold text-[#4c0d17] leading-tight pt-2">
                     {product.name}
                   </DialogTitle>
                   <DialogDescription className="sr-only">
@@ -150,30 +150,30 @@ export const ProductQuickViewModal: React.FC<Props> = ({
                 </DialogHeader>
 
                 {/* Pricing Block */}
-                <div className="mt-3.5 flex flex-wrap items-baseline gap-3 pb-3 border-b border-zinc-800/80">
-                  <span className="font-serif text-3xl sm:text-4xl font-bold text-dasara-gold">
+                <div className="mt-4 flex flex-wrap items-baseline gap-4 pb-4">
+                  <span className="font-serif text-4xl sm:text-5xl font-bold text-[#b08a47]">
                     ₹{product.price.toLocaleString('en-IN')}
                   </span>
-                  <span className="text-base sm:text-lg text-zinc-500 line-through">
+                  <span className="text-lg font-sans tracking-widest text-[#8a7a6b] line-through decoration-[#4c0d17]/40">
                     ₹{product.originalPrice.toLocaleString('en-IN')}
                   </span>
-                  <span className="rounded-full bg-gradient-to-r from-dasara-maroon to-dasara-deepCrimson text-dasara-goldLight border border-dasara-gold/40 px-3 py-1 text-xs font-bold shadow-sm">
+                  <span className="rounded-sm bg-[#4c0d17] text-white px-3 py-1.5 text-[10px] uppercase tracking-widest font-bold shadow-sm">
                     {product.discountPercent}% OFF • Dasara Special
                   </span>
-                  <span className="text-xs text-emerald-400 font-medium">
+                  <span className="text-[11px] text-[#065f46] font-bold tracking-widest uppercase font-sans">
                     (You Save ₹{(product.originalPrice - product.price).toLocaleString('en-IN')})
                   </span>
                 </div>
 
                 {/* Stock Status Bar */}
-                <div className="mt-3 flex items-center justify-between text-xs bg-zinc-900/50 rounded-xl px-3.5 py-2 border border-zinc-800/80">
-                  <span className="text-zinc-400">Stock Available:</span>
-                  <span className={`font-semibold flex items-center gap-1.5 ${
+                <div className="mt-2 flex items-center justify-between text-xs bg-white/50 rounded-sm px-4 py-3 border border-[#e5dfd3]">
+                  <span className="text-[#8a7a6b] font-sans tracking-widest uppercase text-[10px] font-bold">Stock Available:</span>
+                  <span className={`font-semibold flex items-center gap-1.5 font-sans tracking-wider text-[11px] uppercase ${
                     product.stockCount === 0
-                      ? 'text-rose-400'
+                      ? 'text-red-700'
                       : product.stockCount === 1
-                      ? 'text-amber-400'
-                      : 'text-emerald-400'
+                      ? 'text-[#b08a47]'
+                      : 'text-[#065f46]'
                   }`}>
                     <Clock className="h-3.5 w-3.5" />
                     {product.stockCount === 0
