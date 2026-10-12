@@ -235,20 +235,26 @@ export const WishlistDrawer: React.FC<Props> = ({
                             </div>
                           </div>
 
-                          <div className="flex justify-between">
-                            <span className="text-[#8a7a6b] text-[10px] uppercase tracking-wider font-bold">ఫ్యాబ్రిక్:</span>
-                            <span className="text-[#4c0d17] font-medium font-serif text-[11px] text-right truncate max-w-[130px]">{p.fabric.split('(')[0]}</span>
-                          </div>
+                          {p.fabric && (
+                            <div className="flex justify-between">
+                              <span className="text-[#8a7a6b] text-[10px] uppercase tracking-wider font-bold">ఫ్యాబ్రిక్:</span>
+                              <span className="text-[#4c0d17] font-medium font-serif text-[11px] text-right truncate max-w-[130px]">{p.fabric.split('(')[0]}</span>
+                            </div>
+                          )}
 
-                          <div className="flex justify-between">
-                            <span className="text-[#8a7a6b] text-[10px] uppercase tracking-wider font-bold">జరీ • Zari:</span>
-                            <span className="text-[#b08a47] font-medium font-serif text-[11px] text-right truncate max-w-[130px]">{p.zariType}</span>
-                          </div>
+                          {p.zariType && (
+                            <div className="flex justify-between">
+                              <span className="text-[#8a7a6b] text-[10px] uppercase tracking-wider font-bold">జరీ • Zari:</span>
+                              <span className="text-[#b08a47] font-medium font-serif text-[11px] text-right truncate max-w-[130px]">{p.zariType}</span>
+                            </div>
+                          )}
 
-                          <div className="flex justify-between">
-                            <span className="text-[#8a7a6b] text-[10px] uppercase tracking-wider font-bold">నేత • Origin:</span>
-                            <span className="text-[#4c0d17] font-serif text-[11px] text-right truncate max-w-[130px]">{p.provenance.split(',')[0]}</span>
-                          </div>
+                          {p.provenance && (
+                            <div className="flex justify-between">
+                              <span className="text-[#8a7a6b] text-[10px] uppercase tracking-wider font-bold">నేత • Origin:</span>
+                              <span className="text-[#4c0d17] font-serif text-[11px] text-right truncate max-w-[130px]">{p.provenance.split(',')[0]}</span>
+                            </div>
+                          )}
                         </div>
 
                         {/* Action buttons */}
@@ -332,8 +338,12 @@ export const WishlistDrawer: React.FC<Props> = ({
 
                           <div className="flex items-center gap-1.5 text-[10px] text-[#8a7a6b] font-mono mt-1">
                             <span>{item.sku}</span>
-                            <span>•</span>
-                            <span className="text-[#8c6721] font-semibold">{item.provenance.split(',')[0]}</span>
+                            {item.provenance ? (
+                              <>
+                                <span>•</span>
+                                <span className="text-[#8c6721] font-semibold">{item.provenance.split(',')[0]}</span>
+                              </>
+                            ) : null}
                           </div>
                         </div>
 

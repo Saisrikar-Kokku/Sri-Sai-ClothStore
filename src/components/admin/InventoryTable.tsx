@@ -174,7 +174,9 @@ export const InventoryTable: React.FC<InventoryTableProps> = ({
                 </td>
                 <td className="px-5 py-3">
                   <span className="block text-[#4c0d17] font-medium font-serif">{product.category}</span>
-                  <span className="text-[10px] text-[#8a7a6b] truncate inline-block max-w-[150px]">📍 {product.provenance}</span>
+                  {product.provenance ? (
+                    <span className="text-[10px] text-[#8a7a6b] truncate inline-block max-w-[150px]">📍 {product.provenance}</span>
+                  ) : null}
                 </td>
                 <td className="px-5 py-3">
                   <span className="font-sans text-sm font-bold text-[#4c0d17]">

@@ -70,23 +70,23 @@ CREATE TABLE IF NOT EXISTS public.products (
     category TEXT NOT NULL CHECK (
         category IN ('Kanchi Pattu', 'Banarasi Silk', 'Organza', 'Fancy Sarees', 'Partywear & Kurtis')
     ),
-    provenance TEXT NOT NULL,                   -- e.g. "Kanchipuram, Tamil Nadu"
+    provenance TEXT NOT NULL DEFAULT '',
     lot_id UUID REFERENCES public.dealer_lots(id) ON DELETE SET NULL,
     price NUMERIC(10, 2) NOT NULL,              -- Dasara Offer Price (INR)
     original_price NUMERIC(10, 2) NOT NULL,     -- MRP before discount
     discount_percent INT GENERATED ALWAYS AS (
         ROUND(((original_price - price) / original_price) * 100)
     ) STORED,
-    fabric TEXT NOT NULL,                       -- e.g. "Pure Mulberry Silk"
-    zari_type TEXT NOT NULL,                    -- e.g. "Antique Pure Gold Zari"
-    blouse_details TEXT NOT NULL,               -- e.g. "0.8m Contrast Emerald Green"
+    fabric TEXT NOT NULL DEFAULT '',
+    zari_type TEXT NOT NULL DEFAULT '',
+    blouse_details TEXT NOT NULL DEFAULT '',
     stock_count INT NOT NULL DEFAULT 1,         -- Scarcity indicator (1 = 1-of-1 piece)
     is_dealer_unique BOOLEAN NOT NULL DEFAULT true, -- 1-of-1 dealer piece
     is_silk_mark_certified BOOLEAN NOT NULL DEFAULT false,
     is_featured_showstopper BOOLEAN NOT NULL DEFAULT false,
     images TEXT[] NOT NULL DEFAULT '{}',        -- URLs in saree-images storage bucket
-    description TEXT NOT NULL,
-    color TEXT NOT NULL,
+    description TEXT NOT NULL DEFAULT '',
+    color TEXT NOT NULL DEFAULT '',
     is_published BOOLEAN NOT NULL DEFAULT true,
     created_at TIMESTAMPTZ DEFAULT NOW(),
     updated_at TIMESTAMPTZ DEFAULT NOW()

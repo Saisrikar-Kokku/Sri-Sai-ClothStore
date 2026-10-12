@@ -63,10 +63,10 @@ export function getWhatsAppOrderUrl(
     '',
     `🥻 *Product:* ${product.name}`,
     `🏷️ *SKU:* ${product.sku}`,
-    `📍 *Origin:* ${product.provenance}`,
+    product.provenance ? `📍 *Origin:* ${product.provenance}` : '',
     `💰 *Festive Price:* ₹${product.price.toLocaleString('en-IN')} (MRP: ₹${product.originalPrice.toLocaleString('en-IN')})`,
-    `🧵 *Fabric:* ${product.fabric}`,
-    `✨ *Zari:* ${product.zariType}`,
+    product.fabric ? `🧵 *Fabric:* ${product.fabric}` : '',
+    product.zariType ? `✨ *Zari:* ${product.zariType}` : '',
     selectedAngleUrl ? `📸 *Reference Photo:* ${selectedAngleUrl}` : '',
     '',
     isHold
@@ -118,10 +118,11 @@ export function getWhatsAppMultiItemInquiryUrl(payload: MultiItemInquiryPayload)
     const overflow = payload.products.length - list.length;
 
     const itemsFormatted = list.map((p, idx) => {
+      const originStr = p.provenance ? ` | Origin: ${p.provenance}` : '';
       if (includePhotos) {
-        return `${idx + 1}. *${p.name}*\n   SKU: ${p.sku} | Price: ₹${p.price.toLocaleString('en-IN')}\n   Origin: ${p.provenance}\n   Photo: ${p.images[0] || 'N/A'}`;
+        return `${idx + 1}. *${p.name}*\n   SKU: ${p.sku} | Price: ₹${p.price.toLocaleString('en-IN')}${originStr}\n   Photo: ${p.images[0] || 'N/A'}`;
       }
-      return `${idx + 1}. *${p.name}* (SKU: ${p.sku} | ₹${p.price.toLocaleString('en-IN')})`;
+      return `${idx + 1}. *${p.name}* (SKU: ${p.sku} | ₹${p.price.toLocaleString('en-IN')}${originStr})`;
     }).join(includePhotos ? '\n\n' : '\n');
 
     return [
@@ -171,10 +172,10 @@ export function getWhatsAppShareUrl(product: SareeProduct, imageUrl?: string): s
     '',
     `*${product.name}*`,
     `🏷️ SKU: ${product.sku}`,
-    `📍 Origin: ${product.provenance}`,
+    product.provenance ? `📍 Origin: ${product.provenance}` : '',
     `💰 Festive Price: ₹${product.price.toLocaleString('en-IN')} (MRP: ₹${product.originalPrice.toLocaleString('en-IN')})`,
-    `🧵 Fabric: ${product.fabric}`,
-    `✨ Zari: ${product.zariType}`,
+    product.fabric ? `🧵 Fabric: ${product.fabric}` : '',
+    product.zariType ? `✨ Zari: ${product.zariType}` : '',
     displayImage ? `📸 Photo: ${displayImage}` : '',
     '',
     `What do you think? Should we shortlist this for the Dasara festival pooja?`

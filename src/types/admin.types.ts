@@ -4,13 +4,13 @@ export interface ProductFormData {
   sku: string;
   name: string;
   category: Exclude<SareeCategory, 'All'>;
-  provenance: string;
+  provenance?: string;
   lot_id?: string | null;
   price: number;
   originalPrice: number;
-  fabric: string;
-  zariType: string;
-  blouseDetails: string;
+  fabric?: string;
+  zariType?: string;
+  blouseDetails?: string;
   stockCount: number;
   isDealerUnique: boolean;
   isSilkMarkCertified: boolean;
@@ -18,7 +18,7 @@ export interface ProductFormData {
   isPublished: boolean;
   images: string[];
   description: string;
-  color: string;
+  color?: string;
 }
 
 export interface DealerLotFormData {

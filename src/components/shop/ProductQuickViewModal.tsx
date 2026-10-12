@@ -5,10 +5,8 @@ import { ZoomLevel, getProductAngleImages } from '@/types/inspection.types';
 import { FabricLoupeLens } from './modal/FabricLoupeLens';
 import { MultiAngleGallery } from './modal/MultiAngleGallery';
 import { FullScreenLightbox } from './modal/FullScreenLightbox';
-import { SareeSpecTabs } from './modal/SareeSpecTabs';
-import { PurityCertificateCard } from './modal/PurityCertificateCard';
 import { ModalConversionBar } from './modal/ModalConversionBar';
-import { Sparkles, ShieldCheck, Heart, Clock } from 'lucide-react';
+import { Heart, Clock } from 'lucide-react';
 import { getProductTeluguSubtitle } from '@/lib/teluguDictionary';
 
 interface Props {
@@ -70,24 +68,6 @@ export const ProductQuickViewModal: React.FC<Props> = ({
           <div className="grid grid-cols-1 gap-6 lg:gap-12 lg:grid-cols-12">
             {/* ================= LEFT COLUMN: LOUPE & MULTI-ANGLE GALLERY (5 Cols) ================= */}
             <div className="lg:col-span-5 flex flex-col gap-3 sm:gap-4">
-              <div className="flex flex-wrap items-center gap-2">
-                {product.isDealerUnique ? (
-                  <span className="inline-flex items-center gap-1.5 rounded-sm bg-[#4c0d17] px-2.5 sm:px-3 py-1 text-[9px] sm:text-[10px] uppercase tracking-widest font-bold text-white shadow-sm">
-                    <Sparkles className="h-3 w-3 text-[#b08a47]" /> 1-of-1 Exclusive • ప్రత్యేక డిజైన్
-                  </span>
-                ) : (
-                  <span className="inline-flex items-center gap-1.5 rounded-sm bg-white px-2.5 sm:px-3 py-1 text-[9px] sm:text-[10px] uppercase tracking-widest font-bold text-[#4c0d17] shadow-sm border border-[#e5dfd3]">
-                    Masterweaver Handloom Lot
-                  </span>
-                )}
-
-                {product.isSilkMarkCertified && (
-                  <div className="inline-flex items-center gap-1.5 rounded-sm bg-[#065f46] px-2.5 sm:px-3 py-1 text-[9px] sm:text-[10px] uppercase tracking-widest font-bold text-white shadow-sm">
-                    <ShieldCheck className="h-3.5 w-3.5" /> Silk Mark Certified • సిల్క్ మార్క్
-                  </div>
-                )}
-              </div>
-
               {/* 60/120 FPS Fabric Loupe Lens Box */}
               <FabricLoupeLens
                 imageSrc={currentAngle.url}
@@ -119,7 +99,11 @@ export const ProductQuickViewModal: React.FC<Props> = ({
                         {product.category}
                       </span>
                       <span className="text-[10px] sm:text-[11px] tracking-widest uppercase font-sans text-[#8a7a6b]">SKU: {product.sku}</span>
-                      <span className="text-[10px] sm:text-[11px] tracking-widest uppercase font-sans text-[#8a7a6b] flex items-center gap-1"><span className="text-[#b08a47]">📍</span> {product.provenance}</span>
+                      {product.provenance ? (
+                        <span className="text-[10px] sm:text-[11px] tracking-widest uppercase font-sans text-[#8a7a6b] flex items-center gap-1">
+                          <span className="text-[#b08a47]">📍</span> {product.provenance}
+                        </span>
+                      ) : null}
                     </div>
 
                     {/* Shortlist Toggle */}
@@ -151,7 +135,7 @@ export const ProductQuickViewModal: React.FC<Props> = ({
                     {getProductTeluguSubtitle(product.category)}
                   </span>
                   <DialogDescription className="sr-only">
-                    Comprehensive multi-angle fabric inspection, weave architecture, and Silk Mark purity specs for {product.name}
+                    Fabric inspection and photos for {product.name}
                   </DialogDescription>
                 </DialogHeader>
 
@@ -190,13 +174,17 @@ export const ProductQuickViewModal: React.FC<Props> = ({
                   </span>
                 </div>
 
-                {/* Silk Mark & GI Authenticity Credential Card */}
-                <div className="mt-3.5">
-                  <PurityCertificateCard product={product} />
-                </div>
-
-                {/* Technical Saree Specification Tabs */}
-                <SareeSpecTabs product={product} />
+                {/* Description / Saree Details */}
+                {product.description && (
+                  <div className="mt-4 p-4 rounded-xl bg-white/70 border border-[#e5dfd3] shadow-xs">
+                    <span className="text-[10px] uppercase font-bold tracking-widest text-[#8a7a6b] block mb-1">
+                      వివరాలు • Description
+                    </span>
+                    <p className="text-xs sm:text-sm text-[#4c0d17]/90 leading-relaxed font-sans">
+                      {product.description}
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* High-Conversion Regional Commerce Bar */}

@@ -63,6 +63,11 @@ export function useAdminInventory(
       const newId = generateUUID();
       const newProduct: SareeProduct = {
         id: newId,
+        provenance: formData.provenance || '',
+        fabric: formData.fabric || '',
+        zariType: formData.zariType || '',
+        blouseDetails: formData.blouseDetails || '',
+        color: formData.color || '',
         ...formData,
         price: Number(formData.price) || 0,
         originalPrice: Number(formData.originalPrice) || 0,

@@ -75,12 +75,16 @@ export const ProductCard: React.FC<Props> = ({
           >
             {product.name}
           </h4>
-          <p className="font-sans text-[10px] tracking-[0.15em] text-[#8a7a6b] mt-3 uppercase line-clamp-1">
-            {product.fabric} • {product.zariType}
-          </p>
-          <p className="font-serif italic text-xs text-[#b08a47] mt-1 line-clamp-1">
-            {product.provenance}
-          </p>
+          {[product.fabric, product.zariType].filter(Boolean).length > 0 && (
+            <p className="font-sans text-[10px] tracking-[0.15em] text-[#8a7a6b] mt-3 uppercase line-clamp-1">
+              {[product.fabric, product.zariType].filter(Boolean).join(' • ')}
+            </p>
+          )}
+          {product.provenance && (
+            <p className="font-serif italic text-xs text-[#b08a47] mt-1 line-clamp-1">
+              {product.provenance}
+            </p>
+          )}
         </div>
 
         <div className="mt-auto pt-5 border-t border-[#e5dfd3]/50">

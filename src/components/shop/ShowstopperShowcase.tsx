@@ -132,10 +132,12 @@ const ShowstopperCard: React.FC<{
             className="absolute bottom-3 left-3 right-3 flex justify-between items-center text-xs z-20 pointer-events-none"
             style={{ transform: 'translateZ(24px)' }}
           >
-            <span className="inline-flex items-center gap-1.5 rounded-full backdrop-blur-md bg-black/45 border border-white/10 px-2.5 py-0.5 text-[11px] text-zinc-300 font-normal">
-              <MapPin className="h-2.5 w-2.5 text-dasara-gold shrink-0" />
-              <span>{saree.provenance.split(',')[0]}</span>
-            </span>
+            {saree.provenance ? (
+              <span className="inline-flex items-center gap-1.5 rounded-full backdrop-blur-md bg-black/45 border border-white/10 px-2.5 py-0.5 text-[11px] text-zinc-300 font-normal">
+                <MapPin className="h-2.5 w-2.5 text-dasara-gold shrink-0" />
+                <span>{saree.provenance.split(',')[0]}</span>
+              </span>
+            ) : null}
 
             {saree.isSilkMarkCertified && (
               <span className="inline-flex items-center gap-1 rounded-full backdrop-blur-md bg-emerald-950/60 border border-emerald-500/30 px-2 py-0.5 text-[10px] font-medium text-emerald-300 shadow-md">
@@ -182,9 +184,11 @@ const ShowstopperCard: React.FC<{
             >
               {saree.name}
             </h3>
-            <p className="mt-1 text-xs text-zinc-400 line-clamp-1 font-sans font-light">
-              {saree.fabric} • {saree.zariType}
-            </p>
+            {[saree.fabric, saree.zariType].filter(Boolean).length > 0 && (
+              <p className="mt-1 text-xs text-zinc-400 line-clamp-1 font-sans font-light">
+                {[saree.fabric, saree.zariType].filter(Boolean).join(' • ')}
+              </p>
+            )}
           </div>
 
           {/* 3. Pricing & Sleek Action CTAs */}

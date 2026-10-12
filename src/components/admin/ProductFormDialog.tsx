@@ -36,20 +36,20 @@ const DEFAULT_FORM: ProductFormData = {
   sku: '',
   name: '',
   category: 'Kanchi Pattu',
-  provenance: 'Kanchipuram, Tamil Nadu',
+  provenance: '',
   price: 12999,
   originalPrice: 16999,
-  fabric: '100% Pure Mulberry Silk',
-  zariType: 'Pure Gold Zari Weave',
-  blouseDetails: '0.8m Contrast Blouse Piece Included',
+  fabric: '',
+  zariType: '',
+  blouseDetails: '',
   stockCount: 1,
   isDealerUnique: true,
-  isSilkMarkCertified: true,
+  isSilkMarkCertified: false,
   isFeaturedShowstopper: false,
   isPublished: true,
   images: [],
-  description: 'Handpicked masterweaver handloom masterpiece with rich temple borders and grand zari pallu.',
-  color: 'Crimson Red',
+  description: 'Handpicked masterweaver saree with elegant design and rich pallu.',
+  color: '',
 };
 
 const ANGLE_LABELS = [
@@ -91,21 +91,21 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
         sku: productToEdit.sku,
         name: productToEdit.name,
         category: productToEdit.category,
-        provenance: productToEdit.provenance,
+        provenance: productToEdit.provenance || '',
         lot_id: productToEdit.lot_id,
         price: productToEdit.price,
         originalPrice: productToEdit.originalPrice,
-        fabric: productToEdit.fabric,
-        zariType: productToEdit.zariType,
-        blouseDetails: productToEdit.blouseDetails,
+        fabric: productToEdit.fabric || '',
+        zariType: productToEdit.zariType || '',
+        blouseDetails: productToEdit.blouseDetails || '',
         stockCount: productToEdit.stockCount,
         isDealerUnique: productToEdit.isDealerUnique,
         isSilkMarkCertified: productToEdit.isSilkMarkCertified,
         isFeaturedShowstopper: productToEdit.isFeaturedShowstopper,
         isPublished: productToEdit.isPublished ?? true,
         images: productToEdit.images || [],
-        description: productToEdit.description,
-        color: productToEdit.color,
+        description: productToEdit.description || '',
+        color: productToEdit.color || '',
       });
     } else {
       setFormData({
@@ -229,9 +229,9 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
           </DialogHeader>
 
           <form onSubmit={handleSubmit} className="mt-3 sm:mt-4 space-y-4">
-            {/* Row 1: Name and SKU */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <div className="sm:col-span-2">
+            {/* Row 1: Name, Category, SKU */}
+            <div className="grid grid-cols-1 sm:grid-cols-12 gap-3">
+              <div className="sm:col-span-6">
                 <label className="text-xs font-semibold text-[#4c0d17]/90 block mb-1">Saree Name / Title</label>
                 <input
                   type="text"
@@ -242,22 +242,7 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
                   className="w-full bg-white border border-[#e5dfd3] rounded-xl px-3.5 py-2.5 text-xs text-[#4c0d17] focus:border-dasara-gold focus:outline-none"
                 />
               </div>
-              <div>
-                <label className="text-xs font-semibold text-[#4c0d17]/90 block mb-1">Consignment SKU</label>
-                <input
-                  type="text"
-                  required
-                  value={formData.sku}
-                  onChange={(e) => setFormData({ ...formData, sku: e.target.value.toUpperCase() })}
-                  placeholder="e.g. SSC-KP-101"
-                  className="w-full bg-white border border-[#e5dfd3] rounded-xl px-3.5 py-2.5 text-xs text-[#4c0d17] font-mono uppercase focus:border-dasara-gold focus:outline-none"
-                />
-              </div>
-            </div>
-
-            {/* Row 2: Category, Provenance, Color */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <div>
+              <div className="sm:col-span-3">
                 <label className="text-xs font-semibold text-[#4c0d17]/90 block mb-1">Category</label>
                 <select
                   value={formData.category}
@@ -271,31 +256,20 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
                   <option value="Partywear & Kurtis">Partywear & Kurtis</option>
                 </select>
               </div>
-              <div>
-                <label className="text-xs font-semibold text-[#4c0d17]/90 block mb-1">Provenance / Hub</label>
+              <div className="sm:col-span-3">
+                <label className="text-xs font-semibold text-[#4c0d17]/90 block mb-1">Consignment SKU</label>
                 <input
                   type="text"
                   required
-                  value={formData.provenance}
-                  onChange={(e) => setFormData({ ...formData, provenance: e.target.value })}
-                  placeholder="e.g. Kanchipuram, Tamil Nadu"
-                  className="w-full bg-white border border-[#e5dfd3] rounded-xl px-3.5 py-2.5 text-xs text-[#4c0d17] focus:border-dasara-gold focus:outline-none"
-                />
-              </div>
-              <div>
-                <label className="text-xs font-semibold text-[#4c0d17]/90 block mb-1">Color Shade</label>
-                <input
-                  type="text"
-                  required
-                  value={formData.color}
-                  onChange={(e) => setFormData({ ...formData, color: e.target.value })}
-                  placeholder="e.g. Crimson Red"
-                  className="w-full bg-white border border-[#e5dfd3] rounded-xl px-3.5 py-2.5 text-xs text-[#4c0d17] focus:border-dasara-gold focus:outline-none"
+                  value={formData.sku}
+                  onChange={(e) => setFormData({ ...formData, sku: e.target.value.toUpperCase() })}
+                  placeholder="e.g. SSC-KP-101"
+                  className="w-full bg-white border border-[#e5dfd3] rounded-xl px-3.5 py-2.5 text-xs text-[#4c0d17] font-mono uppercase focus:border-dasara-gold focus:outline-none"
                 />
               </div>
             </div>
 
-            {/* Row 3: Pricing and Discount */}
+            {/* Row 2: Pricing and Discount */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-3.5 bg-white/80 rounded-xl border border-[#e5dfd3]">
               <div>
                 <label className="text-xs font-semibold text-dasara-gold block mb-1">Selling Price (₹)</label>
@@ -327,48 +301,15 @@ export const ProductFormDialog: React.FC<ProductFormDialogProps> = ({
               </div>
             </div>
 
-            {/* Row 4: Fabric, Zari, Blouse */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <div>
-                <label className="text-xs font-semibold text-[#4c0d17]/90 block mb-1">Fabric Composition</label>
-                <input
-                  type="text"
-                  required
-                  value={formData.fabric}
-                  onChange={(e) => setFormData({ ...formData, fabric: e.target.value })}
-                  className="w-full bg-white border border-[#e5dfd3] rounded-xl px-3.5 py-2.5 text-xs text-[#4c0d17] focus:border-dasara-gold focus:outline-none"
-                />
-              </div>
-              <div>
-                <label className="text-xs font-semibold text-[#4c0d17]/90 block mb-1">Zari Specification</label>
-                <input
-                  type="text"
-                  required
-                  value={formData.zariType}
-                  onChange={(e) => setFormData({ ...formData, zariType: e.target.value })}
-                  className="w-full bg-white border border-[#e5dfd3] rounded-xl px-3.5 py-2.5 text-xs text-[#4c0d17] focus:border-dasara-gold focus:outline-none"
-                />
-              </div>
-              <div>
-                <label className="text-xs font-semibold text-[#4c0d17]/90 block mb-1">Blouse Piece</label>
-                <input
-                  type="text"
-                  required
-                  value={formData.blouseDetails}
-                  onChange={(e) => setFormData({ ...formData, blouseDetails: e.target.value })}
-                  className="w-full bg-white border border-[#e5dfd3] rounded-xl px-3.5 py-2.5 text-xs text-[#4c0d17] focus:border-dasara-gold focus:outline-none"
-                />
-              </div>
-            </div>
-
-            {/* Row 5: Description */}
+            {/* Row 3: Description */}
             <div>
-              <label className="text-xs font-semibold text-[#4c0d17]/90 block mb-1">Description / Artisan Note</label>
+              <label className="text-xs font-semibold text-[#4c0d17]/90 block mb-1">Description / Saree Details</label>
               <textarea
                 rows={2}
                 required
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                placeholder="Enter details about the saree, design, border, etc."
                 className="w-full bg-white border border-[#e5dfd3] rounded-xl p-3 text-xs text-[#4c0d17] focus:border-dasara-gold focus:outline-none resize-none"
               />
             </div>
