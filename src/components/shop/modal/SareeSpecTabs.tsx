@@ -70,9 +70,18 @@ export const SareeSpecTabs: React.FC<SareeSpecTabsProps> = ({ product }) => {
   return (
     <Tabs defaultValue="weave" className="w-full mt-6">
       <TabsList className="grid w-full grid-cols-3 !bg-[#e5dfd3]/50 p-1 rounded-sm border border-[#e5dfd3]">
-        <TabsTrigger value="weave" className="data-[state=active]:!bg-none data-[state=active]:!bg-white data-[state=active]:!text-[#4c0d17] data-[state=active]:!shadow-sm data-[state=active]:!border-[#b08a47] !text-[#8a7a6b] uppercase tracking-widest text-[10px] font-bold rounded-sm border border-transparent">Weave & Loom</TabsTrigger>
-        <TabsTrigger value="purity" className="data-[state=active]:!bg-none data-[state=active]:!bg-white data-[state=active]:!text-[#4c0d17] data-[state=active]:!shadow-sm data-[state=active]:!border-[#b08a47] !text-[#8a7a6b] uppercase tracking-widest text-[10px] font-bold rounded-sm border border-transparent">Fabric & Zari</TabsTrigger>
-        <TabsTrigger value="styling" className="data-[state=active]:!bg-none data-[state=active]:!bg-white data-[state=active]:!text-[#4c0d17] data-[state=active]:!shadow-sm data-[state=active]:!border-[#b08a47] !text-[#8a7a6b] uppercase tracking-widest text-[10px] font-bold rounded-sm border border-transparent">Blouse & Styling</TabsTrigger>
+        <TabsTrigger value="weave" className="data-[state=active]:!bg-none data-[state=active]:!bg-white data-[state=active]:!text-[#4c0d17] data-[state=active]:!shadow-sm data-[state=active]:!border-[#b08a47] !text-[#8a7a6b] uppercase tracking-wider text-[9px] sm:text-[10px] font-bold rounded-sm border border-transparent py-1.5 flex flex-col items-center">
+          <span>Weave & Loom</span>
+          <span className="text-[8px] font-serif text-[#b08a47] telugu-text normal-case font-normal -mt-0.5">మగ్గం & నేత</span>
+        </TabsTrigger>
+        <TabsTrigger value="purity" className="data-[state=active]:!bg-none data-[state=active]:!bg-white data-[state=active]:!text-[#4c0d17] data-[state=active]:!shadow-sm data-[state=active]:!border-[#b08a47] !text-[#8a7a6b] uppercase tracking-wider text-[9px] sm:text-[10px] font-bold rounded-sm border border-transparent py-1.5 flex flex-col items-center">
+          <span>Fabric & Zari</span>
+          <span className="text-[8px] font-serif text-[#b08a47] telugu-text normal-case font-normal -mt-0.5">పట్టు & జరీ</span>
+        </TabsTrigger>
+        <TabsTrigger value="styling" className="data-[state=active]:!bg-none data-[state=active]:!bg-white data-[state=active]:!text-[#4c0d17] data-[state=active]:!shadow-sm data-[state=active]:!border-[#b08a47] !text-[#8a7a6b] uppercase tracking-wider text-[9px] sm:text-[10px] font-bold rounded-sm border border-transparent py-1.5 flex flex-col items-center">
+          <span>Blouse & Styling</span>
+          <span className="text-[8px] font-serif text-[#b08a47] telugu-text normal-case font-normal -mt-0.5">బ్లౌజ్ డిజైన్</span>
+        </TabsTrigger>
       </TabsList>
 
       {/* TAB 1: WEAVE & LOOM ARCHITECTURE */}

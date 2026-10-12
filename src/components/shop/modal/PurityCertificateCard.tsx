@@ -42,6 +42,9 @@ export const PurityCertificateCard: React.FC<PurityCertificateCardProps> = ({ pr
                 VERIFIED
               </span>
             </div>
+            <span className="text-[10px] text-[#b08a47] font-serif telugu-text block font-medium leading-tight mt-0.5">
+              100% స్వచ్ఛమైన పట్టు • భారత ప్రభుత్వ సిల్క్ మార్క్ సర్టిఫైడ్
+            </span>
             <p className="text-[10px] uppercase tracking-widest text-[#8a7a6b] font-sans mt-0.5">
               Reg: {regCode} • {giDisplay}
             </p>
@@ -54,7 +57,7 @@ export const PurityCertificateCard: React.FC<PurityCertificateCardProps> = ({ pr
           className="flex items-center gap-1 rounded-sm bg-white px-2.5 py-1 text-[10px] font-bold tracking-widest uppercase text-[#b08a47] transition border border-[#e5dfd3] cursor-pointer hover:border-[#b08a47] shadow-sm"
           aria-expanded={isExpanded}
         >
-          <span>{isExpanded ? 'Less' : 'Verify'}</span>
+          <span>{isExpanded ? 'Less' : 'Verify • ధృవీకరణ'}</span>
           {isExpanded ? <ChevronUp className="h-3 w-3" /> : <ChevronDown className="h-3 w-3" />}
         </button>
       </div>

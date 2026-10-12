@@ -80,3 +80,15 @@
     offset-distance: 100%;
   }
 }
+
+/* Hide scrollbar for clean touch carousel/tabs */
+.scrollbar-none::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+.scrollbar-none {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+

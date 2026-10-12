@@ -214,18 +214,19 @@ export const FabricLoupeLens: React.FC<FabricLoupeLensProps> = ({
         <button
           type="button"
           onClick={onOpenLightbox}
-          className="absolute top-4 right-4 flex items-center gap-2 rounded-sm bg-[#4c0d17] hover:bg-[#4c0d17]/90 px-4 py-1.5 text-[10px] uppercase tracking-widest font-bold text-white shadow-md transition hover:scale-105 cursor-pointer z-20"
+          className="absolute top-4 right-4 flex items-center gap-1.5 sm:gap-2 rounded-sm bg-[#4c0d17] hover:bg-[#4c0d17]/90 px-3 sm:px-4 py-1.5 text-[10px] uppercase tracking-widest font-bold text-white shadow-md transition hover:scale-105 cursor-pointer z-20"
           aria-label="Open Full-Screen Theatre View"
         >
           <Maximize2 className="h-3.5 w-3.5 text-[#b08a47]" />
-          <span className="hidden sm:inline">Theatre View</span>
+          <span className="hidden sm:inline">Theatre View • పూర్తి స్క్రీన్</span>
+          <span className="inline sm:hidden">పూర్తి స్క్రీన్</span>
         </button>
 
         {/* Instruction Pill (hidden during active inspection) */}
         {!isActive && !isTouchActive && (
-          <div className="absolute bottom-4 right-4 flex items-center gap-2 rounded-sm bg-white/95 backdrop-blur-sm border border-[#e5dfd3] px-4 py-1.5 text-[10px] uppercase tracking-widest font-bold text-[#4c0d17] shadow-sm pointer-events-none transition-opacity">
+          <div className="absolute bottom-4 right-4 flex items-center gap-2 rounded-sm bg-white/95 backdrop-blur-sm border border-[#e5dfd3] px-3 sm:px-4 py-1.5 text-[9px] sm:text-[10px] uppercase tracking-wider font-bold text-[#4c0d17] shadow-sm pointer-events-none transition-opacity">
             <ZoomIn className="h-3.5 w-3.5 text-[#b08a47]" />
-            <span>Hover / Hold for {zoomLevel}x Macro Weave Inspection</span>
+            <span>తాకి పట్టుకోండి • Hold for {zoomLevel}x Zoom</span>
           </div>
         )}
       </div>
@@ -233,7 +234,7 @@ export const FabricLoupeLens: React.FC<FabricLoupeLensProps> = ({
       {/* Optical Zoom Multiplier Bar */}
       <div className="flex items-center justify-between px-1 text-xs mt-1">
         <span className="text-[#8a7a6b] font-sans tracking-widest uppercase text-[10px] flex items-center gap-1">
-          <Sparkles className="h-3 w-3 text-[#b08a47]" /> Inspection Magnification:
+          <Sparkles className="h-3 w-3 text-[#b08a47]" /> జూమ్ (Zoom):
         </span>
         <div className="flex items-center gap-1.5 bg-transparent rounded-sm">
           {([2.0, 3.0, 4.5] as ZoomLevel[]).map((level) => (

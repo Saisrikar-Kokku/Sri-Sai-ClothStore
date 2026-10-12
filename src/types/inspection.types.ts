@@ -47,22 +47,22 @@ export const SAREE_ANGLE_DEFINITIONS: Record<
 > = {
   full_drape: {
     label: 'Full Drape',
-    hindiLabel: 'सम्पूर्ण पल्लू',
+    hindiLabel: 'పూర్తి చీర (Full)',
     defaultDescription: 'Full silhouette, pleat fall, and complete body motif distribution',
   },
   pallu_macro: {
     label: 'Grand Pallu',
-    hindiLabel: 'भव्य पल्लू',
+    hindiLabel: 'కొంగు / పల్లు (Pallu)',
     defaultDescription: 'High-density gold zari jaal and intricate temple motifs',
   },
   border_selvedge: {
     label: 'Zari Border',
-    hindiLabel: 'किनारा / बार्डर',
+    hindiLabel: 'జరీ అంచు (Border)',
     defaultDescription: 'Hand-locked Korvai selvedge and warp/weft interlock detail',
   },
   blouse_piece: {
     label: 'Blouse Piece',
-    hindiLabel: 'चोली कपड़ा',
+    hindiLabel: 'బ్లౌజ్ ముక్క (Blouse)',
     defaultDescription: 'Unstitched matching blouse fabric with heavy sleeve zari borders',
   },
 };
